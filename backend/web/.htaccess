@@ -1,0 +1,20 @@
+# Mod_Autoindex
+<IfModule mod_autoindex.c>
+  # Запрещаем просмотр содержимого папок
+  Options -Indexes
+</IfModule>
+
+# Mod_Rewrite
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks
+  # Включаем mod_rewrite
+  RewriteEngine On
+
+  # Если это папка или файл, открываем её/его
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+ # Определяем путь для админки (Этот пунтк можно пропустить если запуск админки по адресу: http://my-site.com/backend.php вас вполне устраивает)
+ #RewriteRule ^administrator backend.php
+  # В противном случае перенаправляем на index.php
+  RewriteRule . index.php
+</IfModule>
