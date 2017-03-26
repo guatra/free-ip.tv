@@ -59,8 +59,15 @@ class SiteController extends Controller
      * @return string
      */
     public function actionIndex()
-    {
-        return $this->render('index');
+    {   
+        $message = Yii::$app->mailer->compose()
+        ->setFrom(Yii::$app->params['adminEmail'])
+        ->setTo(Yii::$app->params['adminEmail'])
+        ->setSubject('Тема сообщения')
+        ->setTextBody('Текст сообщения')
+        ->setHtmlBody('<b>текст сообщения в формате HTML</b>')
+        ->send();
+        if ($message) {return $this->render('index');}
     }
 
     /**

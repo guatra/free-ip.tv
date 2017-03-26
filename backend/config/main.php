@@ -11,8 +11,16 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+    'language' => 'ru-RU',
+    'sourceLanguage' => 'en-US',
     'modules' => [],
     'components' => [
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            //'viewPath' => '@common/mail',
+            //'useFileTransport' => true,
+            //'useFileTransport' => false,
+        ],
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
@@ -45,6 +53,7 @@ return [
             ],
         ],
         */
+       
     ],
     'params' => $params,
 ];

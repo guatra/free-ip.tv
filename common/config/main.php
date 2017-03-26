@@ -2,8 +2,22 @@
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\DbMessageSource',
+                    'forceTranslation' => true,
+                ],
+                
+            ],
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+        ],
+        'session' => [
+            'class' => 'yii\web\DbSession',
+            // 'db' => 'mydb',  // ID компонента для взаимодействия с БД. По умолчанию 'db'.
+            // 'sessionTable' => 'my_session', // название таблицы для хранения данных сессии. По умолчанию 'session'.
         ],
         /* Менеджер адресов общего характера */
         'urlManager' => [
@@ -14,6 +28,11 @@ return [
                 [
                     'pattern' => '',
                     'route' => 'site/index',
+                    'suffix' => ''
+                ],
+                [
+                    'pattern' => 'gii',
+                    'route' => 'gii/index',
                     'suffix' => ''
                 ],
                 [
@@ -51,6 +70,7 @@ return [
                     'route' => 'serials/index',
                     'suffix' => ''
                 ],
+                // просмотр страницы видео файла
                 [
                     'pattern' => 'release/<id:\d+>/season/<season:\d+>/episode/<episode:\d+>',
                     'route' => 'episode/view',

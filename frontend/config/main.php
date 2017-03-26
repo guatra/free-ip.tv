@@ -11,9 +11,15 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'name' => 'free-ip.tv',
+    'language' => 'ru-RU',
+    'sourceLanguage' => 'en-US',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
+        ],
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -44,6 +50,10 @@ return [
             ],
         ],
         */
+    ],
+    'aliases' => [
+            '@lostfilm' => 'https://static.lostfilm.tv',
+            '@sitevideo' => 'http://10.0.1.12',
     ],
     'params' => $params,
 ];

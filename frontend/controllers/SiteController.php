@@ -12,6 +12,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use backend\models\Languages;
 
 /**
  * Site controller
@@ -63,6 +64,33 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
+    }
+
+    /**
+     * Languages model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionLanguages()
+    {
+        
+            $model = new Languages();
+
+            if ($model->load(Yii::$app->request->post())) {
+                
+                    $session = Yii::$app->session;
+                    $session['language'] = $model->language;
+                    Yii::$app->language = $model->language;
+                    return $this->render('index', [
+                        'model' => $model,
+                    ]);
+                
+            }
+
+            return $this->render('languages', [
+                'model' => $model,
+            ]);
     }
 
     /**

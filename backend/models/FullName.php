@@ -47,9 +47,11 @@ class FullName extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'release_name_ru', 'release_name_en'], 'required'],
-            [['id', 'release_status', 'release_show'], 'integer'],
-            [['release_name_ru', 'release_name_en', 'release_totalseasons', 'release_year', 'release_description', 'release_released', 'release_genre', 'release_director', 'release_actors', 'release_plot', 'release_language', 'release_country', 'release_awards', 'release_metascore', 'release_imdbrating', 'release_imdbvotes', 'release_imdbid', 'release_type'], 'string', 'max' => 1024],
+            [['release_name_ru', 'release_name_en'], 'required'],
+            [['release_status', 'release_show'], 'integer'],
+            [['release_year'], 'safe'],
+            [['release_plot'], 'string'],
+            [['release_name_ru', 'release_name_en', 'release_totalseasons', 'release_description', 'release_released', 'release_genre', 'release_director', 'release_actors', 'release_language', 'release_country', 'release_awards', 'release_metascore', 'release_imdbrating', 'release_imdbvotes', 'release_imdbid', 'release_type'], 'string', 'max' => 1024],
         ];
     }
 
@@ -60,11 +62,11 @@ class FullName extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'release_name_ru' => Yii::t('app', 'Release Name Ru'),
-            'release_name_en' => Yii::t('app', 'Release Name En'),
-            'release_totalseasons' => Yii::t('app', 'Release Totalseasons'),
-            'release_status' => Yii::t('app', 'Release Status'),
-            'release_show' => Yii::t('app', 'Release Show'),
+            'release_name_ru' => Yii::t('app', 'Название на русском'),
+            'release_name_en' => Yii::t('app', 'Оригинальное название по стандарту OMDB'),
+            'release_totalseasons' => Yii::t('app', 'Количество сезонов'),
+            'release_status' => Yii::t('app', 'Статус съёмки'),
+            'release_show' => Yii::t('app', 'Показывать на главной странице'),
             'release_year' => Yii::t('app', 'Release Year'),
             'release_description' => Yii::t('app', 'Release Description'),
             'release_released' => Yii::t('app', 'Release Released'),

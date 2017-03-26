@@ -118,3 +118,30 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+.image {
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-left: 0px;
+    max-width: 100%;
+    height: auto;
+}
+.image img {
+    -moz-transition: all 1s ease-out;
+    -o-transition: all 1s ease-out;
+    -webkit-transition: all 1s ease-out;
+}
+.image img:hover{
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.9);
+    -moz-box-shadow: 200px 200px 200px 200px rgba(0, 0, 0, 0.9);
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.9); 
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.sidebar-right {
+    background-color: #999999;
+    height: auto;
+}
+
+
