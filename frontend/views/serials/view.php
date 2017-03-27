@@ -69,7 +69,7 @@ use yii\bootstrap\NavBar;
     								<td itemprop="containsSeason" itemscope="" itemtype="http://schema.org/TVSeason">
     								<?php 
     									for ($i=1; $i <= $model->release_totalseasons ; $i++) { 
-    										echo Html::a($i.' сезон', ['/episode/view', 'id' => $model->id, 'season' => '1', 'episode' => '1' ], ['itemprop' => 'name']);
+    										echo Html::a($i.' сезон', ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => '1' ], ['itemprop' => 'name']);
     										
     										if ($i < $model->release_totalseasons) {
     											echo ', ';
