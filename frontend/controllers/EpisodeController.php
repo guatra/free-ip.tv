@@ -39,23 +39,23 @@ class EpisodeController extends AppController
         if ($view):
             if ($view != $params):
                 Yii::$app->session->set('view', $params);
-                $view = Yii::$app->session->get('view');
-                Yii::$app->session->setFlash(
-                    'success',
-                    'Переписанный результат '.$view
-                );
+//                $view = Yii::$app->session->get('view');
+//                Yii::$app->session->setFlash(
+//                    'success',
+//                    'Переписанный результат '.$view
+//                );
             else:
-                Yii::$app->session->setFlash(
-                    'success',
-                    'Результат поиска '.$view
-                );
+//                Yii::$app->session->setFlash(
+//                    'success',
+//                    'Результат поиска '.$view
+//                );
             endif;
         else:
             Yii::$app->session->set('view', $params);
-            Yii::$app->session->setFlash(
-                'error',
-                ''
-            );
+//            Yii::$app->session->setFlash(
+//                'error',
+//                ''
+//            );
         endif;
 
 
