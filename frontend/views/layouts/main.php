@@ -59,7 +59,6 @@ $lang = $session['language'];
 
 </script>
 
-
 <div class="wrap">
     <?php
     NavBar::begin([

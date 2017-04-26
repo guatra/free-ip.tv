@@ -99,7 +99,6 @@ use yii\helpers\Url;
                         <li><a href="<?=Yii::$app->urlManager->createUrl(['/headler/index', 'url_code' => $element->episode_url])?>" class="button">Больше</a></li>
                     </ul>
                 </article>
-
                 <?php endforeach; ?>
 <!--                <article>-->
 <!--                    <a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>-->

@@ -27,7 +27,6 @@ SerialsAppAsset::register($this);
 
     <div class="container-fluid">
 
-
         <?= Alert::widget() ?>
         <?= $content ?>
 

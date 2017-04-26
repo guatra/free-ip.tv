@@ -28,8 +28,6 @@ EpisodeAppAsset::register($this);
 
 
 
- 
-
         
         <?= Alert::widget() ?>
         <?= $content ?>

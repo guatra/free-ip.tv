@@ -101,8 +101,6 @@ $lang = $session['language'];
                 </ul>
             </section>
 
-
-
             <!-- Footer -->
             <footer id="footer">
                 <p class="copyright"><?= Yii::$app->name ?>  <?= Yii::$app->version ?></p>

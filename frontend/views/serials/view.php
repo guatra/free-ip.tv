@@ -26,7 +26,6 @@ use kartik\icons\Icon;
             'items' => $menuItemsInSide,
         	],   
     	];
-    
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,

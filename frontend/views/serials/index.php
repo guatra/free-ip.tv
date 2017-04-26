@@ -33,7 +33,6 @@ use kartik\icons\Icon;
 </section>
 
 <div class="serials-index">
-
     <div class="row">
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 sidebar-right">
 

@@ -128,7 +128,6 @@ use yii\helpers\FileHelper;
 </ul> </div>
 </div>
 
-
 <div class="container">
 <div class="row">
 <div class="col-md-12">
@@ -166,7 +165,7 @@ use yii\helpers\FileHelper;
 //    ?>
 <!--    --><?php //echo 'ln -s "/var/www/html/tv_show/'. $model->release_name_ru .'/' . $releaseItem->episode_season . '-' . $i . ' ' . $releaseItem->episode_title . '.mp4" /var/www/html/tv_show_all/' . $releaseItem->episode_url . '.mp4'; ?><!--<br>-->
 <?php //endforeach ?>
-<?= debug($model); ?>
+
 
 
 
