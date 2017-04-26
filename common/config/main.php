@@ -8,7 +8,6 @@ return [
                     'class' => 'yii\i18n\DbMessageSource',
                     'forceTranslation' => true,
                 ],
-                
             ],
         ],
         'cache' => [
