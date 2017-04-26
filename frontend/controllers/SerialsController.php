@@ -77,7 +77,7 @@ class SerialsController extends AppController
         { 
             $recommendations[] = $input[$rand_keys[$i]]; 
         }  
-        //$poster = 'https://static.lostfilm.tv/Images/174/Posters/poster.jpg';
+        $poster = 'https://static.lostfilm.tv/Images/174/Posters/poster.jpg';
         $model = $this->findModel($id);
         $this->setMeta($model->release_name_ru . ' (' . $model->release_name_en . ') ', 'keywords', $model->release_description);
         return $this->render('view', [
