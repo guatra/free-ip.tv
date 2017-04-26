@@ -2,6 +2,7 @@
 use wbraganca\videojs\VideoJsWidget;
 ?>
 
+
 <?= VideoJsWidget::widget([
     'options' => [
         'class' => 'video-js vjs-fluid videojs-sublime-skin',
