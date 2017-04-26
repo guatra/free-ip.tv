@@ -10,7 +10,7 @@ use Yii;
 
 class SerialsController extends AppController
 {
-	// Задаём вывод по умолчанию Навигацонной панели
+	// Задаём вывод по умолчанию Навигационной панели
 	public $layout = 'serials';
 
     public function actionIndex()
@@ -26,6 +26,39 @@ class SerialsController extends AppController
 
     public function actionView($id)
     {
+        // Проверим запись в сессии и в базе данных на наличие просмотра ранее
+        $view = Yii::$app->session->get('view');
+        //
+        $request = Yii::$app->request;
+        // возвращает все параметры
+        $params = $request->url;
+        // На случай прямого захода объявим переменную
+        $last_view = [];
+        if ($view):
+            if ($view != $params):
+                $id = $request->get('id');
+                $last_view = explode('/', $view);
+                if ($last_view[2] == $id):
+                    $last_view = $view;
+                endif;
+//                Yii::$app->session->setFlash(
+//                    'success',
+//                    'Записанный результат '.$view
+//                );
+            else:
+//                Yii::$app->session->setFlash(
+//                    'success',
+//                    'Результат поиска '.$view
+//                );
+            endif;
+        else:
+            //Yii::$app->session->set('view', $params);
+//            Yii::$app->session->setFlash(
+//                'error',
+//                ''
+//            );
+        endif;
+
         $query = FullName::find()
         ->select(['id','release_totalseasons', 'release_name_ru'])
         ->where(['release_show' => 1]);
@@ -50,6 +83,7 @@ class SerialsController extends AppController
         return $this->render('view', [
             'poster' => $this->findPoster($id),
             'model' => $model,
+            'last_view' => $last_view,
             'serials' => $serials,
             'recommendations' => $recommendations,
         ]);

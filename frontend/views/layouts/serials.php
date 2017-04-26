@@ -5,10 +5,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
-use frontend\assets\AppAsset;
+use frontend\assets\SerialsAppAsset;
 use common\widgets\Alert;
 
-AppAsset::register($this);
+SerialsAppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -27,23 +27,12 @@ AppAsset::register($this);
 
     <div class="container-fluid">
 
-        
+
         <?= Alert::widget() ?>
         <?= $content ?>
 
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <p class="pull-left">&copy; free-ip.tv <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
 
 <?php $this->endBody() ?>
 </body>

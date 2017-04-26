@@ -14,6 +14,8 @@ return [
     'name' => 'free-ip.tv',
     'language' => 'ru-RU',
     'sourceLanguage' => 'en-US',
+    'timeZone' => 'UTC',
+    'version' => '7.0.13',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',

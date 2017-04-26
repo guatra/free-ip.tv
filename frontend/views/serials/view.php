@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use kartik\icons\Icon;
 
 ?>
 <?= Html::cssFile('@web/css/serials.css') ?>
@@ -33,6 +34,7 @@ use yii\bootstrap\NavBar;
     NavBar::end();
 ?>
 </section>
+
 <section class="serial">
 	   	<div itemscope="" itemtype="http://schema.org/TVSeries">
     		<div class="spoiler">
@@ -44,7 +46,11 @@ use yii\bootstrap\NavBar;
     						Смотреть онлайн сериал<br>
     						<span class="name"><?=$model->release_name_ru?></span>
     					</h1>
+                        <?php if(is_array($last_view)):?>
     					<a class="btn btn-default btn-lg" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $model->id, 'season' => '1', 'episode' => '1' ])?>">Начать просмотр</a>
+                        <?php else: ?>
+                        <a class="btn btn-default btn-lg" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $model->id, 'season' => '1', 'episode' => '1' ])?>"><?php echo $last_view ?></a>
+                        <?php endif; ?>
     				</div>
     			</div>
     		</div>
@@ -81,8 +87,10 @@ use yii\bootstrap\NavBar;
     									</tr>
     									<tr>
     										<td>Год выпуска</td>
-    										<td><?php $time = strtotime($model->release_year);
-echo strftime('%e %h %Y', $time); ?></td>
+    										<td>
+                                                <?php $time = strtotime($model->release_year);
+                                                    echo strftime('%e %h %Y', $time); ?>
+                                            </td>
     									</tr>
     									<tr>
     										<td>Жанр</td>
@@ -107,7 +115,8 @@ echo strftime('%e %h %Y', $time); ?></td>
     											<img class=" logo" src="img/kp.png" height="18" alt="Кинопоиск">
     										</div>
     										<div class="pull-left">
-    											<div class="value">8.101</div>
+
+    											<div class="value"><?= Icon::show('leaf', ['class' => 'fa-3x'], Icon::FA) ?>8.101</div>
     											<div class="stars">
     												<div class="fill" style="width: 87.909px"></div>
     											</div>
@@ -138,7 +147,7 @@ echo strftime('%e %h %Y', $time); ?></td>
     					<div class="container">
     						<div class="row">
     							<div class="col-xs-6">
-    								<h3>Сезоны Сериала</h3>
+    								<h3>Сезоны Сериала</h3><?= Icon::show('user') ?>
     							</div>
     						</div>
     						<div class="row">
@@ -207,7 +216,7 @@ echo strftime('%e %h %Y', $time); ?></td>
 <section class="nav-bottom">
 <?php
     NavBar::begin([
-        'brandLabel' => 'free-ip.tv',
+        'brandLabel' => Icon::show('home', ['class'=>'fa-inverse']) . 'free-ip.tv',
         'brandUrl' => Yii::$app->urlManager->createUrl(['/site/index']),
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-bottom',
@@ -219,7 +228,7 @@ echo strftime('%e %h %Y', $time); ?></td>
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' =>   'Login', 'url' => ['/site/login']];
     } else {
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')

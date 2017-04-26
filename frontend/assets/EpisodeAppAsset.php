@@ -14,7 +14,7 @@ class EpisodeAppAsset extends AssetBundle
     public $css = [
         //'css/episode.css',
         //'css/resize_player.css',
-        //'css/videojs-sublime-skin.css',
+        'css/videojs-sublime-skin.css',
         'css/release.css',
     ];
     public $js = [

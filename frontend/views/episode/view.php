@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use wbraganca\videojs\VideoJsWidget;
+use kartik\icons\Icon;
 
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -15,7 +16,7 @@ use yii\helpers\FileHelper;
 
 <?php
     NavBar::begin([
-        'brandLabel' => $model->release_name_ru,
+        'brandLabel' =>  $model->release_name_ru,
         'brandUrl' => Yii::$app->urlManager->createUrl(['/serials/view', 'id' =>$model->id]),
         'options' => [
             'class' => 'navbar navbar-inverse navbar-fixed-top',
@@ -49,6 +50,7 @@ use yii\helpers\FileHelper;
         'poster' => $image,
         'width' => 'auto',
         'height' => 'auto',
+        'autoplay' => true,
         'controls' => true,
     ],
     'jsOptions' => [
@@ -56,7 +58,8 @@ use yii\helpers\FileHelper;
     ],
     'tags' => [
         'source' => [
-            ['src' => Url::to('@sitevideo/tv_show_all/'.$query_episode->episode_url.'.mp4' , true), 'type' => 'video/mp4'],
+            //['src' => Url::to('@sitevideo/tv_show_all/'.$query_episode->episode_url.'.mp4' , true), 'type' => 'video/mp4'],
+            ['src' => 'http://vjs.zencdn.net/v/oceans.mp4', 'type' => 'video/mp4'],
             ['src' => 'http://vjs.zencdn.net/v/oceans.webm', 'type' => 'video/webm']
         ],
         'track' => [
@@ -107,7 +110,10 @@ use yii\helpers\FileHelper;
 <?php if ($query_episode->episode_plot == NULL): ?>
     <?php echo Yii::t('app', 'Нет описания серии')?>
 <?php else: ?>
-    <?= $query_episode->episode_plot ?>
+    <div  oncontextmenu="return false;" style="user-select: none;-moz-user-select: none;-webkit-user-select: none">
+        <?= $query_episode->episode_plot ?>
+    </div>
+
 <?php endif; ?>
 </p></div>
 </div>
@@ -150,8 +156,17 @@ use yii\helpers\FileHelper;
     <?php endforeach ?>
 </div>
 </div>
-
-</section>        
+</section>
+<?php //foreach ($release as $releaseItem): ?>
+<!--    --><?php //if ( $releaseItem->episode_season_number <=9 )
+//    {
+//        $i = '0'.$releaseItem->episode_season_number;
+//    }else {
+//    $i = $releaseItem->episode_season_number;}
+//    ?>
+<!--    --><?php //echo 'ln -s "/var/www/html/tv_show/'. $model->release_name_ru .'/' . $releaseItem->episode_season . '-' . $i . ' ' . $releaseItem->episode_title . '.mp4" /var/www/html/tv_show_all/' . $releaseItem->episode_url . '.mp4'; ?><!--<br>-->
+<?php //endforeach ?>
+<?= debug($model); ?>
 
 
 

@@ -547,3 +547,7 @@ a {
 #error-page #main {
     padding: 40px 0;
 }
+.image {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

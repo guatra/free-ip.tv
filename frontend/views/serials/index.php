@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use kartik\icons\Icon;
 
 ?>
 <section class="nav-top">
@@ -31,17 +32,17 @@ use yii\bootstrap\NavBar;
     ?>
 </section>
 
-<div class="serials-index" style="padding-top: 60px;">
+<div class="serials-index">
 
     <div class="row">
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 sidebar-right">
 
             <div class="view">
 
-                <div class="btn-toolbar" role="toolbar">
+                <div class="btn-toolbar center-block" role="toolbar">
                     <div class="btn-group">
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-th"></span></button>
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-align-justify"></span></button>
+                        <button type="button" class="btn btn-default"><?= Icon::show('th')?></span></button>
+                        <button type="button" class="btn btn-default"><?= Icon::show('align-justify')?></button>
                     </div>
                 </div>
 

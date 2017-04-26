@@ -27,21 +27,15 @@ class EpisodeController extends AppController
             ]);
     }
 
-  /**
-     * Displays a single FullName model.
-     * @param integer $id
-     * @return mixed
-     */
     public function actionView()
     {   
         // Проверим запись в сессии и в базе данных на наличие просмотра ранее
         $view = Yii::$app->session->get('view');
         //Yii::$app->session->remove('view');
         $request = Yii::$app->request;
-
         // возвращает все параметры
         $params = $request->url;
-        /*
+
         if ($view):
             if ($view != $params):
                 Yii::$app->session->set('view', $params);
@@ -63,7 +57,7 @@ class EpisodeController extends AppController
                 ''
             );
         endif;
-        */
+
         $id = $request->get('id'); 
         $season = $request->get('season'); 
         $episode = $request->get('episode');
@@ -76,6 +70,12 @@ class EpisodeController extends AppController
             'episode_season' => $season,
             'episode_season_number' => $episode,
         ]);
+        // ОТправляем пользователя в ошибку
+        if (!$query_episode) {
+            return $this->render('/site/error', [
+                //'params' => $params,
+            ]);
+        }
         //->where(['release_id' => $id, 'episode_season' => $season, 'episode_season_number' => $episode])->all();
         $userIP = Yii::$app->request->userIP;
         $model = $this->findModel($id);

@@ -15,6 +15,6 @@
   RewriteCond %{REQUEST_FILENAME} !-d
  # Определяем путь для админки (Этот пунтк можно пропустить если запуск админки по адресу: http://my-site.com/backend.php вас вполне устраивает)
  #RewriteRule ^administrator backend.php
-  # В противном случае перенаправляем на index.php
+  # В противном случае перенаправляем на _index.php
   RewriteRule . index.php
 </IfModule>

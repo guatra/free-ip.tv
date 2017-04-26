@@ -4,7 +4,7 @@ namespace frontend\controllers;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
+use frontend\controllers\AppController;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
@@ -13,12 +13,14 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use backend\models\Languages;
+use backend\models\Release;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends AppController
 {
+    public $layout = 'site';
     /**
      * @inheritdoc
      */
@@ -82,7 +84,7 @@ class SiteController extends Controller
                     $session = Yii::$app->session;
                     $session['language'] = $model->language;
                     Yii::$app->language = $model->language;
-                    return $this->render('index', [
+                    return $this->render('_index', [
                         'model' => $model,
                     ]);
                 
@@ -100,7 +102,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $find_release = Release::find()
+            ->select(['id','episode_title', 'episode_season', 'episode_season_number', 'episode_plot', 'episode_url'])
+            //->where(['release_id' => $id, 'episode_season' => $season])
+            ->limit(6)
+            ->orderBy(['id' => SORT_DESC])->all();
+        $data = $find_release;
+        $this->setMeta(Yii::$app->name);
+        return $this->render('index', ['data' => $data]);
     }
 
     /**
