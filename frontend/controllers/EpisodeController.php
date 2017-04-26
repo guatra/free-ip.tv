@@ -58,6 +58,7 @@ class EpisodeController extends AppController
             );
         endif;
 
+
         $id = $request->get('id'); 
         $season = $request->get('season'); 
         $episode = $request->get('episode');

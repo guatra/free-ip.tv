@@ -112,6 +112,7 @@ class SiteController extends AppController
         return $this->render('index', ['data' => $data]);
     }
 
+
     /**
      * Logs in a user.
      *

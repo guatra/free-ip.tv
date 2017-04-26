@@ -12,6 +12,7 @@ class SiteAppAsset extends AppAsset
     public $css = [
         'css/main.css',
         'css/font-awesome.min.css',
+
     ];
     public $js = [
         '/js/jquery.min.js',

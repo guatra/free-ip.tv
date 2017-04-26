@@ -12,8 +12,6 @@ class EpisodeAppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        //'css/episode.css',
-        //'css/resize_player.css',
         'css/videojs-sublime-skin.css',
         'css/release.css',
     ];

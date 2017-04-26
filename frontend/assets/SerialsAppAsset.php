@@ -14,7 +14,7 @@ class SerialsAppAsset extends AssetBundle
     public $css = [
 //'css/episode.css',
 //'css/resize_player.css',
-//'css/videojs-sublime-skin.css',
+        'css/videojs-sublime-skin.css',
         'css/font-awesome.min.css',
         '/css/serials.css',
     ];

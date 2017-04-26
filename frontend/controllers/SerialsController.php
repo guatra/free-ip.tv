@@ -87,6 +87,7 @@ class SerialsController extends AppController
             'serials' => $serials,
             'recommendations' => $recommendations,
         ]);
+
     }
 
     /**
