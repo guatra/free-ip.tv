@@ -16,7 +16,7 @@ class SiteAppAsset extends AppAsset
     ];
     public $js = [
         '/js/jquery.min.js',
-        '/js/skel.min.js"',
+        '/js/skel.min.js',
 		'/js/util.js',
 		'/js/ie/respond.min.js',
         '/js/main.js',
