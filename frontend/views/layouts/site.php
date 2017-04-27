@@ -54,19 +54,17 @@ $lang = $session['language'];
                     <h2>Menu</h2>
                 </header>
                 <ul>
-                    <li><a href="<?=Yii::$app->urlManager->createUrl(['/movies/index'])?>">Move</a></li>
-                    <li><a href="<?=Yii::$app->urlManager->createUrl(['/serials/index'])?>">TV Shows</a></li>
+                    <li><?= Html::a(Yii::t('frontend', 'APP_MOVIES'), ['/movies/index'], ['class' => 'user-moview']) ?></li>
+                    <li><?= Html::a(Yii::t('frontend', 'APP_SERIALS'), ['/serials/index'], ['class' => 'user-serials']) ?></li>
+
                     <li>
-                        <span class="opener">PlayList</span>
+                        <?= Html::tag('span', Yii::t('frontend', 'APP_USER_PLAYLIST'), ['class' => 'opener']) ?>
                         <ul>
-                            <li><a href="#">Lorem Dolor</a></li>
-                            <li><a href="#">Ipsum Adipiscing</a></li>
-                            <li><a href="#">Tempus Magna</a></li>
-                            <li><a href="#">Feugiat Veroeros</a></li>
+                            <li><a href="#">Авторизуйтесь</a></li>
                         </ul>
                     </li>
                     <li>
-                        <span class="opener">Another Submenu</span>
+                        <span class="opener"><?= Yii::t('frontend', 'APP_SERIALS') ?></span>
                         <ul>
                             <li><a href="#">Lorem Dolor</a></li>
                             <li><a href="#">Ipsum Adipiscing</a></li>
@@ -111,13 +109,13 @@ $lang = $session['language'];
     </div>
 </div>
 
-<!-- Scripts -->
-<script src="/js/jquery.min.js"></script>
-<script src="/js/skel.min.js"></script>
-
-<script src="/js/util.js"></script>
-<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
-<script src="/js/main.js"></script>
+<!--<!-- Scripts -->-->
+<!--<script src="/js/jquery.min.js"></script>-->
+<!--<script src="/js/skel.min.js"></script>-->
+<!---->
+<!--<script src="/js/util.js"></script>-->
+<!--<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->-->
+<!--<script src="/js/main.js"></script>-->
 
 <?php $this->endBody() ?>
 </body>
