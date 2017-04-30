@@ -12,7 +12,7 @@ use kartik\icons\Icon;
 <?php
     NavBar::begin([
         'brandLabel' => $model->release_name_ru,
-        'brandUrl' => Yii::$app->urlManager->createUrl(['/serials/view', 'id' =>$model->id]),
+        'brandUrl' => Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$model->id]),
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
