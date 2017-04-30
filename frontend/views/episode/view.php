@@ -17,7 +17,7 @@ use yii\helpers\FileHelper;
 <?php
     NavBar::begin([
         'brandLabel' =>  $model->release_name_ru,
-        'brandUrl' => Yii::$app->urlManager->createUrl(['/serials/view', 'id' =>$model->id]),
+        'brandUrl' => Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$model->id]),
         'options' => [
             'class' => 'navbar navbar-inverse navbar-fixed-top',
         ],
