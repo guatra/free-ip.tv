@@ -3,26 +3,26 @@
 namespace frontend\assets;
 
 use yii\web\AssetBundle;
-
 /**
- * Main frontend application asset bundle.
+ * Release frontend application asset bundle.
  */
-class SerialsAppAsset extends AssetBundle
+class ReleaseAppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/main.css',
+        '/css/release.css',
+        //'css/main.css',
         //'css/videojs-sublime-skin.css',
-        'css/font-awesome.min.css',
-        '/css/serials.css',
+        '/css/font-awesome.min.css',
+
     ];
     public $js = [
-        '/js/jquery.min.js',
-        '/js/skel.min.js',
-        '/js/util.js',
-        '/js/ie/respond.min.js',
-        '/js/main.js',
+//        '/js/jquery.min.js',
+//        '/js/skel.min.js',
+//        '/js/util.js',
+//        '/js/ie/respond.min.js',
+//        '/js/main.js',
     ];
     public $jsOptions = ['position' => \yii\web\View::POS_END];
 

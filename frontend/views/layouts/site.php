@@ -49,11 +49,42 @@ $lang = $session['language'];
             </section>
 
             <!-- Menu -->
+
             <nav id="menu">
-                <header class="major">
-                    <h2>Menu</h2>
-                </header>
+
+                <?= Html::tag('header', Html::tag('h2' , 'APP_USER_MENU'), ['class' => 'major']) ?>
+<!--                --><?php //echo Nav::widget([
+//                    'items' => [
+//                        [
+//                            'label' => Yii::t('frontend', 'APP_MOVIES'),
+//                            'url' => ['movies/index'],
+//                            'linkOptions' => ['class' => 'user-serials'],
+//                        ],
+//                        [
+//                            'label' => Yii::t('frontend', 'APP_SERIALS'),
+//                            'url' => ['serials/index'],
+//                            'linkOptions' => ['class' => 'user-serials'],
+//                        ],
+//                        [
+//                            'label' => Yii::t('frontend', 'APP_USER_PLAYLIST'),
+//                            'items' => [
+//                                ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+//                                ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
+//                                ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
+//                            ],
+//                        ],
+//                    ],
+//                    'options' => []
+//                ]);
+//
+//                ?>
                 <ul>
+                    <li>
+                        <?= Html::tag('span', Yii::t('frontend', 'APP_TV_CHANNELS'), ['class' => 'opener']) ?>
+                        <ul>
+                            <li><a href="#">В работе</a></li>
+                        </ul>
+                    </li>
                     <li><?= Html::a(Yii::t('frontend', 'APP_MOVIES'), ['/movies/index'], ['class' => 'user-moview']) ?></li>
                     <li><?= Html::a(Yii::t('frontend', 'APP_SERIALS'), ['/serials/index'], ['class' => 'user-serials']) ?></li>
 
@@ -64,17 +95,15 @@ $lang = $session['language'];
                         </ul>
                     </li>
                     <li>
-                        <span class="opener"><?= Yii::t('frontend', 'APP_SERIALS') ?></span>
+                        <?= Html::tag('span', Yii::t('frontend', 'APP_CHANNELS'), ['class' => 'opener']) ?>
                         <ul>
-                            <li><a href="#">Lorem Dolor</a></li>
-                            <li><a href="#">Ipsum Adipiscing</a></li>
-                            <li><a href="#">Tempus Magna</a></li>
-                            <li><a href="#">Feugiat Veroeros</a></li>
+                            <li><?= Html::a(Yii::t('frontend', 'APP_CHANNELS_LOSTFILM-TV'), ['/serials/index'], ['class' => 'user-serials']) ?></li>
                         </ul>
                     </li>
                 </ul>
-            </nav>
 
+
+            </nav>
             <!-- Section -->
             <section>
                 <header class="major">

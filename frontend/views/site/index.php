@@ -82,9 +82,9 @@ use yii\helpers\Url;
 <!--        </section>-->
 
         <!-- Section -->
-<section>
-
-</section>
+<!--<section>-->
+<!--    <iframe width='720' height='404' id=video frameborder='no' src='//pik-tv.com/online/' allowfulscreen></iframe>-->
+<!--</section>-->
         <section>
             <header class="major">
                 <h2>Последние новинки</h2>

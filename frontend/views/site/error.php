@@ -7,7 +7,7 @@
 
 use yii\helpers\Html;
 
-$this->title = $name;
+//$this->title = $name;
 ?>
 
 
@@ -34,7 +34,7 @@ $this->title = $name;
 
 
             <div class="major">
-                <?= nl2br(Html::encode($message)) ?>
+                <?//= nl2br(Html::encode($message)) ?>
             </div>
 
             <p>
