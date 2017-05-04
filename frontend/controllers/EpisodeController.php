@@ -64,7 +64,7 @@ class EpisodeController extends AppController
         $episode = $request->get('episode');
         $query = Release::find()
         ->select(['episode_title', 'episode_season', 'episode_season_number', 'episode_runtime', 'episode_url'])
-        ->where(['release_id' => $id, 'episode_season' => $season]);
+        ->where(['release_id' => $id, 'episode_season' => $season, 'episode_laguage' => 'ru-RU']);
         $release = $query->orderBy(['episode_season_number' => SORT_ASC])->all();
         $query_episode = Release::findOne([
             'release_id' => $id,
