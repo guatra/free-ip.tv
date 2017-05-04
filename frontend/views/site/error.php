@@ -7,7 +7,7 @@
 
 use yii\helpers\Html;
 
-//$this->title = $name;
+$this->title = $name;
 ?>
 
 
@@ -16,7 +16,7 @@ use yii\helpers\Html;
 
         <!-- Header -->
         <header id="header">
-            <a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+            <a href="index.html" class="logo"></a>
             <ul class="icons">
                 <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
                 <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -34,7 +34,7 @@ use yii\helpers\Html;
 
 
             <div class="major">
-                <?//= nl2br(Html::encode($message)) ?>
+                <?= nl2br(Html::encode($message)) ?>
             </div>
 
             <p>

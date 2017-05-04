@@ -77,17 +77,17 @@ return [
                 ],
                 [
                     'pattern' => 'release/<id:\d+>/season/<season:\d+>',
-                    'route' => 'release/view',
-                    'suffix' => ''
-                ],
-                [
-                    'pattern' => 'release/<id:\d+>',
-                    'route' => 'release/view',
-                    'suffix' => ''
-                ],
-                [
-                    'pattern' => 'release/<id:\d+>',
                     'route' => 'release/index',
+                    'suffix' => ''
+                ],
+//                [
+//                    'pattern' => 'release/<alias:\w*>',
+//                    'route' => 'release/index',
+//                    'suffix' => ''
+//                ],
+                [
+                    'pattern' => 'release/<id:\d+>',
+                    'route' => 'release/view',
                     'suffix' => ''
                 ],
                 [

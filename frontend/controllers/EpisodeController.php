@@ -73,8 +73,8 @@ class EpisodeController extends AppController
         ]);
         // ОТправляем пользователя в ошибку
         if (!$query_episode) {
-            return $this->render('/site/error', [
-                //'params' => $params,
+            return $this->render('/release/index', [
+                'params' => $params,
             ]);
         }
         //->where(['release_id' => $id, 'episode_season' => $season, 'episode_season_number' => $episode])->all();

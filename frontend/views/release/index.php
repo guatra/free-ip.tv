@@ -47,7 +47,7 @@ use kartik\icons\Icon;
             </div>
         </div>
         <div class="home">
-            
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 hidden-xs hidden-sm">

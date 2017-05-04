@@ -4,6 +4,7 @@
 namespace frontend\controllers;
 
 use backend\models\FullName;
+use backend\models\Release;
 use yii\web\NotFoundHttpException;
 use yii\helpers\Url;
 use Yii;
@@ -14,10 +15,34 @@ class ReleaseController extends AppController
     // Задаём вывод по умолчанию Навигационной панели
     public $layout = 'release';
 
+    public function actionIndex(){
+        // Проверим запись в сессии и в базе данных на наличие просмотра ранее
+        $view = $this->getLastView();
+        //
+        $request = Yii::$app->request;
+        // возвращает все параметры
+        $params = $request->url;
+
+        $id = $request->get('id');
+        $season = $request->get('season');
+        $release = $this->getSerialsSeason($id, $season);
+        $model = $this->findModel($id);
+        $this->setMeta($model->release_name_ru . ' (' . $model->release_name_en . ') сезон '.$season, 'keywords', $model->release_description);
+        return $this->render('index', [
+            'id' => $id,
+            'season' => $season,
+            'release' => $release,
+            'poster' => $this->findPoster($id),
+            'model' => $model,
+            'serials' => $this->getSerials(),
+            'recommendations' => $this->getRecommendation(),
+        ]);
+    }
+
     public function actionView($id)
     {
         // Проверим запись в сессии и в базе данных на наличие просмотра ранее
-        $view = Yii::$app->session->get('view');
+        $view = $this->getLastView();
         //
         $request = Yii::$app->request;
         // возвращает все параметры
@@ -49,22 +74,6 @@ class ReleaseController extends AppController
 //            );
         endif;
 
-        $query = FullName::find()
-            ->select(['id', 'release_totalseasons', 'release_name_ru'])
-            ->where(['release_show' => 1]);
-        $serials = $query->orderBy('id')->all();
-
-        // Случайный выбор секции рекомендованные сериалов для просмотра по умолчанию 4
-        foreach ($serials as $serial) {
-            $array_recommendations[] = $serial->id;
-        }
-
-        $n = 4;
-        $input = $array_recommendations;
-        $rand_keys = array_rand($input, $n);
-        for ($i = 0; $i < $n; $i++) {
-            $recommendations[] = $input[$rand_keys[$i]];
-        }
         $poster = 'https://static.lostfilm.tv/Images/174/Posters/poster.jpg';
         $model = $this->findModel($id);
         $this->setMeta($model->release_name_ru . ' (' . $model->release_name_en . ') ', 'keywords', $model->release_description);
@@ -72,10 +81,51 @@ class ReleaseController extends AppController
             'poster' => $this->findPoster($id),
             'model' => $model,
             'last_view' => $last_view,
-            'serials' => $serials,
-            'recommendations' => $recommendations,
+            'serials' => $this->getSerials(),
+            'recommendations' => $this->getRecommendation(),
         ]);
 
+    }
+
+    protected function getLastView()
+    {
+        $view = Yii::$app->session->get('view');
+        return $view;
+    }
+
+    protected function getSerials()
+    {
+        $query = FullName::find()
+            ->select(['id', 'release_totalseasons', 'release_name_ru'])
+            ->where(['release_show' => 1])
+            ->orderBy('id')->all();
+        return $query;
+    }
+    protected function getSerialsSeason($id = null, $season = null)
+    {
+        $query = Release::find()
+            ->select(['episode_title', 'episode_season', 'episode_season_number', 'episode_runtime', 'episode_url'])
+            ->where(['release_id' => $id, 'episode_season' => $season, 'episode_laguage' => 'ru-RU'])
+            ->orderBy(['episode_season_number' => SORT_ASC])->all();
+            return $query;
+    }
+
+    protected function getRecommendation($n = 4)
+    {
+
+        $serials = $this->getSerials();
+
+        // Случайный выбор секции рекомендованные сериалов для просмотра по умолчанию 4
+        foreach ($serials as $serial) {
+            $array_recommendations[] = $serial->id;
+        }
+
+        $input = $array_recommendations;
+        $rand_keys = array_rand($input, $n);
+        for ($i = 0; $i < $n; $i++) {
+            $recommendations[] = $input[$rand_keys[$i]];
+        }
+        return $recommendations;
     }
 
     /**
@@ -88,6 +138,20 @@ class ReleaseController extends AppController
     protected function findModel($id)
     {
         if ( ($model = FullName::findOne($id)) !== null ) {
+            return $model;
+        } else {
+
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    /**
+     * @param $alias
+     * @return string
+     */
+    protected function findAlias($alias)
+    {
+        if ( ($model = FullName::findOne($release_lostfilm_alias)) !== null ) {
             return $model;
         } else {
 

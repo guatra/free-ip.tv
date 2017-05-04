@@ -17,13 +17,13 @@ use yii\helpers\FileHelper;
 <?php
     NavBar::begin([
         'brandLabel' =>  $model->release_name_ru,
-        'brandUrl' => Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$model->id]),
+        'brandUrl' => Yii::$app->urlManager->createUrl(['/release/index', 'id' =>$model->id]),
         'options' => [
             'class' => 'navbar navbar-inverse navbar-fixed-top',
         ],
     ]);
     for ($i=1; $i <= $model->release_totalseasons ; $i++) { 
-    $menuItemsInSide[] = ['label' => 'Сезон '.$i, 'url' => ['/release/view', 'id' => $model->id, 'season' => $i], 'linkOptions' => []];
+    $menuItemsInSide[] = ['label' => 'Сезон '.$i, 'url' => ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => 1], 'linkOptions' => []];
     }
     $menuItems = [
             [
@@ -122,8 +122,8 @@ use yii\helpers\FileHelper;
 <div class="container">
 <ul class="breadcrumb">
 <li><a href="<?=Yii::$app->urlManager->createUrl(['/serials/index'])?>">TV SHOWS</a></li>
-<li><a href="<?=Yii::$app->urlManager->createUrl(['/serials/view', 'id' => $id])?>"><?= $model->release_name_ru ?></a></li>
-<li><a href="<?=Yii::$app->urlManager->createUrl(['/episode/index', 'id' => $id, 'season' => $season ])?>">Сезон <?= $season ?></a></li>
+<li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id])?>"><?= $model->release_name_ru ?></a></li>
+<li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id, 'season' => $season ])?>">Сезон <?= $season ?></a></li>
 <li class="active">Серия <?= $episode ?></li>
 </ul> </div>
 </div>

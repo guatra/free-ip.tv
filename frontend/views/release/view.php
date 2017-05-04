@@ -7,7 +7,7 @@ use yii\bootstrap\NavBar;
 use kartik\icons\Icon;
 
 ?>
-<?= Html::cssFile('@web/css/serials.css') ?>
+
 <section class="nav-top">
 <?php
     NavBar::begin([
@@ -18,7 +18,7 @@ use kartik\icons\Icon;
         ],
     ]);
     for ($i=1; $i <= $model->release_totalseasons ; $i++) { 
-    $menuItemsInSide[] = ['label' => 'Сезон '.$i, 'url' => ['/release/view', 'id' => $model->id, 'season' => $i]];
+    $menuItemsInSide[] = ['label' => 'Сезон '.$i, 'url' => ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => 1]];
 	}
     $menuItems = [
     		[
@@ -111,25 +111,19 @@ use kartik\icons\Icon;
     								<div class="row">
     									<div class="col-sm-6 rating kp">
     										<div class="pull-left">
-    											<img class=" logo" src="img/kp.png" height="18" alt="Кинопоиск">
+                                                <?= Icon::show('imdb', ['class' => 'fa-3x'], Icon::FA) ?>
+
     										</div>
     										<div class="pull-left">
-
-    											<div class="value"><?= Icon::show('leaf', ['class' => 'fa-3x'], Icon::FA) ?>8.101</div>
-    											<div class="stars">
-    												<div class="fill" style="width: 87.909px"></div>
-    											</div>
+    											<div class="value"><?=$model->release_imdbrating?></div>
     										</div>
     									</div>
     									<div class="col-sm-6 rating imdb">
     										<div class="pull-left">
-    											<img class="logo" src="img/imdb.png" height="22" alt="IMdb">
+                                                <?= Icon::show('imdb', ['class' => 'fa-3x'], Icon::FA) ?>
     										</div>
     										<div class="pull-left">
     											<div class="value"><?=$model->release_imdbrating?></div>
-    											<div class="stars">
-    												<div class="fill" style="width: 93.3px"></div>
-    											</div>
     										</div>
     									</div>
     								</div>
@@ -146,7 +140,7 @@ use kartik\icons\Icon;
     					<div class="container">
     						<div class="row">
     							<div class="col-xs-6">
-    								<h3>Сезоны Сериала</h3><?= Icon::show('user') ?>
+    								<h3>Сезоны Сериала</h3>
     							</div>
     						</div>
     						<div class="row">
@@ -211,37 +205,4 @@ use kartik\icons\Icon;
         </div>
     </div>
 </div>
-</section>
-<section class="nav-bottom">
-<?php
-    NavBar::begin([
-        'brandLabel' => Icon::show('home', ['class'=>'fa-inverse']) . 'free-ip.tv',
-        'brandUrl' => Yii::$app->urlManager->createUrl(['/site/index']),
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-bottom',
-        ],
-    ]);
-    $menuItems = [
-        //['label' => 'Home', 'url' => ['/site/index']],
-        //['label' => 'Serials', 'url' => ['/serials/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' =>   'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-?>
 </section>
