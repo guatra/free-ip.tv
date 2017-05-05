@@ -105,7 +105,7 @@ class ReleaseController extends AppController
     {
         $query = Release::find()
             ->select(['episode_title', 'episode_season', 'episode_season_number', 'episode_runtime', 'episode_url'])
-            ->where(['release_id' => $id, 'episode_season' => $season, 'episode_laguage' => 'ru-RU'])
+            ->where(['release_id' => $id, 'episode_season' => $season, 'episode_language' => 'ru-RU'])
             ->orderBy(['episode_season_number' => SORT_ASC])->all();
             return $query;
     }

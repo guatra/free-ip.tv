@@ -90,8 +90,7 @@ use yii\helpers\FileHelper;
 Следующая серия →
 </a>
 <?php else: ?>
-<a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode+1])?>">
-Предыдущая серия →
+<a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode+1])?>">Следующая серия →
 </a>
 <?php endif ?>
 </div>

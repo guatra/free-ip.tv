@@ -103,8 +103,8 @@ class SiteController extends AppController
     public function actionIndex()
     {
         $find_release = Release::find()
-            ->select(['id','episode_title', 'episode_season', 'episode_season_number', 'episode_plot', 'episode_url'])
-            //->where(['release_id' => $id, 'episode_season' => $season])
+            ->select(['id','release_id','episode_title', 'episode_season', 'episode_season_number', 'episode_plot', 'episode_article_key'])
+            ->where(['episode_language' => 'ru-RU'])
             ->limit(6)
             ->orderBy(['id' => SORT_DESC])->all();
         $data = $find_release;

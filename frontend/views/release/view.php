@@ -48,7 +48,9 @@ use kartik\icons\Icon;
                         <?php if(is_array($last_view)):?>
     					<a class="btn btn-default btn-lg" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $model->id, 'season' => '1', 'episode' => '1' ])?>">Начать просмотр</a>
                         <?php else: ?>
-                        <a class="btn btn-default btn-lg" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $model->id, 'season' => '1', 'episode' => '1' ])?>"><?php echo $last_view ?></a>
+                            <br>
+                            <h4 class="name">Вы остановились на N серии N сезона <?=$last_view?></h4>
+                        <a class="btn btn-default btn-lg" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $model->id, 'season' => '1', 'episode' => '1' ])?>">Продолжить просмотр</a>
                         <?php endif; ?>
     				</div>
     			</div>
@@ -87,8 +89,7 @@ use kartik\icons\Icon;
     									<tr>
     										<td>Год выпуска</td>
     										<td>
-                                                <?php $time = strtotime($model->release_year);
-                                                    echo strftime('%e %h %Y', $time); ?>
+                                                <?php echo date('Y', $model->release_released); ?>
                                             </td>
     									</tr>
     									<tr>
@@ -158,7 +159,7 @@ use kartik\icons\Icon;
     											<div class="title"></div>
     											<div class="subtitle" itemprop="name"></div>
     										  </div>
-    												<div class="duration"></div>
+    												
     												<div class="play-button"></div>
     										  </div>
     										</a>
@@ -187,7 +188,7 @@ use kartik\icons\Icon;
 			<?php foreach ($serials as $serial): ?>
 				<?php if ($serial->id == $recommendation): ?>									        
 			<div class="col-sm-6 col-md-3 episode" itemscope="" itemtype="http://schema.org/TVSeries">
-				<a href="<?=Yii::$app->urlManager->createUrl(['/serials/view', 'id' =>$serial->id])?>" title="<?php echo $serial->release_name_ru;?> смотреть онлайн" itemprop="url">
+				<a href="<?=Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$serial->id])?>" title="<?php echo $serial->release_name_ru;?> смотреть онлайн" itemprop="url">
 					<div class="thumbnail">
 					<?=Html::img(Url::to(['@lostfilm/Images/'.$serial->id.'/Posters/shmoster_s'.$serial->release_totalseasons.'.jpg'],'https'), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
 						<div class="content">

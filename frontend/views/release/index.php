@@ -62,25 +62,15 @@ use kartik\icons\Icon;
                                 <td itemprop="name"><?=$model->release_name_en?></td>
                             </tr>
                             <tr>
-                                <td>Сезоны</td>
+                                <td>Сезон</td>
                                 <td itemprop="containsSeason" itemscope="" itemtype="http://schema.org/TVSeason">
-                                    <?php
-                                    for ($i=1; $i <= $model->release_totalseasons ; $i++) {
-                                        echo Html::a($i.' сезон', ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => '1' ], ['itemprop' => 'name']);
-
-                                        if ($i < $model->release_totalseasons) {
-                                            echo ', ';
-                                        }
-
-                                    }
-                                    ?>
+                                    <?php echo Html::a($season.' сезон', ['/episode/view', 'id' => $model->id, 'season' => $season, 'episode' => '1' ], ['itemprop' => 'name']); ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Год выпуска</td>
                                 <td>
-                                    <?php $time = strtotime($model->release_year);
-                                    echo strftime('%e %h %Y', $time); ?>
+                                    <?php date('Y', $model->release_released); ?>
                                 </td>
                             </tr>
                             <tr>

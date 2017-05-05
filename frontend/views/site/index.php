@@ -90,13 +90,21 @@ use yii\helpers\Url;
                 <h2>Последние новинки</h2>
             </header>
             <div class="posts">
+
                 <?php foreach ($data as $element): ?>
                 <article>
-                    <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/<?php echo $element->id ?>/Posters/poster.jpg" alt="" /></a>
+
+                    <a href="#" class="image">
+                    <?php echo Html::img(Url::to(['@lostfilm/Images/'.$element->release_id.'/Posters/poster.jpg'],'https'), ['alt' => $element->episode_title, 'itemprop' => 'image']); ?>
+                    </a>
                     <h3><?php echo $element->episode_title ?></h3>
-                    <p><?php echo $element->episode_url ?></p>
+                    <p><?php echo $element->episode_plot ?></p>
                     <ul class="actions">
-                        <li><a href="<?=Yii::$app->urlManager->createUrl(['/headler/index', 'url_code' => $element->episode_url])?>" class="button">Больше</a></li>
+                        <li>
+                            <a href="<?= Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $element->release_id, 'season' => $element->episode_season, 'episode' => $element->episode_season_number]) ?>" itemprop="url" class="button">Больше</a
+
+                        </li>
+                        <!--                            <a href="--><?//=Yii::$app->urlManager->createUrl(['/headler/index', 'url_code' => $element->episode_article_key])?><!--" class="button">Больше</a>-->
                     </ul>
                 </article>
                 <?php endforeach; ?>

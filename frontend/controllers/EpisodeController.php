@@ -64,7 +64,7 @@ class EpisodeController extends AppController
         $episode = $request->get('episode');
         $query = Release::find()
         ->select(['episode_title', 'episode_season', 'episode_season_number', 'episode_runtime', 'episode_url'])
-        ->where(['release_id' => $id, 'episode_season' => $season, 'episode_laguage' => 'ru-RU']);
+        ->where(['release_id' => $id, 'episode_season' => $season, 'episode_language' => 'ru-RU']);
         $release = $query->orderBy(['episode_season_number' => SORT_ASC])->all();
         $query_episode = Release::findOne([
             'release_id' => $id,
@@ -74,7 +74,7 @@ class EpisodeController extends AppController
         // ОТправляем пользователя в ошибку
         if (!$query_episode) {
             return $this->render('/release/index', [
-                'params' => $params,
+                //'params' => $params,
             ]);
         }
         //->where(['release_id' => $id, 'episode_season' => $season, 'episode_season_number' => $episode])->all();
