@@ -24,71 +24,71 @@ class SerialsController extends AppController
         ]);
     }
 
-    public function actionView($id)
-    {
-        // Проверим запись в сессии и в базе данных на наличие просмотра ранее
-        $view = Yii::$app->session->get('view');
-        //
-        $request = Yii::$app->request;
-        // возвращает все параметры
-        $params = $request->url;
-        // На случай прямого захода объявим переменную
-        $last_view = [];
-        if ($view):
-            if ($view != $params):
-                $id = $request->get('id');
-                $last_view = explode('/', $view);
-                if ($last_view[2] == $id):
-                    $last_view = $view;
-                endif;
-//                Yii::$app->session->setFlash(
-//                    'success',
-//                    'Записанный результат '.$view
-//                );
-            else:
-//                Yii::$app->session->setFlash(
-//                    'success',
-//                    'Результат поиска '.$view
-//                );
-            endif;
-        else:
-            //Yii::$app->session->set('view', $params);
-//            Yii::$app->session->setFlash(
-//                'error',
-//                ''
-//            );
-        endif;
-
-        $query = FullName::find()
-        ->select(['id','release_totalseasons', 'release_name_ru'])
-        ->where(['release_show' => 1]);
-        $serials = $query->orderBy('id')->all();
-
-        // Случайный выбор секции рекомендованные сериалов для просмотра по умолчанию 4
-        foreach ($serials as $serial) 
-            {
-                $array_recommendations[]= $serial->id;
-            }
-
-            $n = 4;
-            $input = $array_recommendations;
-            $rand_keys = array_rand($input, $n);
-        for ($i=0; $i < $n ; $i++) 
-        { 
-            $recommendations[] = $input[$rand_keys[$i]]; 
-        }  
-        $poster = 'https://static.lostfilm.tv/Images/174/Posters/poster.jpg';
-        $model = $this->findModel($id);
-        $this->setMeta($model->release_name_ru . ' (' . $model->release_name_en . ') ', 'keywords', $model->release_description);
-        return $this->render('view', [
-            'poster' => $this->findPoster($id),
-            'model' => $model,
-            'last_view' => $last_view,
-            'serials' => $serials,
-            'recommendations' => $recommendations,
-        ]);
-
-    }
+//    public function actionView($id)
+//    {
+//        // Проверим запись в сессии и в базе данных на наличие просмотра ранее
+//        $view = Yii::$app->session->get('view');
+//        //
+//        $request = Yii::$app->request;
+//        // возвращает все параметры
+//        $params = $request->url;
+//        // На случай прямого захода объявим переменную
+//        $last_view = [];
+//        if ($view):
+//            if ($view != $params):
+//                $id = $request->get('id');
+//                $last_view = explode('/', $view);
+//                if ($last_view[2] == $id):
+//                    $last_view = $view;
+//                endif;
+////                Yii::$app->session->setFlash(
+////                    'success',
+////                    'Записанный результат '.$view
+////                );
+//            else:
+////                Yii::$app->session->setFlash(
+////                    'success',
+////                    'Результат поиска '.$view
+////                );
+//            endif;
+//        else:
+//            //Yii::$app->session->set('view', $params);
+////            Yii::$app->session->setFlash(
+////                'error',
+////                ''
+////            );
+//        endif;
+//
+//        $query = FullName::find()
+//        ->select(['id','release_totalseasons', 'release_name_ru'])
+//        ->where(['release_show' => 1]);
+//        $serials = $query->orderBy('id')->all();
+//
+//        // Случайный выбор секции рекомендованные сериалов для просмотра по умолчанию 4
+//        foreach ($serials as $serial)
+//            {
+//                $array_recommendations[]= $serial->id;
+//            }
+//
+//            $n = 4;
+//            $input = $array_recommendations;
+//            $rand_keys = array_rand($input, $n);
+//        for ($i=0; $i < $n ; $i++)
+//        {
+//            $recommendations[] = $input[$rand_keys[$i]];
+//        }
+//        $poster = 'https://static.lostfilm.tv/Images/174/Posters/poster.jpg';
+//        $model = $this->findModel($id);
+//        $this->setMeta($model->release_name_ru . ' (' . $model->release_name_en . ') ', 'keywords', $model->release_description);
+//        return $this->render('view', [
+//            'poster' => $this->findPoster($id),
+//            'model' => $model,
+//            'last_view' => $last_view,
+//            'serials' => $serials,
+//            'recommendations' => $recommendations,
+//        ]);
+//
+//    }
 
     /**
      * Finds the FullName model based on its primary key value.

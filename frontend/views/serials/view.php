@@ -7,7 +7,7 @@ use yii\bootstrap\NavBar;
 use kartik\icons\Icon;
 
 ?>
-<?= Html::cssFile('@web/css/serials.css') ?>
+<?= Html::cssFile('@web/css/series.css') ?>
 <section class="nav-top">
 <?php
     NavBar::begin([

@@ -53,31 +53,6 @@ $lang = $session['language'];
             <nav id="menu">
 
                 <?= Html::tag('header', Html::tag('h2' , 'APP_USER_MENU'), ['class' => 'major']) ?>
-<!--                --><?php //echo Nav::widget([
-//                    'items' => [
-//                        [
-//                            'label' => Yii::t('frontend', 'APP_MOVIES'),
-//                            'url' => ['movies/index'],
-//                            'linkOptions' => ['class' => 'user-serials'],
-//                        ],
-//                        [
-//                            'label' => Yii::t('frontend', 'APP_SERIALS'),
-//                            'url' => ['serials/index'],
-//                            'linkOptions' => ['class' => 'user-serials'],
-//                        ],
-//                        [
-//                            'label' => Yii::t('frontend', 'APP_USER_PLAYLIST'),
-//                            'items' => [
-//                                ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-//                                ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
-//                                ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
-//                            ],
-//                        ],
-//                    ],
-//                    'options' => []
-//                ]);
-//
-//                ?>
                 <ul>
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_TV_CHANNELS'), ['class' => 'opener']) ?>
@@ -137,14 +112,6 @@ $lang = $session['language'];
         </div>
     </div>
 </div>
-
-<!--<!-- Scripts -->-->
-<!--<script src="/js/jquery.min.js"></script>-->
-<!--<script src="/js/skel.min.js"></script>-->
-<!---->
-<!--<script src="/js/util.js"></script>-->
-<!--<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->-->
-<!--<script src="/js/main.js"></script>-->
 
 <?php $this->endBody() ?>
 </body>

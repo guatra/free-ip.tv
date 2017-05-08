@@ -32,15 +32,6 @@ $lang = $session['language'];
 <body class="lstfml">
 <?php $this->beginBody() ?>
 
-<!--<div class="wrap">-->
-<!---->
-<!--    <div class="container-fluid">-->
-<!---->
-<!--        --><?//= Alert::widget() ?>
-<!--        --><?//= $content ?>
-<!---->
-<!--    </div>-->
-<!--</div>-->
 <div id="wrapper">
 
     <?= $content ?>

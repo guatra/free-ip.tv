@@ -9,35 +9,12 @@ use yii\jui\Menu;
 
 ?>
 
-<section class="nav-top">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::t('frontend', 'APP_SERIALS'),
-        'brandUrl' => Yii::$app->urlManager->createUrl(['/serials/index']),
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
 
-    $menuItems = [
-        [
-            'label' => 'Медиатека',
-            'items' => '',
-        ],
-    ];
-
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-</section>
 <section>
     <header id="header">
-        <a href="#" class="logo"><strong>ПРивет</strong> юзер</a>
+        <a href="#" class="logo"><strong>ПРивет</strong> юзер series</a>
         <ul class="icons">
-            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon fa-vk"><span class="label">Twitter</span></a></li>
             <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
             <li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
             <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>

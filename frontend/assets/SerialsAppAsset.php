@@ -2,20 +2,19 @@
 
 namespace frontend\assets;
 
-use yii\web\AssetBundle;
+use frontend\assets\AppAsset;
 
 /**
  * Main frontend application asset bundle.
  */
-class SerialsAppAsset extends AssetBundle
+class SerialsAppAsset extends AppAsset
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/main.css',
-        //'css/videojs-sublime-skin.css',
+        //'css/main.css',
         'css/font-awesome.min.css',
-        '/css/serials.css',
+        'css/series.css',
     ];
     public $js = [
         '/js/jquery.min.js',
@@ -27,7 +26,7 @@ class SerialsAppAsset extends AssetBundle
     public $jsOptions = ['position' => \yii\web\View::POS_END];
 
     public $depends = [
-//'yii\web\YiiAsset',
-//'yii\bootstrap\BootstrapAsset',
+        //'yii\web\YiiAsset',
+        //'yii\bootstrap\BootstrapAsset',
     ];
 }

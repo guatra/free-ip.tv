@@ -104,7 +104,6 @@ use yii\helpers\Url;
                             <a href="<?= Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $element->release_id, 'season' => $element->episode_season, 'episode' => $element->episode_season_number]) ?>" itemprop="url" class="button">Больше</a
 
                         </li>
-                        <!--                            <a href="--><?//=Yii::$app->urlManager->createUrl(['/headler/index', 'url_code' => $element->episode_article_key])?><!--" class="button">Больше</a>-->
                     </ul>
                 </article>
                 <?php endforeach; ?>
