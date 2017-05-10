@@ -89,7 +89,7 @@ $lang = $session['language'];
                 <header class="major">
                     <h2>Новинки</h2>
                 </header>
-                
+
                 <div class="mini-posts">
                     <article>
                         <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/174/Posters/poster.jpg" alt="" /></a>
@@ -123,7 +123,7 @@ $lang = $session['language'];
 <!-- VK Widget -->
 <div id="vk_community_messages"></div>
 <script type="text/javascript">
-    VK.Widgets.CommunityMessages("vk_community_messages", 127607773, {tooltipButtonText: "Есть вопрос?"});
+    VK.Widgets.CommunityMessages("vk_community_messages", 69978139, {expanded: "1",disableButtonTooltip: "1"});
 </script>
 
 <?php $this->endBody() ?>
