@@ -149,7 +149,7 @@ $lang = $session['language'];
 <!-- VK Widget -->
 <div id="vk_community_messages"></div>
 <script type="text/javascript">
-    VK.Widgets.CommunityMessages("vk_community_messages", 69978139, {expanded: "1",disableButtonTooltip: "1"});
+    VK.Widgets.CommunityMessages("vk_community_messages", 69978139, {tooltipButtonText: "Есть вопрос?"});
 </script>
 <?php $this->endBody() ?>
 </body>
