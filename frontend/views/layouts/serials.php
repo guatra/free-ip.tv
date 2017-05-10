@@ -144,6 +144,13 @@ $lang = $session['language'];
 //    NavBar::end();
 //    ?>
 <!--</section>-->
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?146"></script>
+
+<!-- VK Widget -->
+<div id="vk_community_messages"></div>
+<script type="text/javascript">
+    VK.Widgets.CommunityMessages("vk_community_messages", 127607773, {tooltipButtonText: "Есть вопрос?"});
+</script>
 <?php $this->endBody() ?>
 </body>
 </html>

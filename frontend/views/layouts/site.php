@@ -30,6 +30,11 @@ $lang = $session['language'];
     <?php $this->head() ?>
     <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+    <link rel="shortcut icon" href="/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -84,6 +89,7 @@ $lang = $session['language'];
                 <header class="major">
                     <h2>Новинки</h2>
                 </header>
+                
                 <div class="mini-posts">
                     <article>
                         <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/174/Posters/poster.jpg" alt="" /></a>
@@ -112,6 +118,13 @@ $lang = $session['language'];
         </div>
     </div>
 </div>
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?146"></script>
+
+<!-- VK Widget -->
+<div id="vk_community_messages"></div>
+<script type="text/javascript">
+    VK.Widgets.CommunityMessages("vk_community_messages", 127607773, {tooltipButtonText: "Есть вопрос?"});
+</script>
 
 <?php $this->endBody() ?>
 </body>
