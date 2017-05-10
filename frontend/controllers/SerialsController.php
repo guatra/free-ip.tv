@@ -15,7 +15,7 @@ class SerialsController extends AppController
 
     public function actionIndex()
     {
-        $query = FullName::find()->where(['release_show' => 1]);
+        $query = FullName::find()->where(['release_show' => 1, 'release_status' => 1]);
 
         $serials = $query->orderBy(['release_status' => SORT_DESC, 'release_name_ru' => SORT_ASC])->all();
         $this->setMeta(Yii::$app->name . ' | ' .Yii::t('frontend', 'APP_SERIALS'));

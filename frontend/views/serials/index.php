@@ -2,15 +2,12 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use kartik\icons\Icon;
-use yii\jui\Menu;
 
 ?>
 
 
-<section>
+<div class="inner">
     <header id="header">
         <a href="#" class="logo"><strong>ПРивет</strong> юзер series</a>
         <ul class="icons">
@@ -21,17 +18,21 @@ use yii\jui\Menu;
             <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
         </ul>
     </header>
-    <?php foreach ($serials as $serialsItem): ?>
-        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-            <div class="image">
-
-                <a class="" href="<?=Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$serialsItem->id])?>">
-
-                    <?php echo Html::img(Url::to(['@lostfilm/Images/'.$serialsItem->id.'/Posters/image.jpg'],'https'), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
-                    <?php //echo Html::img(Yii::$app->urlManager->createUrl(['/images/serials/'.$serialsItem->id.'/front.jpg']), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
-                </a>
-
+    <section>
+        <div class="box alt">
+            <div class="row">
+                <?php foreach ($serials as $serialsItem): ?>
+                <div class="3u 12u$(medium)">
+                    <span class="image fit">
+                        <a class="" href="<?=Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$serialsItem->id])?>">
+                            <?php echo Html::img(Url::to(['@lostfilm/Images/'.$serialsItem->id.'/Posters/image.jpg'],'https'), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
+                        </a>
+                    </span>
+                </div>
+                <?php endforeach; ?>
+                <!-- Break -->
             </div>
         </div>
-    <?php endforeach; ?>
-</section>
+    </section>
+
+</div>

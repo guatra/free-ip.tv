@@ -12,7 +12,6 @@ class SerialsAppAsset extends AppAsset
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        //'css/main.css',
         'css/font-awesome.min.css',
         'css/series.css',
     ];

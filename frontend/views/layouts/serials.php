@@ -33,8 +33,9 @@ $lang = $session['language'];
 <?php $this->beginBody() ?>
 
 <div id="wrapper">
-
-    <?= $content ?>
+    <div id="main">
+        <?= $content ?>
+    </div>
     <!-- Sidebar -->
     <div id="sidebar">
         <div class="inner">
@@ -110,39 +111,39 @@ $lang = $session['language'];
         </div>
     </div>
 </div>
-<section class="nav-bottom">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'free-ip.tv',
-        'brandUrl' => Yii::$app->urlManager->createUrl(['/site/index']),
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-bottom',
-        ],
-    ]);
-    $menuItems = [
-        //['label' => 'Home', 'url' => ['/site/index']],
-        //['label' => 'Serials', 'url' => ['/serials/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?>
-</section>
+<!--<section class="nav-bottom">-->
+<!--    --><?php
+//    NavBar::begin([
+//        'brandLabel' => 'free-ip.tv',
+//        'brandUrl' => Yii::$app->urlManager->createUrl(['/site/index']),
+//        'options' => [
+//            'class' => 'navbar-inverse navbar-fixed-bottom',
+//        ],
+//    ]);
+//    $menuItems = [
+//        //['label' => 'Home', 'url' => ['/site/index']],
+//        //['label' => 'Serials', 'url' => ['/serials/index']],
+//    ];
+//    if (Yii::$app->user->isGuest) {
+//        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+//        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+//    } else {
+//        $menuItems[] = '<li>'
+//            . Html::beginForm(['/site/logout'], 'post')
+//            . Html::submitButton(
+//                'Logout (' . Yii::$app->user->identity->username . ')',
+//                ['class' => 'btn btn-link logout']
+//            )
+//            . Html::endForm()
+//            . '</li>';
+//    }
+//    echo Nav::widget([
+//        'options' => ['class' => 'navbar-nav navbar-right'],
+//        'items' => $menuItems,
+//    ]);
+//    NavBar::end();
+//    ?>
+<!--</section>-->
 <?php $this->endBody() ?>
 </body>
 </html>
