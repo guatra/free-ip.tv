@@ -62,7 +62,7 @@ $lang = $session['language'];
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_TV_CHANNELS'), ['class' => 'opener']) ?>
                         <ul>
-                            <li><a href="#">В работе</a></li>
+                            <li><?= Html::a(Yii::t('frontend', 'APP_TV_NTV'), ['/tv/ntv'], ['class' => 'tv-ntv']) ?></li>
                         </ul>
                     </li>
                     <li><?= Html::a(Yii::t('frontend', 'APP_MOVIES'), ['/movies/index'], ['class' => 'user-moview']) ?></li>
@@ -85,31 +85,35 @@ $lang = $session['language'];
 
             </nav>
             <!-- Section -->
-            <section>
-                <header class="major">
-                    <h2>Новинки</h2>
-                </header>
-
-                <div class="mini-posts">
-                    <article>
-                        <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/174/Posters/poster.jpg" alt="" /></a>
-                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                    </article>
-                    <article>
-                        <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/143/Posters/poster.jpg" alt="" /></a>
-                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                    </article>
-                    <article>
-                        <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/134/Posters/poster.jpg" alt="" /></a>
-                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                    </article>
-                </div>
-                <ul class="actions">
-                    <li><a href="#" class="button">More</a></li>
-                </ul>
-            </section>
-
-            <!-- Footer -->
+<!--            <section>-->
+<!--                <header class="major">-->
+<!--                    <h2>Новинки</h2>-->
+<!--                </header>-->
+<!---->
+<!--                <div class="mini-posts">-->
+<!--                    <article>-->
+<!--                        <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/174/Posters/poster.jpg" alt="" /></a>-->
+<!--                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>-->
+<!--                    </article>-->
+<!--                    <article>-->
+<!--                        <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/143/Posters/poster.jpg" alt="" /></a>-->
+<!--                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>-->
+<!--                    </article>-->
+<!--                    <article>-->
+<!--                        <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/134/Posters/poster.jpg" alt="" /></a>-->
+<!--                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>-->
+<!--                    </article>-->
+<!--                </div>-->
+<!--                <ul class="actions">-->
+<!--                    <li><a href="#" class="button">More</a></li>-->
+<!--                </ul>-->
+<!--            </section>-->
+<section>
+    <header class="major">
+        <h2><?= Yii::t('frontend', 'APP_NOTIFICATIONS')?></h2>
+    </header>
+</section>
+                    <!-- Footer -->
             <footer id="footer">
                 <p class="copyright"><?= Yii::$app->name ?>  <?= Yii::$app->version ?></p>
                 <p class="copyright"><?= date('d-m-Y H:i:s', time()) ?></p>
