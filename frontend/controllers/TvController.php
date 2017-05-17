@@ -15,9 +15,17 @@ class TvController extends AppController
     // Задаём вывод по умолчанию Навигационной панели
     public $layout = 'site';
 
-        public function actionNtv(){
-            return $this->render('index');
-        }
+    public function actionIndex(){
+        return $this->render('index');
+    }
+
+    public function actionOne(){
+        return $this->render('one');
+    }
+
+    public function actionNtv(){
+        return $this->render('ntv');
+    }
 //    public function actionIndex(){
 //        // Проверим запись в сессии и в базе данных на наличие просмотра ранее
 //        $view = $this->getLastView();

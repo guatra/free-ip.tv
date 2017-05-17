@@ -62,7 +62,7 @@ $lang = $session['language'];
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_TV_CHANNELS'), ['class' => 'opener']) ?>
                         <ul>
-                            <li><?= Html::a(Yii::t('frontend', 'APP_TV_NTV'), ['/tv/ntv'], ['class' => 'tv-ntv']) ?></li>
+                            <li><?= Html::a(Yii::t('frontend', 'APP_TV'), ['/tv/index'], ['class' => 'tv-ntv']) ?></li>
                         </ul>
                     </li>
                     <li><?= Html::a(Yii::t('frontend', 'APP_MOVIES'), ['/movies/index'], ['class' => 'user-moview']) ?></li>

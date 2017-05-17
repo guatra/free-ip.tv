@@ -26,16 +26,21 @@ use yii\helpers\Url;
 
             <div class="row">
                 <header class="major">
-
-                    <?= Html::a(Html::img('@web/images/tv/one.jpg'), '/tv/one', ['class' => 'one']) ?>
-                </header>
-                <header class="major">
-
-                    <?= Html::a(Html::img('@web/images/tv/ntv.jpg'), '/tv/ntv', ['class' => 'ntv']) ?>
+                    <?=Html::img('@web/images/tv/one.jpg', ['height' => 120, 'width' => 120]) ?>
                 </header>
 
+                <div class="u8 12u$(small)">
+                    <div class="b-tv-page-online-player js-online-player">
+                        <iframe allowfullscreen="allowfullscreen" src="https://stream.1tv.ru/embed" scrolling="no" frameborder="no" style="width: 640px; height: 380px; background-color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial;">
+
+                        </iframe>
+                    </div>
+                </div>
+                <div class="u4 12u$(small)">
+                    teleprogramm
+                </div>
             </div>
-    </section>
+        </section>
 
     </div>
 </div>

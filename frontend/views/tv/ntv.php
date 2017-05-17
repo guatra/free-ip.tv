@@ -6,7 +6,8 @@ use kartik\icons\Icon;
 use yii\bootstrap\Carousel;
 use yii\helpers\Url;
 
-
+$poster="//img2.ntv.ru/live/live.jpg?_1495009218";
+$src="//mob3-ntv.cdnvideo.ru/ntv/airstream0011/playlist.m3u8?e=1495614013&amp;md5=DtEJ_U546dcadyfr6ac3Og";
 ?>
 <!-- Main -->
 <div id="main">
@@ -26,16 +27,18 @@ use yii\helpers\Url;
 
             <div class="row">
                 <header class="major">
-
-                    <?= Html::a(Html::img('@web/images/tv/one.jpg'), '/tv/one', ['class' => 'one']) ?>
-                </header>
-                <header class="major">
-
-                    <?= Html::a(Html::img('@web/images/tv/ntv.jpg'), '/tv/ntv', ['class' => 'ntv']) ?>
+                    <?=Html::img('@web/images/tv/ntv.jpg', ['height' => 120, 'width' => 120]) ?>
                 </header>
 
+                <div class="u8 12u$(small)">
+                    <video controls poster=<?= $poster ?> src= <?= $src ?> style="width: 100%; height: 100%;">
+                    </video>
+                </div>
+                <div class="u4 12u$(small)">
+                    teleprogramm
+                </div>
             </div>
-    </section>
+        </section>
 
     </div>
 </div>
