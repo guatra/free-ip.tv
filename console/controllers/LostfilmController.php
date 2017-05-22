@@ -21,13 +21,14 @@ class LostfilmController extends \yii\console\Controller
         echo "Находим массив по сериалам\n";
         echo "*****************************\n";
         foreach ($url_find as $lostfilm) {
+            // Алиас имени
+            $release_name = $lostfilm->release_lostfilm_alias;
+            echo "Сериал ".$release_name."\n";
             echo "Начинаю перебирать массив\n";
             //
             echo "Работаем с получиным массивом\n";
             $id = $lostfilm->release_lostfilmid;
-            // Алиас имени
-            echo "Алиас имени\n";
-            $release_name = $lostfilm->release_lostfilm_alias;
+
             //
             $url = 'https://www.lostfilm.tv/series/' . $release_name . '/seasons/';
             //
