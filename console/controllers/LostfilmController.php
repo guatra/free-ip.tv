@@ -5,6 +5,7 @@ use Yii;
 use GuzzleHttp\Client; // подключаем Guzzle
 use backend\models\FullName;
 use backend\models\Release;
+use backend\models\News;
 
 class LostfilmController extends \yii\console\Controller
 {
@@ -14,9 +15,9 @@ class LostfilmController extends \yii\console\Controller
         $url_find = FullName::find()
             ->select(['release_lostfilmid', 'release_lostfilm_alias']) //Запрашиваем lostfilm_id в картотеке
 //            ->where(['release_show' => 208])
-            ->where(['release_show' => 1, 'release_status' => 1]) //где статус снимается и показывать значение true
+//            ->where(['release_show' => 1, 'release_status' => 1]) //где статус снимается и показывать значение true
 //         lost//
-//            ->where(['release_lostfilmid' => 208])
+            ->where(['release_lostfilmid' => 208])
             ->all(); // массив
         echo "Находим массив по сериалам\n";
         echo "*****************************\n";
@@ -58,7 +59,7 @@ class LostfilmController extends \yii\console\Controller
             $plot = '';
             $save = '';
             //
-            echo "выполняем проход циклом по списку серий\n";
+            echo "Выполняем проход циклом по списку серий ".$release_name."\n";
             foreach ($movie_parts_list as $elem) {
                 //pq аналог $ в jQuery
                 $pq = pq($elem);
@@ -72,7 +73,7 @@ class LostfilmController extends \yii\console\Controller
                 //
                 $season_series = $pq->find("td.beta")->text();
 
-                if ($season_series) {
+                if ( $season_series ) {
                     $e = explode(" ", $season_series);
                     $season = $e[0];
                     $episode_e = $e[2];
@@ -99,59 +100,60 @@ class LostfilmController extends \yii\console\Controller
 //                }
                 $date_ru = null;
                 $date_en = explode(" ", $n);
+                if ( $name_ru !== null ) {
 
-                // Если эпизода нет, то делаем запрос к странице эпизода
-                $episode_find = $this->getEpisode($release_name, $season, $episode_e);
-                // Время эпизода
-                $runtime = $episode_find['runtime'];
-                // Описание эпизода
-                $plot = $episode_find['plot'];
+                    echo "Делаем запрос к странице эпизода\n";
+                    $episode_find = $this->getEpisode($release_name, $season, $episode_e);
+                    // Время эпизода
+                    $runtime = $episode_find['runtime'];
+                    // Описание эпизода
+                    $plot = $episode_find['plot'];
 
-                // добавляем в массив
+                    // добавляем в массив
 
-                $release_find_ru = Release::find()
-                    ->where(['release_id' => $id, 'episode_season' => $season, 'episode_season_number' => $episode_e, 'episode_language' => 'ru-RU'])->one();
-                echo "Проход ".$i."\n";
-                if ( !$release_find_ru ) {
+                    $release_find_ru = Release::find()
+                        ->where(['release_id' => $id, 'episode_season' => $season, 'episode_season_number' => $episode_e, 'episode_language' => 'ru-RU'])->one();
+                    echo "Проход " . $i . "\n";
+                    if ( !$release_find_ru ) {
 
-                    if ( $name_ru != '' ) {
-                        echo "Ищем в базе релиз\n";
-                        echo "Начинаю запись в базу\n";
-                        $episode = new Release();
-                        $episode->release_id = $id;
-                        $episode->episode_article_key = Yii::$app->security->generateRandomString();
-                        $episode->episode_title = $name_ru;
-                        $episode->episode_season = $season;
-                        $episode->episode_season_number = $episode_e;
-                        $episode->episode_plot = $plot;
-                        $episode->episode_runtime = $runtime;
-                        $episode->episode_language = 'ru-RU';
-                        $episode->episode_released = $date_ru;
-                        $episode->save();
-                       // $episode->save() ? $this->getSend() : 1;
-                        echo "Русский релиз записан: Сериал ".$release_name." Сезон ".$season." Эпизод ".$episode_e." Название ".$name_ru."\n";
+                        if ( $name_ru != '' ) {
+                            echo "Ищем в базе релиз\n";
+                            echo "Начинаю запись в базу\n";
+                            $episode = new Release();
+                            $episode->release_id = $id;
+                            $episode->episode_article_key = Yii::$app->security->generateRandomString();
+                            $episode->episode_title = $name_ru;
+                            $episode->episode_season = $season;
+                            $episode->episode_season_number = $episode_e;
+                            $episode->episode_plot = $plot;
+                            $episode->episode_runtime = $runtime;
+                            $episode->episode_language = 'ru-RU';
+                            $episode->episode_released = $date_ru;
+                            $episode->save() ? $this->getNews("Сезон " . $season . " Эпизод " . $episode_e,"Сериал " . $release_name . " Сезон " . $season . " Эпизод " . $episode_e . " Название " . $name_ru, "/Images/".$id."/Posters/poster.jpg") : 1;
+                            // $episode->save() ? $this->getSend() : 1;
+                            echo "Русский релиз записан: Сериал " . $release_name . " Сезон " . $season . " Эпизод " . $episode_e . " Название " . $name_ru . "\n";
+                        }
                     }
-                }
-                $release_find = Release::find()
-                    ->where(['release_id' => $id, 'episode_season' => $season, 'episode_season_number' => $episode_e, 'episode_language' => 'en-US'])->one();
-                if ( !$release_find ) {
-                    if ( $name_en != '' ) {
-                        $episode = new Release();
-                        $episode->release_id = $id;
-                        $episode->episode_article_key = Yii::$app->security->generateRandomString();
-                        $episode->episode_title = $name_en;
-                        $episode->episode_season = $season;
-                        $episode->episode_season_number = $episode_e;
-                        $episode->episode_plot = '';
-                        $episode->episode_runtime = $runtime;
-                        $episode->episode_language = 'en-US';
+                    $release_find = Release::find()
+                        ->where(['release_id' => $id, 'episode_season' => $season, 'episode_season_number' => $episode_e, 'episode_language' => 'en-US'])->one();
+                    if ( !$release_find ) {
+                        if ( $name_en != '' ) {
+                            $episode = new Release();
+                            $episode->release_id = $id;
+                            $episode->episode_article_key = Yii::$app->security->generateRandomString();
+                            $episode->episode_title = $name_en;
+                            $episode->episode_season = $season;
+                            $episode->episode_season_number = $episode_e;
+                            $episode->episode_plot = '';
+                            $episode->episode_runtime = $runtime;
+                            $episode->episode_language = 'en-US';
 //                    $episode->episode_released = $date_en;
-                        $episode->save();
+                            $episode->save();
+                        }
+
                     }
-
-                }
 //                $data[$i] = ['save' => $save, 'serial' => $id, 'plot' => $plot, 'runtime' => $runtime, 'url' => $url, 'season' => $season, 'series' => $e[2], 'name_en' => $name_en, 'name_ru' => $name_ru, 'date_en' => $date_en[1]];
-
+                }
                 // увеличиваем счетчик
                 $i++;
 
@@ -214,6 +216,17 @@ class LostfilmController extends \yii\console\Controller
         $data_e = ['plot' => $plot,'runtime' => $runtime];
         //return $this->render('episode', ['data' => $plot]);
         return $data_e;
+    }
+
+    protected function getNews($title = 'news', $content = null, $image = null){
+        $news = new News();
+        $news->title = $title;
+        $news->content = $content;
+        $news->author = 'content';
+        $news->image = $image;
+        $news->created_at = time();
+        $news->updated_at = time();
+        $news->save();
     }
 
     protected function getSend() {
