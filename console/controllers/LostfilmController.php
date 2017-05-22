@@ -15,9 +15,9 @@ class LostfilmController extends \yii\console\Controller
         $url_find = FullName::find()
             ->select(['release_lostfilmid', 'release_lostfilm_alias']) //Запрашиваем lostfilm_id в картотеке
 //            ->where(['release_show' => 208])
-//            ->where(['release_show' => 1, 'release_status' => 1]) //где статус снимается и показывать значение true
+            ->where(['release_show' => 1, 'release_status' => 1]) //где статус снимается и показывать значение true
 //         lost//
-            ->where(['release_lostfilmid' => 208])
+//            ->where(['release_lostfilmid' => 208])
             ->all(); // массив
         echo "Находим массив по сериалам\n";
         echo "*****************************\n";
@@ -102,7 +102,7 @@ class LostfilmController extends \yii\console\Controller
                 $date_en = explode(" ", $n);
                 if ( $name_ru !== null ) {
 
-                    echo "Делаем запрос к странице эпизода\n";
+//                    echo "Делаем запрос к странице эпизода\n";
                     $episode_find = $this->getEpisode($release_name, $season, $episode_e);
                     // Время эпизода
                     $runtime = $episode_find['runtime'];
