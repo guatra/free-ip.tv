@@ -113,8 +113,9 @@ class LostfilmController extends \yii\console\Controller
                     ->where(['release_id' => $id, 'episode_season' => $season, 'episode_season_number' => $episode_e, 'episode_language' => 'ru-RU'])->one();
                 echo "Проход ".$i."\n";
                 if ( !$release_find_ru ) {
-                    echo "Ищем в базе релиз\n";
+
                     if ( $name_ru != '' ) {
+                        echo "Ищем в базе релиз\n";
                         echo "Начинаю запись в базу\n";
                         $episode = new Release();
                         $episode->release_id = $id;
