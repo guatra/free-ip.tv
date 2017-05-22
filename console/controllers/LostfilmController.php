@@ -10,42 +10,54 @@ class LostfilmController extends \yii\console\Controller
 {
     public function actionUpdate()
     {
+
         $url_find = FullName::find()
-            ->select(['release_lostfilmid', 'release_lostfilm_alias']) //Запрашиваем id в лостфильм картотеке
-//            ->where(['release_show' => 0])
+            ->select(['release_lostfilmid', 'release_lostfilm_alias']) //Запрашиваем lostfilm_id в картотеке
+//            ->where(['release_show' => 208])
             ->where(['release_show' => 1, 'release_status' => 1]) //где статус снимается и показывать значение true
+//         lost//
 //            ->where(['release_lostfilmid' => 208])
             ->all(); // массив
+        echo "Находим массив по сериалам\n";
+        echo "*****************************\n";
         foreach ($url_find as $lostfilm) {
-            // Работаем с получиным массивом
+            echo "Начинаю перебирать массив\n";
+            //
+            echo "Работаем с получиным массивом\n";
             $id = $lostfilm->release_lostfilmid;
             // Алиас имени
+            echo "Алиас имени\n";
             $release_name = $lostfilm->release_lostfilm_alias;
             //
             $url = 'https://www.lostfilm.tv/series/' . $release_name . '/seasons/';
             //
-
+            echo "Набираю обороты\n";
             // создаем экземпляр класса
             $client = new Client();
             // отправляем запрос к странице
+            echo "Отправляем запрос к странице\n";
             $res = $client->request('GET', $url);
+            echo "Устанавливаем счётчик i=0\n";
             // устанавливаем счётчик
             $i = 0;
+            echo "Создаём пустой массив\n";
             // создаём пустой массив
             //$data = [];
-            //$data1 = [];
+            echo "Получаем данные между открывающим и закрывающим тегами body\n";
             // получаем данные между открывающим и закрывающим тегами body
             $body = $res->getBody();
-            // подключаем phpQuery
+            //
+            echo "Подключаем phpQuery\n";
             $document = \phpQuery::newDocumentHTML($body);
-            // выполняем проход циклом по списку
-
+            //
+            echo "Находим блок серий\n";
             $movie_parts_list = $document->find("tr");
             $details = $document->find('div.title-block > .details-pane > .right-box')->text();
             $details = explode("Жанр:", $details);
             $plot = '';
             $save = '';
-            // выполняем проход циклом по списку
+            //
+            echo "выполняем проход циклом по списку серий\n";
             foreach ($movie_parts_list as $elem) {
                 //pq аналог $ в jQuery
                 $pq = pq($elem);
@@ -93,12 +105,16 @@ class LostfilmController extends \yii\console\Controller
                 $runtime = $episode_find['runtime'];
                 // Описание эпизода
                 $plot = $episode_find['plot'];
+
                 // добавляем в массив
+
                 $release_find_ru = Release::find()
                     ->where(['release_id' => $id, 'episode_season' => $season, 'episode_season_number' => $episode_e, 'episode_language' => 'ru-RU'])->one();
+                echo "Проход ".$i."\n";
                 if ( !$release_find_ru ) {
-
+                    echo "Ищем в базе релиз\n";
                     if ( $name_ru != '' ) {
+                        echo "Начинаю запись в базу\n";
                         $episode = new Release();
                         $episode->release_id = $id;
                         $episode->episode_article_key = Yii::$app->security->generateRandomString();
@@ -109,8 +125,9 @@ class LostfilmController extends \yii\console\Controller
                         $episode->episode_runtime = $runtime;
                         $episode->episode_language = 'ru-RU';
                         $episode->episode_released = $date_ru;
-                        //$episode->save();
-                        $episode->save() ? $this->getSend() : 1;
+                        $episode->save();
+                       // $episode->save() ? $this->getSend() : 1;
+                        echo "Русский релиз записан: Сериал ".$release_name." Сезон ".$season." Эпизод ".$episode_e." Название ".$name_ru."\n";
                     }
                 }
                 $release_find = Release::find()
@@ -127,7 +144,7 @@ class LostfilmController extends \yii\console\Controller
                         $episode->episode_runtime = $runtime;
                         $episode->episode_language = 'en-US';
 //                    $episode->episode_released = $date_en;
-                        $episode->save() ? 0 : 2;
+                        $episode->save();
                     }
 
                 }
@@ -139,6 +156,8 @@ class LostfilmController extends \yii\console\Controller
             }
 
         }
+
+        echo "Закончили\n";
     }
 
     protected function getSerial($alias = 'American_Gods')
