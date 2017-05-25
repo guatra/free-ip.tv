@@ -78,6 +78,7 @@ $lang = $session['language'];
                         <?= Html::tag('span', Yii::t('frontend', 'APP_CHANNELS'), ['class' => 'opener']) ?>
                         <ul>
                             <li><?= Html::a(Yii::t('frontend', 'APP_CHANNELS_LOSTFILM-TV'), ['/serials/index'], ['class' => 'user-serials']) ?></li>
+                            <li><?= Html::a(Yii::t('frontend', 'APP_RSS'), ['/site/rss'], ['class' => 'user-serials']) ?></li>
                         </ul>
                     </li>
                 </ul>

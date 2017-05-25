@@ -35,6 +35,11 @@ return [
                     'suffix' => ''
                 ],
                 [
+                    'pattern' => 'rss',
+                    'route' => 'site/rss',
+                    'suffix' => '.html'
+                ],
+                [
                     'pattern' => 'about',
                     'route' => 'site/about',
                     'suffix' => ''
