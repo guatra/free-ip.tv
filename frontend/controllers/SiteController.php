@@ -259,7 +259,7 @@ class SiteController extends AppController
             'query' => News::find()->orderBy(['created_at' => SORT_DESC]),
 //            'query' => News::find()->with(['user']),
             'pagination' => [
-                'pageSize' => 5
+                'pageSize' => 10
             ],
         ]);
 
@@ -281,7 +281,7 @@ class SiteController extends AppController
                     return Yii::$app->language;
                 },
                 'image'=> function ($widget, \Zelenin\Feed $feed) {
-                    $feed->addChannelImage('http://free-ip.tv/images/tv/one.jpg', 'http://free-ip.tv/images/tv/one.jpg', 88, 31, 'Image description');
+                    $feed->addChannelImage('http://free-ip.tv/images/rss/rss.jpg', 'http://free-ip.tv/images/rss/rss.jpg', 88, 31, 'Image description');
                 },
             ],
             'items' => [

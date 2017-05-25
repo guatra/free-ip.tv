@@ -24,6 +24,7 @@ class TvController extends AppController
     }
 
     public function actionNtv(){
+        $url = 'http://www.ntv.ru/air/';
         return $this->render('ntv');
     }
 //    public function actionIndex(){

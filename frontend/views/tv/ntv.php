@@ -6,6 +6,7 @@ use kartik\icons\Icon;
 use yii\bootstrap\Carousel;
 use yii\helpers\Url;
 
+
 $poster="//img2.ntv.ru/live/live.jpg?_1495009218";
 $src="//mob3-ntv.cdnvideo.ru/ntv/airstream0011/playlist.m3u8?e=1495614013&amp;md5=DtEJ_U546dcadyfr6ac3Og";
 ?>
