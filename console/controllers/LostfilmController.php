@@ -132,7 +132,7 @@ class LostfilmController extends \yii\console\Controller
                             $episode->episode_released = $date_ru;
                             $episode->save() ? $this->getNews(
                                 $release_name_ru,
-                                $name_ru . ".( Сезон " . $season . " Эпизод " . $episode_e . ")",
+                                $name_ru . ". (Сезон " . $season . " Эпизод " . $episode_e . ")",
                                 "Сезон " . $season . " Эпизод " . $episode_e,
                                 "/Images/".$id."/Posters/poster.jpg",
                                 'rss',
