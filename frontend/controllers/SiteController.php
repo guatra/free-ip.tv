@@ -14,6 +14,10 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use backend\models\Languages;
 use backend\models\Release;
+use backend\models\News;
+use yii\helpers\StringHelper;
+use yii\helpers\Url;
+use yii\data\ActiveDataProvider;
 
 /**
  * Site controller
@@ -246,6 +250,66 @@ class SiteController extends AppController
 
         return $this->render('resetPassword', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionRss()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => News::find()->orderBy(['created_at' => SORT_DESC]),
+//            'query' => News::find()->with(['user']),
+            'pagination' => [
+                'pageSize' => 5
+            ],
+        ]);
+
+        $response = Yii::$app->getResponse();
+        $headers = $response->getHeaders();
+
+        $headers->set('Content-Type', 'application/rss+xml; charset=utf-8');
+
+        echo \Zelenin\yii\extensions\Rss\RssView::widget([
+            'dataProvider' => $dataProvider,
+            'channel' => [
+                'title' => function ($widget, \Zelenin\Feed $feed) {
+//                    $feed->addChannelTitle(Yii::$app->name);
+                    $feed->addChannelTitle('Free-IP.TV');
+                },
+                'link' => Url::toRoute('/', true),
+                'description' => 'Новинки портала',
+                'language' => function ($widget, \Zelenin\Feed $feed) {
+                    return Yii::$app->language;
+                },
+                'image'=> function ($widget, \Zelenin\Feed $feed) {
+                    $feed->addChannelImage('http://free-ip.tv/images/tv/one.jpg', 'http://free-ip.tv/images/tv/one.jpg', 88, 31, 'Image description');
+                },
+            ],
+            'items' => [
+                'title' => function ($model, $widget, \Zelenin\Feed $feed) {
+                    return $model->title;
+                },
+                'description' => function ($model, $widget, \Zelenin\Feed $feed) {
+                    return StringHelper::truncateWords($model->content, 50);
+                },
+                'link' => function ($model, $widget, \Zelenin\Feed $feed) {
+//                    return Url::toRoute(['news/view', 'id' => $model->id], true);
+                    return Url::toRoute(['/episode/view', 'id' => $model->series_id, 'season' => $model->season_id, 'episode' => $model->episode_id],true);
+                },
+//                'author' => function ($model, $widget, \Zelenin\Feed $feed) {
+//                    return $model->author . ' (' . $model->author . ')';
+//                },
+//                'author' => function ($model, $widget, \Zelenin\Feed $feed) {
+//                    return $model->user->email . ' (' . $model->user->username . ')';
+//                },
+                'guid' => function ($model, $widget, \Zelenin\Feed $feed) {
+                    $date = \DateTime::createFromFormat('Y-m-d H:i:s', $model->updated_at);
+                    return Url::toRoute(['news/view', 'id' => $model->id], true);
+                },
+                'pubDate' => function ($model, $widget, \Zelenin\Feed $feed) {
+                    $date = date('D, d M Y H:i:s O', $model->updated_at);
+                    return $date;
+                }
+            ]
         ]);
     }
 }
