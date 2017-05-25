@@ -13,25 +13,26 @@ class LostfilmController extends \yii\console\Controller
     {
 
         $url_find = FullName::find()
-            ->select(['release_lostfilmid', 'release_lostfilm_alias']) //Запрашиваем lostfilm_id в картотеке
+            ->select(['release_name_ru', 'release_lostfilmid', 'release_lostfilm_alias']) //Запрашиваем lostfilm_id в картотеке
 //            ->where(['release_show' => 208])
-            ->where(['release_show' => 1, 'release_status' => 1]) //где статус снимается и показывать значение true
+//            ->where(['release_show' => 1, 'release_status' => 1]) //где статус снимается и показывать значение true
 //         lost//
-//            ->where(['release_lostfilmid' => 208])
+            ->where(['release_lostfilmid' => 208])
             ->all(); // массив
         echo "Находим массив по сериалам\n";
         echo "*****************************\n";
         foreach ($url_find as $lostfilm) {
             // Алиас имени
-            $release_name = $lostfilm->release_lostfilm_alias;
-            echo "Сериал ".$release_name."\n";
+            $release_name_alias = $lostfilm->release_lostfilm_alias;
+            $release_name_ru = $lostfilm->release_name_ru;
+            echo "Сериал ".$release_name_ru."\n";
             echo "Начинаю перебирать массив\n";
             //
             echo "Работаем с получиным массивом\n";
             $id = $lostfilm->release_lostfilmid;
 
             //
-            $url = 'https://www.lostfilm.tv/series/' . $release_name . '/seasons/';
+            $url = 'https://www.lostfilm.tv/series/' . $release_name_alias . '/seasons/';
             //
             echo "Набираю обороты\n";
             // создаем экземпляр класса
@@ -41,7 +42,7 @@ class LostfilmController extends \yii\console\Controller
             $res = $client->request('GET', $url);
             echo "Устанавливаем счётчик i=0\n";
             // устанавливаем счётчик
-            $i = 0;
+            $i = 1;
             echo "Создаём пустой массив\n";
             // создаём пустой массив
             //$data = [];
@@ -59,7 +60,7 @@ class LostfilmController extends \yii\console\Controller
             $plot = '';
             $save = '';
             //
-            echo "Выполняем проход циклом по списку серий ".$release_name."\n";
+            echo "Выполняем проход циклом по списку серий ".$release_name_ru."\n";
             foreach ($movie_parts_list as $elem) {
                 //pq аналог $ в jQuery
                 $pq = pq($elem);
@@ -103,7 +104,7 @@ class LostfilmController extends \yii\console\Controller
                 if ( $name_ru !== null ) {
 
 //                    echo "Делаем запрос к странице эпизода\n";
-                    $episode_find = $this->getEpisode($release_name, $season, $episode_e);
+                    $episode_find = $this->getEpisode($release_name_alias, $season, $episode_e);
                     // Время эпизода
                     $runtime = $episode_find['runtime'];
                     // Описание эпизода
@@ -129,9 +130,15 @@ class LostfilmController extends \yii\console\Controller
                             $episode->episode_runtime = $runtime;
                             $episode->episode_language = 'ru-RU';
                             $episode->episode_released = $date_ru;
-                            $episode->save() ? $this->getNews("Сезон " . $season . " Эпизод " . $episode_e,"Сериал " . $release_name . " Сезон " . $season . " Эпизод " . $episode_e . " Название " . $name_ru, "/Images/".$id."/Posters/poster.jpg") : 1;
+                            $episode->save() ? $this->getNews(
+                                $release_name_ru,
+                                $name_ru . ".( Сезон " . $season . " Эпизод " . $episode_e . ")",
+                                "Сезон " . $season . " Эпизод " . $episode_e,
+                                "/Images/".$id."/Posters/poster.jpg",
+                                'rss',
+                                'series', $id, $season, $episode_e) : 1;
                             // $episode->save() ? $this->getSend() : 1;
-                            echo "Русский релиз записан: Сериал " . $release_name . " Сезон " . $season . " Эпизод " . $episode_e . " Название " . $name_ru . "\n";
+                            echo "Русский релиз записан: Сериал " . $release_name_ru . " Сезон " . $season . " Эпизод " . $episode_e . " Название: " . $name_ru . "\n";
                         }
                     }
                     $release_find = Release::find()
@@ -185,9 +192,9 @@ class LostfilmController extends \yii\console\Controller
         return $serial;
     }
 
-    protected function getEpisode($release_name = 'Fargo', $season_series = 3, $episode = 2)
+    protected function getEpisode($release_name_alias = 'Fargo', $season_series = 3, $episode = 2)
     {
-        $url_plot_episode = 'https://www.lostfilm.tv/series/'.$release_name.'/season_'.$season_series.'/episode_'.$episode.'/';
+        $url_plot_episode = 'https://www.lostfilm.tv/series/'.$release_name_alias.'/season_'.$season_series.'/episode_'.$episode.'/';
 
         // создаем экземпляр класса
         $client = new Client();
@@ -218,12 +225,17 @@ class LostfilmController extends \yii\console\Controller
         return $data_e;
     }
 
-    protected function getNews($title = 'news', $content = null, $image = null){
+    protected function getNews($title = 'news', $content = null, $description = null, $image = null, $author = null, $type = null, $series = null, $season = null, $episode = null){
         $news = new News();
         $news->title = $title;
         $news->content = $content;
-        $news->author = 'content';
+        $news->author = $author;
         $news->image = $image;
+        $news->description = $description;
+        $news->type = $type;
+        $news->series_id = $series;
+        $news->season_id = $season;
+        $news->episode_id = $episode;
         $news->created_at = time();
         $news->updated_at = time();
         $news->save();

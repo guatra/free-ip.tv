@@ -16,6 +16,10 @@ use Yii;
  * @property string $keywords
  * @property integer $created_at
  * @property integer $updated_at
+ * @property string $type
+ * @property integer $series_id
+ * @property integer $season_id
+ * @property integer $episode_id
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -35,8 +39,8 @@ class News extends \yii\db\ActiveRecord
         return [
             [['content'], 'string'],
             [['created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'integer'],
-            [['title', 'author', 'description', 'keywords'], 'string', 'max' => 255],
+            [['created_at', 'updated_at', 'series_id', 'season_id', 'episode_id'], 'integer'],
+            [['title', 'author', 'description', 'keywords', 'type'], 'string', 'max' => 255],
             [['image'], 'string', 'max' => 1024],
         ];
     }
@@ -56,6 +60,10 @@ class News extends \yii\db\ActiveRecord
             'keywords' => Yii::t('app', 'Keywords'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
+            'type' => Yii::t('app', 'Type'),
+            'series_id' => Yii::t('app', 'Series ID'),
+            'season_id' => Yii::t('app', 'Season ID'),
+            'episode_id' => Yii::t('app', 'Episode ID'),
         ];
     }
 }
