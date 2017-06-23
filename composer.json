@@ -22,7 +22,8 @@
         "kartik-v/yii2-icons": "@dev",
         "guzzlehttp/guzzle": "~6.0",
         "electrolinux/phpquery": "^0.9.6",
-        "zelenin/yii2-rss": "~0.1"
+        "zelenin/yii2-rss": "~0.1",
+        "yiisoft/yii2-httpclient": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

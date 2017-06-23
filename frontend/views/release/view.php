@@ -116,16 +116,11 @@ use kartik\icons\Icon;
 
     										</div>
     										<div class="pull-left">
-    											<div class="value"><?=$model->release_imdbrating?></div>
+    											<div class="value"><?=$model->release_lostfilmrating?></div>
     										</div>
     									</div>
     									<div class="col-sm-6 rating imdb">
-    										<div class="pull-left">
-                                                <?= Icon::show('imdb', ['class' => 'fa-3x'], Icon::FA) ?>
-    										</div>
-    										<div class="pull-left">
-    											<div class="value"><?=$model->release_imdbrating?></div>
-    										</div>
+
     									</div>
     								</div>
     							</div>

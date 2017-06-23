@@ -17,7 +17,7 @@ use yii\helpers\FileHelper;
 <?php
     NavBar::begin([
         'brandLabel' =>  $model->release_name_ru,
-        'brandUrl' => Yii::$app->urlManager->createUrl(['/release/index', 'id' =>$model->id]),
+        'brandUrl' => Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$model->id]),
         'options' => [
             'class' => 'navbar navbar-inverse navbar-fixed-top',
         ],
@@ -44,6 +44,12 @@ use yii\helpers\FileHelper;
     	<div class="row">
         	<div class="col-xs-12">
         	<?php $image = Url::to(['@lostfilm/Images/'.$model->id.'/Posters/poster.jpg'],'https'); ?>
+            <?php
+            if ($query_episode->episode_url)
+                $url_episode = ['src' => Url::to($query_episode->episode_url , true), 'type' => 'video/mp4'];
+            else
+                $url_episode =  ['src' => Url::to($trailer->release_trailer , true), 'type' => 'video/mp4'];
+            ?>
 <?= VideoJsWidget::widget([
     'options' => [
         'class' => 'video-js vjs-fluid videojs-sublime-skin',
@@ -58,9 +64,11 @@ use yii\helpers\FileHelper;
     ],
     'tags' => [
         'source' => [
-            //['src' => Url::to('@sitevideo/tv_show_all/'.$query_episode->episode_url.'.mp4' , true), 'type' => 'video/mp4'],
-            ['src' => 'http://vjs.zencdn.net/v/oceans.mp4', 'type' => 'video/mp4'],
-            ['src' => 'http://vjs.zencdn.net/v/oceans.webm', 'type' => 'video/webm']
+                $url_episode
+
+//            ['src' => Url::to($query_episode->episode_url , true), 'type' => 'video/mp4'],
+//            ['src' => 'http://vjs.zencdn.net/v/oceans.mp4', 'type' => 'video/mp4'],
+//            ['src' => 'http://vjs.zencdn.net/v/oceans.webm', 'type' => 'video/webm']
         ],
         'track' => [
             ['kind' => 'captions', 'src' => 'http://vjs.zencdn.net/vtt/captions.vtt', 'srclang' => 'en', 'label' => 'English'],

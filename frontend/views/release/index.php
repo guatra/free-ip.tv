@@ -5,8 +5,9 @@ use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use kartik\icons\Icon;
-
+// TODO Это будет страница с простым описанием по каждому из сезонов
 ?>
+
 <section class="nav-top">
     <?php
     NavBar::begin([
@@ -97,16 +98,11 @@ use kartik\icons\Icon;
 
                                 </div>
                                 <div class="pull-left">
-                                    <div class="value"><?=$model->release_imdbrating?></div>
+                                    <div class="value"><?=$model->release_lostfilmrating?></div>
                                 </div>
                             </div>
                             <div class="col-sm-6 rating imdb">
-                                <div class="pull-left">
-                                    <?= Icon::show('imdb', ['class' => 'fa-3x'], Icon::FA) ?>
-                                </div>
-                                <div class="pull-left">
-                                    <div class="value"><?=$model->release_imdbrating?></div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
