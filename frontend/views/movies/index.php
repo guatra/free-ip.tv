@@ -23,14 +23,19 @@ use yii\helpers\Url;
                 <div class="row">
                     <?php foreach ($movies as $moviesItem): ?>
                         <div class="2u 12u$(medium)">
+                            <div class="box">
                     <span class="image fit">
                         <a class="" href="<?=Yii::$app->urlManager->createUrl(['/movies/view', 'id' =>$moviesItem->id])?>">
-                           <img src="<?php echo $moviesItem->release_preview_image ?>"/>
-                            <div>
-                                <?php echo $moviesItem->release_name_ru ?>
-                            </div>
+<!--                            <img src="--><?php //echo $moviesItem->release_preview_image ?><!--"/>-->
+
+<!--                            --><?//=Html::img(Url::to('@web/img/nocover.png', true), ['alt' => $moviesItem->release_name_ru])?>
+                            <?=Html::img(Url::to($moviesItem->release_preview_image, true), ['alt' => $moviesItem->release_name_ru])?>
+<!--                            <div>-->
+<!--                                --><?php //echo $moviesItem->release_name_ru ?>
+<!--                            </div>-->
                         </a>
                     </span>
+                            </div>
                         </div>
 <!--                        <div>-->
 

@@ -21,6 +21,7 @@ class SerialsAppAsset extends AppAsset
         '/js/util.js',
         '/js/ie/respond.min.js',
         '/js/main.js',
+        '/js/google.js',
     ];
     public $jsOptions = ['position' => \yii\web\View::POS_END];
 

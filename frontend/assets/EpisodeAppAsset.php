@@ -17,6 +17,7 @@ class EpisodeAppAsset extends AssetBundle
     ];
     public $js = [
         //'js/resize_player.js',
+        '/js/google.js',
     ];
     public $jsOptions = [
         'position' => \yii\web\View::POS_END,
