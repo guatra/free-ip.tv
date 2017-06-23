@@ -51,12 +51,12 @@ $lang = $session['language'];
 
             <nav id="menu">
 
-                <?= Html::tag('header', Html::tag('h2' , 'APP_USER_MENU'), ['class' => 'major']) ?>
+                <?= Html::tag('header', Html::tag('h2' , Yii::t('frontend', 'APP_USER_MENU')), ['class' => 'major']) ?>
                 <ul>
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_TV_CHANNELS'), ['class' => 'opener']) ?>
                         <ul>
-                            <li><a href="#">В работе</a></li>
+                            <li><?= Html::a(Yii::t('frontend', 'APP_TV'), ['/tv/index'], ['class' => 'tv']) ?></li>
                         </ul>
                     </li>
                     <li><?= Html::a(Yii::t('frontend', 'APP_MOVIES'), ['/movies/index'], ['class' => 'user-moview']) ?></li>
