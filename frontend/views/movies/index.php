@@ -26,20 +26,11 @@ use yii\helpers\Url;
                             <div class="box">
                     <span class="image fit">
                         <a class="" href="<?=Yii::$app->urlManager->createUrl(['/movies/view', 'id' =>$moviesItem->id])?>">
-<!--                            <img src="--><?php //echo $moviesItem->release_preview_image ?><!--"/>-->
-
-<!--                            --><?//=Html::img(Url::to('@web/img/nocover.png', true), ['alt' => $moviesItem->release_name_ru])?>
                             <?=Html::img(Url::to($moviesItem->release_preview_image, true), ['alt' => $moviesItem->release_name_ru])?>
-<!--                            <div>-->
-<!--                                --><?php //echo $moviesItem->release_name_ru ?>
-<!--                            </div>-->
                         </a>
                     </span>
                             </div>
                         </div>
-<!--                        <div>-->
-
-<!--                        </div>-->
                     <?php endforeach; ?>
                     <!-- Break -->
                 </div>
@@ -48,4 +39,3 @@ use yii\helpers\Url;
 
     </div>
 </div>
-<?php //debug($movies); ?>
