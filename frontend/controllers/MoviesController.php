@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use backend\models\Release;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -13,6 +14,7 @@ use backend\models\FullName;
 class MoviesController extends AppController
 {
     public $layout = 'site';
+//    public $layout = 'serials';
     /**
      * @inheritdoc
      */
@@ -61,10 +63,24 @@ class MoviesController extends AppController
         if (!$trailer) {
             $trailer = 'http://kp.cdn.yandex.net/840152/kinopoisk.ru-Rogue-One_-A-Star-Wars-Story-315981.mp4';
         }
+        $movie = Release::find()
+            ->where(['release_id' => $id])
+            ->one();
+        $url = $this->getUrl($movie['episode_url']);
 
-
-        $this->setMeta(Yii::$app->name);
-        return $this->render('view', ['data' => $data,'trailer' => $trailer]);
+        $this->setMeta($movie->episode_title." ".Yii::$app->name, "", "");
+        return $this->render('view', ['url' => $url ,'trailer' => $trailer]);
     }
 
+    protected function getUrl($data_id = "1"){
+        $client = new \yii\httpclient\Client(['baseUrl' => 'https://zona.mobi/ajax/video/'.$data_id]);
+        $response = $client->createRequest()
+            ->setFormat(\yii\httpclient\Client::FORMAT_JSON)
+            ->send();
+        $responseData = $response->getData();
+        //
+        $url = $responseData['url'];
+        //
+        return $url;
+    }
 }
