@@ -74,6 +74,17 @@ return [
                     'route' => 'serials/index',
                     'suffix' => ''
                 ],
+                //
+                [
+                    'pattern' => 'movies/<id:\d+>',
+                    'route' => 'movies/view',
+                    'suffix' => ''
+                ],
+                [
+                    'pattern' => 'movies',
+                    'route' => 'movies/index',
+                    'suffix' => ''
+                ],
                 // просмотр страницы видео файла
                 [
                     'pattern' => 'release/<id:\d+>/season/<season:\d+>/episode/<episode:\d+>',

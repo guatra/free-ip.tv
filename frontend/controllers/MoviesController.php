@@ -57,8 +57,11 @@ class MoviesController extends AppController
         $data = FullName::find()
         ->where(['release_type' => 'movies', 'id' => $id])
         ->one();
-        $trailer = 'http://kp.cdn.yandex.net/840152/kinopoisk.ru-Rogue-One_-A-Star-Wars-Story-315981.mp4';
         $trailer = $data['release_trailer'];
+        if (!$trailer) {
+            $trailer = 'http://kp.cdn.yandex.net/840152/kinopoisk.ru-Rogue-One_-A-Star-Wars-Story-315981.mp4';
+        }
+
 
         $this->setMeta(Yii::$app->name);
         return $this->render('view', ['data' => $data,'trailer' => $trailer]);
