@@ -97,7 +97,7 @@ class ReleaseController extends AppController
     {
         $query = FullName::find()
             ->select(['id', 'release_totalseasons', 'release_name_ru'])
-            ->where(['release_show' => 1])
+            ->where(['release_show' => 1, 'release_type' => 'series'])
             ->orderBy('id')->all();
         return $query;
     }

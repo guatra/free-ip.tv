@@ -67,6 +67,7 @@ class MoviesController extends AppController
             ->where(['release_id' => $id])
             ->one();
         $url = $this->getUrl($movie['episode_url']);
+//        $url = $trailer;
 
         $this->setMeta($movie->episode_title." ".Yii::$app->name, "", "");
         return $this->render('view', ['url' => $url ,'trailer' => $trailer]);
@@ -74,6 +75,7 @@ class MoviesController extends AppController
 
     protected function getUrl($data_id = "1"){
         $client = new \yii\httpclient\Client(['baseUrl' => 'https://zona.mobi/ajax/video/'.$data_id]);
+//        $client = new \yii\httpclient\Client(['baseUrl' => 'https://5.35.172.4/ajax/video/'.$data_id]);
         $response = $client->createRequest()
             ->setFormat(\yii\httpclient\Client::FORMAT_JSON)
             ->send();
