@@ -59,6 +59,7 @@ class MoviesController extends AppController
         $data = FullName::find()
         ->where(['release_type' => 'movies', 'id' => $id])
         ->one();
+        if ($data){$data->updateCounters(['release_totalseasons' => 1]);};
         $trailer = $data['release_trailer'];
         if (!$trailer) {
             $trailer = 'http://kp.cdn.yandex.net/840152/kinopoisk.ru-Rogue-One_-A-Star-Wars-Story-315981.mp4';
