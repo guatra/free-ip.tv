@@ -17,14 +17,14 @@ use kartik\icons\Icon;
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    for ($i=1; $i <= $model->release_totalseasons ; $i++) { 
+    for ($i=1; $i <= $model->release_totalseasons ; $i++) {
     $menuItemsInSide[] = ['label' => 'Сезон '.$i, 'url' => ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => 1]];
 	}
     $menuItems = [
     		[
             'label' => 'Сезоны',
             'items' => $menuItemsInSide,
-        	],   
+        	],
     	];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

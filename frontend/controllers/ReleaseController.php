@@ -53,9 +53,9 @@ class ReleaseController extends AppController
             if ( $view != $params ):
                 $id = $request->get('id');
                 $last_view = explode('/', $view);
-                if ( $last_view[2] == $id ):
-                    $last_view = $view;
-                endif;
+//                if ( $last_view[2] == $id ):
+//                    $last_view = $view;
+//                endif;
 //                Yii::$app->session->setFlash(
 //                    'success',
 //                    'Записанный результат '.$view
@@ -145,19 +145,32 @@ class ReleaseController extends AppController
         }
     }
 
-    /**
-     * @param $alias
-     * @return string
-     */
-    protected function findAlias($alias)
-    {
-        if ( ($model = FullName::findOne($release_lostfilm_alias)) !== null ) {
-            return $model;
-        } else {
-
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
+//    /**
+//     * @param $alias
+//     * @return string
+//     */
+//    protected function findAlias($alias)
+//    {
+//        if ( ($model = FullName::findOne($release_lostfilm_alias)) !== null ) {
+//            return $model;
+//        } else {
+//
+//            throw new NotFoundHttpException('The requested page does not exist.');
+//        }
+//    }
+//    protected function findModel($id)
+//    {
+//        if (($model = FullName::findOne($id)) !== null) {
+//            $request = Yii::$app->request;
+//            $season = $request->get('season');
+//            if ($season <= $model->release_totalseasons ) {
+//                return $model; }
+//            else { throw new NotFoundHttpException('The requested page does not exist.');}
+//        } else {
+//
+//            throw new NotFoundHttpException('The requested page does not exist.');
+//        }
+//    }
 
     protected function findPoster($id)
     {

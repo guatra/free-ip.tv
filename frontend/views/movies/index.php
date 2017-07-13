@@ -61,7 +61,7 @@ NavBar::end();
             <article>
                 <!-- Header -->
                 <header id="header">
-                    <a href="#" class="logo"><strong><?= HelloWidget::widget() ?></strong>
+<!--                    <a href="#" class="logo"><strong>--><?//= HelloWidget::widget() ?><!--</strong>-->
                     </a>
                     <ul class="icons">
                         <li>

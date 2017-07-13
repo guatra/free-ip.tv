@@ -74,11 +74,11 @@ class EpisodeController extends AppController
             'episode_season_number' => $episode,
         ]);
         // ОТправляем пользователя в ошибку
-        if (!$query_episode) {
-            return $this->render('/release/index', [
-                //'params' => $params,
-            ]);
-        }
+//        if (!$query_episode) {
+//            return $this->render('/release/index', [
+//                //'params' => $params,
+//            ]);
+//        }
         //->where(['release_id' => $id, 'episode_season' => $season, 'episode_season_number' => $episode])->all();
         $userIP = Yii::$app->request->userIP;
         $model = $this->findModel($id);
