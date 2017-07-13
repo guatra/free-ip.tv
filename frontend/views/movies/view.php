@@ -11,15 +11,22 @@ use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use yii\helpers\FileHelper;
 
-//$this->title = $model->release_name_ru .', Сезон '.$season .' Серия '.$episode.', '. $query_episode->episode_title;
 ?>
+    <h1>movies/view</h1>
+
+<p>
+    You may change the content of this page by modifying
+    the file <code><?= __FILE__; ?></code>.
+</p>
+
+
 <?= VideoJsWidget::widget([
     'options' => [
-        'class' => 'video-js vjs-fluid videojs-sublime-skin',
+        'class' => 'video-js vjs-fluid vjs-big-play-centered',
         'poster' => "http://video-js.zencoder.com/oceans-clip.png",
         'width' => '640',
         'height' => '264',
-        'autoplay' => true,
+        'autoplay' => false,
         'controls' => true,
     ],
     'jsOptions' => [
@@ -32,7 +39,7 @@ use yii\helpers\FileHelper;
 //            ['src' => 'http://vjs.zencdn.net/v/oceans.webm', 'type' => 'video/webm']
         ],
         'track' => [
-            ['kind' => 'captions', 'src' => 'http://vjs.zencdn.net/vtt/captions.vtt', 'srclang' => 'en', 'label' => 'English']
+            ['kind' => 'captions', 'src' => 'http://localhost:8888/track/12.Monkeys.s01e01.XviD.DD5.1.LostFilm.srt', 'srclang' => 'ru', 'label' => 'Русский']
         ]
     ]
 ]); ?>
