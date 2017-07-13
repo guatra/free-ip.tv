@@ -3,8 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use backend\models\FullName;
-use backend\models\Release;
+use frontend\models\FullName;
+use frontend\models\Release;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -14,6 +14,20 @@ class EpisodeController extends AppController
 {
 	// Задаём вывод по умолчанию Навигацонной панели
 	public $layout = 'episode';
+
+	public function actionData()
+    {
+        $request = Yii::$app->request;
+        $id = $request->get('id');
+        $season = $request->get('season');
+        $episode = $request->get('episode');
+        $release = $this->findSeries($id, $season);
+        //
+        $data =['request' => $request, 'id' => $id, 'season' => $season, 'episode' => $episode, 'series' => $release];
+        return $this->render('data', [
+            'data' => $data
+        ]);
+    }
 	
     public function actionIndex()
     {   
@@ -21,6 +35,7 @@ class EpisodeController extends AppController
 
         // возвращает все параметры
         $params = $request->url;
+
 
         return $this->render('index', [
                 'params' => $params,
@@ -101,6 +116,19 @@ class EpisodeController extends AppController
         ]);
     }
 
+    protected function findSeries($id = null, $season = null )
+    {
+        $query = Release::find()
+            ->select(['episode_title', 'episode_season', 'episode_season_number', 'episode_runtime', 'episode_url'])
+            ->where(['release_id' => $id, 'episode_season' => $season, 'episode_language' => 'ru-RU']);
+        $series = $query->orderBy(['episode_season_number' => SORT_ASC])->all();
+        if ( $series !== null ) {
+            return $series;
+        } else {
+
+            throw new NotFoundHttpException('The requested page does not exist. Series not found!');
+        }
+    }
     /**
      * Finds the FullName model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
