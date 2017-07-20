@@ -13,7 +13,7 @@ use Yii;
 class TvController extends AppController
 {
     // Задаём вывод по умолчанию Навигационной панели
-    public $layout = 'site';
+    public $layout = 'tv';
 
     public function actionIndex(){
         return $this->render('index');

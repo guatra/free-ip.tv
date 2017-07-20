@@ -23,23 +23,29 @@ use yii\helpers\Url;
         </header>
 
         <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <?=Html::img('@web/images/tv/one.jpg', [ 'class' => 'img-responsiv']) ?>
+                    </div>
 
-            <div class="row">
-                <header class="major">
-                    <?=Html::img('@web/images/tv/one.jpg', ['height' => 120, 'width' => 120]) ?>
-                </header>
+                    <div class="col-xs-10 col-md-8">
 
-                <div class="u8 12u$(small)">
-                    <div class="b-tv-page-online-player js-online-player">
-                        <iframe allowfullscreen="allowfullscreen" src="https://stream.1tv.ru/embed" scrolling="no" frameborder="no" style="width: 640px; height: 380px; background-color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial;">
+                        <!-- 16:9 aspect ratio -->
+                        <div class="embed-responsive embed-responsive-16by9">
 
-                        </iframe>
+
+                            <iframe class="embed-responsive-item" allowfullscreen="allowfullscreen" src="https://stream.1tv.ru/embed" scrolling="no" frameborder="no" style="background-color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial;">
+
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        teleprogramm
                     </div>
                 </div>
-                <div class="u4 12u$(small)">
-                    teleprogramm
-                </div>
             </div>
+
         </section>
 
     </div>
