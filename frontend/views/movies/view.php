@@ -49,6 +49,12 @@ use yii\helpers\FileHelper;
         <div class="row">
             <div class="col-xs-12">
                 <div class="embed-responsive embed-responsive-16by9">
+                    <?php
+                    if ($data["url"])
+                        $url = ['src' => Url::to($data["url"], true), 'type' => 'video/mp4'];
+                    else
+                        $url =  ['src' => Url::to($data["trailer"] , true), 'type' => 'video/mp4'];
+                    ?>
                     <?= VideoJsWidget::widget([
                         'options' => [
                             'class' => 'embed-responsive-item video-js vjs-fluid vjs-big-play-centered',
@@ -63,7 +69,8 @@ use yii\helpers\FileHelper;
                         ],
                         'tags' => [
                             'source' => [
-                                ['src' => Url::to($data["url"] , true), 'type' => 'video/mp4']
+                                    $url
+//                                ['src' => Url::to($data["url"] , true), 'type' => 'video/mp4']
 //            ['src' => 'http://vjs.zencdn.net/v/oceans.mp4', 'type' => 'video/mp4'],
 //            ['src' => 'http://vjs.zencdn.net/v/oceans.webm', 'type' => 'video/webm']
                             ],
