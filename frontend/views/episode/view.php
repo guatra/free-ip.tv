@@ -13,8 +13,8 @@ use yii\helpers\FileHelper;
 
 //$this->title = $model->release_name_ru .', Сезон '.$season .' Серия '.$episode.', '. $query_episode->episode_title;
 ?>
-
-<?php
+<section class="nav-top">
+    <?php
     NavBar::begin([
         'brandLabel' =>  $model->release_name_ru,
         'brandUrl' => Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$model->id]),
@@ -22,23 +22,23 @@ use yii\helpers\FileHelper;
             'class' => 'navbar navbar-inverse navbar-fixed-top',
         ],
     ]);
-    for ($i=1; $i <= $model->release_totalseasons ; $i++) { 
-    $menuItemsInSide[] = ['label' => 'Сезон '.$i, 'url' => ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => 1], 'linkOptions' => []];
+    for ($i=1; $i <= $model->release_totalseasons ; $i++) {
+        $menuItemsInSide[] = ['label' => 'Сезон '.$i, 'url' => ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => 1], 'linkOptions' => []];
     }
     $menuItems = [
-            [
+        [
             'label' => 'Сезоны',
             'items' => $menuItemsInSide,
-            ],   
-        ];
-    
+        ],
+    ];
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
     ]);
     NavBar::end();
     ?>
-       
+</section>
 <section class="video-container">
 	<div class="container-fluid">
     	<div class="row">
@@ -50,7 +50,7 @@ use yii\helpers\FileHelper;
             else
                 $url_episode =  ['src' => Url::to($trailer->release_trailer , true), 'type' => 'video/mp4'];
             ?>
-<?= VideoJsWidget::widget([
+            <?= VideoJsWidget::widget([
     'options' => [
         'class' => 'video-js vjs-fluid videojs-sublime-skin',
         'poster' => $image,
@@ -80,59 +80,55 @@ use yii\helpers\FileHelper;
         </div>
     </div>
     <div class="container">
-<div class="row links">
-<div class="col-xs-6 text-center">
-<?php if ($episode == 1): ?>
-<a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => 1])?>">
-← Предыдущая серия
-</a>
-<?php else: ?>
-<a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode-1])?>">
-← Предыдущая серия
-</a>
-<?php endif ?>
-</div>
-<div class="col-xs-6 text-center">
-<?php if ($episode == 10 ): ?>
-<a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode])?>">
-Следующая серия →
-</a>
-<?php else: ?>
-<a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode+1])?>">Следующая серия →
-</a>
-<?php endif ?>
-</div>
-</div>
-
-
-
-
-<h1 class="serial-title">
-<?= $model->release_name_ru ?> <span itemprop="partOfSeason"><?= $season ?></span> сезон
-<span itemprop="episodeNumber"><?= $episode ?></span> серия
-</h1>
-
-
-<div class="episode-description" itemprop="description"><p>
-<?php if ($query_episode->episode_plot == NULL): ?>
-    <?php echo Yii::t('app', 'Нет описания серии')?>
-<?php else: ?>
-    <div  oncontextmenu="return false;" style="user-select: none;-moz-user-select: none;-webkit-user-select: none">
-        <?= $query_episode->episode_plot ?>
+        <div class="row links">
+        <div class="col-xs-6 text-center">
+            <?php if ($episode == 1): ?>
+            <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => 1])?>">
+            ← Предыдущая серия
+            </a>
+            <?php else: ?>
+            <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode-1])?>">
+            ← Предыдущая серия
+            </a>
+            <?php endif ?>
+        </div>
+        <div class="col-xs-6 text-center">
+            <?php if ($episode == 10 ): ?>
+            <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode])?>">
+            Следующая серия →
+            </a>
+            <?php else: ?>
+            <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode+1])?>">Следующая серия →
+            </a>
+            <?php endif ?>
+        </div>
     </div>
-
-<?php endif; ?>
-</p></div>
-</div>
+        <h1 class="serial-title">
+        <?= $model->release_name_ru ?> <span itemprop="partOfSeason"><?= $season ?></span> сезон
+        <span itemprop="episodeNumber"><?= $episode ?></span> серия
+        </h1>
+        <div class="episode-description" itemprop="description">
+        <p>
+        <?php if ($query_episode->episode_plot == NULL): ?>
+            <?php echo Yii::t('app', 'Нет описания серии')?>
+        <?php else: ?>
+            <div  oncontextmenu="return false;" style="user-select: none;-moz-user-select: none;-webkit-user-select: none">
+                <?= $query_episode->episode_plot ?>
+            </div>
+        <?php endif; ?>
+        </p>
+        </div>
+    </div>
 </section>
 <div class="breadcrumbs-container">
-<div class="container">
-<ul class="breadcrumb">
-<li><a href="<?=Yii::$app->urlManager->createUrl(['/serials/index'])?>">TV SHOWS</a></li>
-<li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id])?>"><?= $model->release_name_ru ?></a></li>
-<li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id, 'season' => $season ])?>">Сезон <?= $season ?></a></li>
-<li class="active">Серия <?= $episode ?></li>
-</ul> </div>
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="<?=Yii::$app->urlManager->createUrl(['/serials/index'])?>">TV SHOWS</a></li>
+            <li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id])?>"><?= $model->release_name_ru ?></a></li>
+            <li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id, 'season' => $season ])?>">Сезон <?= $season ?></a></li>
+            <li class="active">Серия <?= $episode ?></li>
+        </ul>
+    </div>
 </div>
 
 <div class="container">
@@ -143,7 +139,7 @@ use yii\helpers\FileHelper;
 </div>
 <div class="row">
     <?php foreach ($release as $releaseItem): ?>
-    <div class="col-sm-6 col-md-3 episode <?php if($releaseItem->episode_season == $season AND $releaseItem->episode_season_number == $episode){echo 'active';}?>">
+    <div class="col-sm-6 col-md-4 episode <?php if($releaseItem->episode_season == $season AND $releaseItem->episode_season_number == $episode){echo 'active';}?>">
         <a href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $releaseItem->episode_season_number ])?>">
         <div class="thumbnail">
         <img src="https://static.lostfilm.tv/Images/<?php echo $id; ?>/Posters/e_<?php echo $releaseItem->episode_season; ?>_<?php echo $releaseItem->episode_season_number; ?>.jpg" alt="">
