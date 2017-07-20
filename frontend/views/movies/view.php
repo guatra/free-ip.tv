@@ -108,3 +108,4 @@ use yii\helpers\FileHelper;
         </ul>
     </div>
 </div>
+<a href="<?= $data["url"]?>"><?= $data["url"]?></a>
