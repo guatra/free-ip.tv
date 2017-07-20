@@ -14,10 +14,10 @@ class LostfilmController extends \yii\console\Controller
 
         $url_find = FullName::find()
             ->select(['release_name_ru', 'release_lostfilmid', 'release_lostfilm_alias']) //Запрашиваем lostfilm_id в картотеке
-//            ->where(['release_show' => 208])
             ->where(['release_show' => 1, 'release_status' => 1]) //где статус снимается и показывать значение true
+            ->andWhere(['not', ['release_lostfilmid' => null]])
 //         lost//
-//            ->where(['release_lostfilmid' => 208])
+//            ->where(['release_lostfilmid' => 145])
             ->all(); // массив
         echo "Находим массив по сериалам\n";
         echo "*****************************\n";

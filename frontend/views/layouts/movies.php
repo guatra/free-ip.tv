@@ -24,18 +24,14 @@ $lang = $session['language'];
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="lstfml">
+<body class="movies">
 <?php $this->beginBody() ?>
 
-<div class="wrap">
-
-    <div class="container-fluid">
 
         <?= Alert::widget() ?>
         <?= $content ?>
 
-    </div>
-</div>
+
 <section class="nav-bottom">
     <?php
     NavBar::begin([

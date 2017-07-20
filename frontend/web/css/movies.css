@@ -299,24 +299,24 @@ a {
     color: #000;
 }
 
-.video-container .serial-title {
+.video-container .movie-title {
     font-size: 24px;
     margin: 5px 0;
     color: #fff;
     font-weight: 300;
 }
 
-.video-container .serial-title strong {
+.video-container .movie-title strong {
     font-weight: 300;
 }
 
-.video-container .episode-title {
+.video-container .movie-title {
     font-size: 18px;
     font-weight: 200;
     color: #999;
 }
 
-.video-container .episode-description {
+.video-container .movie-description {
     font-weight: 200;
     margin: 0 0 20px 0;
 }

@@ -25,7 +25,7 @@ $lang = $session['language'];
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="lstfml">
+<body class="series">
 <?php $this->beginBody() ?>
 
 <div class="wrap">
