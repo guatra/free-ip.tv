@@ -16,16 +16,27 @@ class TvController extends AppController
     public $layout = 'tv';
 
     public function actionIndex(){
-        return $this->render('index');
+        return $this->render('index', [
+            'data' => $this->menuChanneles()
+        ]);
     }
 
     public function actionOne(){
+        $this->setMeta('Прямой эфир. Первый канал. '.Yii::$app->name, Yii::$app->name."Прямой эфир.Первый канал", "");
         return $this->render('one');
     }
 
     public function actionNtv(){
         $url = 'http://www.ntv.ru/air/';
         return $this->render('ntv');
+    }
+    protected function menuChanneles($count = null, $list = null, $favicon = null){
+        // Return array
+        $count = 2;
+        //
+        $data = ['count' => $count ,'menu' => [1 => 'one', 2 => 'ntv'], 'image' => [1 => 'one', 2 => 'ntv'], 'favicon' => [1 => 'one', 2 => 'ntv']];
+        // Return array
+        return $data;
     }
 //    public function actionIndex(){
 //        // Проверим запись в сессии и в базе данных на наличие просмотра ранее
@@ -46,7 +57,7 @@ class TvController extends AppController
 //            'release' => $release,
 //            'poster' => $this->findPoster($id),
 //            'model' => $model,
-//            'serials' => $this->getSerials(),
+//            'series' => $this->getSerials(),
 //            'recommendations' => $this->getRecommendation(),
 //        ]);
 //    }
@@ -93,7 +104,7 @@ class TvController extends AppController
             'poster' => $this->findPoster($id),
             'model' => $model,
             'last_view' => $last_view,
-            'serials' => $this->getSerials(),
+            'series' => $this->getSerials(),
             'recommendations' => $this->getRecommendation(),
         ]);
 
@@ -173,15 +184,15 @@ class TvController extends AppController
 
     protected function findPoster($id)
     {
-        $dir = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/serials/' . $id . '/Posters';
-        $filename = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/serials/' . $id . '/Posters/poster.jpg';
+        $dir = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/series/' . $id . '/Posters';
+        $filename = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/series/' . $id . '/Posters/poster.jpg';
         //$files = FileHelper::findFiles($dir, [
         //   'only' => ['*.jpg', 'sensitive' => false]
         //   ]);
 
         if ( !$filename ) {
 
-            $poster = Url::to('@web/images/serials/' . $id . '/Posters/poster.jpg', true);
+            $poster = Url::to('@web/images/series/' . $id . '/Posters/poster.jpg', true);
             return $poster;
 
         } else {

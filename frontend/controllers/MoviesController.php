@@ -50,7 +50,7 @@ class MoviesController extends AppController
 
     public function actionData()
     {
-//        return $this->render('data');
+        return $this->render('data');
     }
 
     public function actionIndex()

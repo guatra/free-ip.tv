@@ -31,10 +31,10 @@ $lang = $session['language'];
     <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
     <link rel="shortcut icon" href="/images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+<!--    <link rel="apple-touch-icon" href="/touch-icon-iphone-60x60.png">-->
+    <link rel="apple-touch-icon" sizes="60x60" href="<?php Url::to('@web/touch-icons/touch-icon-ipad-76x76.png', true); ?>">
+    <link rel="apple-touch-icon" sizes="114x114" href="touch-icons/touch-icon-iphone-retina-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/touch-icons/touch-icon-ipad-retina-152x152.png">
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -66,7 +66,7 @@ $lang = $session['language'];
                         </ul>
                     </li>
                     <li><?= Html::a(Yii::t('frontend', 'APP_MOVIES'), ['/movies/index'], ['class' => 'user-moview']) ?></li>
-                    <li><?= Html::a(Yii::t('frontend', 'APP_SERIALS'), ['/serials/index'], ['class' => 'user-serials']) ?></li>
+                    <li><?= Html::a(Yii::t('frontend', 'APP_SERIALS'), ['/series/index'], ['class' => 'user-series']) ?></li>
 
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_USER_PLAYLIST'), ['class' => 'opener']) ?>
@@ -77,8 +77,8 @@ $lang = $session['language'];
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_CHANNELS'), ['class' => 'opener']) ?>
                         <ul>
-                            <li><?= Html::a(Yii::t('frontend', 'APP_CHANNELS_LOSTFILM-TV'), ['/serials/index'], ['class' => 'user-serials']) ?></li>
-                            <li><?= Html::a(Yii::t('frontend', 'APP_RSS'), ['/site/rss'], ['class' => 'user-serials']) ?></li>
+                            <li><?= Html::a(Yii::t('frontend', 'APP_CHANNELS_LOSTFILM-TV'), ['/series/index'], ['class' => 'user-series']) ?></li>
+                            <li><?= Html::a(Yii::t('frontend', 'APP_RSS'), ['/site/rss'], ['class' => 'user-series']) ?></li>
                         </ul>
                     </li>
                 </ul>

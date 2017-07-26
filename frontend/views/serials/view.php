@@ -12,7 +12,7 @@ use kartik\icons\Icon;
 <?php
     NavBar::begin([
         'brandLabel' => $model->release_name_ru,
-        'brandUrl' => Yii::$app->urlManager->createUrl(['/serials/view', 'id' =>$model->id]),
+        'brandUrl' => Yii::$app->urlManager->createUrl(['/series/view', 'id' =>$model->id]),
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -152,7 +152,7 @@ use kartik\icons\Icon;
     						<div class="row">
     							<?php 
     									for ($i=1; $i <= $model->release_totalseasons ; $i++) { 
-    										if (Html::img(Yii::$app->urlManager->createUrl(['/images/serials/'.$model->id.'/'.$i.'.jpg'])) !== null):
+    										if (Html::img(Yii::$app->urlManager->createUrl(['/images/series/'.$model->id.'/'.$i.'.jpg'])) !== null):
     										echo '
     										<div class="col-xs-6 col-sm-6 col-md-3 episode" itemprop="containsSeason" itemscope="" itemtype="http://schema.org/TVEpisode">
     								<meta itemprop="containsSeason" content="'.$model->release_totalseasons.'">
@@ -193,7 +193,7 @@ use kartik\icons\Icon;
 			<?php foreach ($serials as $serial): ?>
 				<?php if ($serial->id == $recommendation): ?>									        
 			<div class="col-sm-6 col-md-3 episode" itemscope="" itemtype="http://schema.org/TVSeries">
-				<a href="<?=Yii::$app->urlManager->createUrl(['/serials/view', 'id' =>$serial->id])?>" title="<?php echo $serial->release_name_ru;?> смотреть онлайн" itemprop="url">
+				<a href="<?=Yii::$app->urlManager->createUrl(['/series/view', 'id' =>$serial->id])?>" title="<?php echo $serial->release_name_ru;?> смотреть онлайн" itemprop="url">
 					<div class="thumbnail">
 					<?=Html::img(Url::to(['@lostfilm/Images/'.$serial->id.'/Posters/shmoster_s'.$serial->release_totalseasons.'.jpg'],'https'), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
 						<div class="content">
@@ -223,7 +223,7 @@ use kartik\icons\Icon;
     ]);
     $menuItems = [
         //['label' => 'Home', 'url' => ['/site/index']],
-        //['label' => 'Serials', 'url' => ['/serials/index']],
+        //['label' => 'Serials', 'url' => ['/series/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

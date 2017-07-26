@@ -142,7 +142,7 @@ use kartik\icons\Icon;
     						<div class="row">
     							<?php 
     									for ($i=1; $i <= $model->release_totalseasons ; $i++) { 
-    										if (Html::img(Yii::$app->urlManager->createUrl(['/images/serials/'.$model->id.'/'.$i.'.jpg'])) !== null):
+    										if (Html::img(Yii::$app->urlManager->createUrl(['/images/series/'.$model->id.'/'.$i.'.jpg'])) !== null):
     										echo '
     										<div class="col-xs-6 col-sm-6 col-md-3 episode" itemprop="containsSeason" itemscope="" itemtype="http://schema.org/TVEpisode">
     								<meta itemprop="containsSeason" content="'.$model->release_totalseasons.'">

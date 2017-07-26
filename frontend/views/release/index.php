@@ -112,7 +112,7 @@ use kartik\icons\Icon;
                         <div class="breadcrumbs-container">
                             <div class="container">
                                 <ul class="breadcrumb">
-                                    <li><a href="<?=Yii::$app->urlManager->createUrl(['/serials/index'])?>">TV SHOWS</a></li>
+                                    <li><a href="<?=Yii::$app->urlManager->createUrl(['/series/index'])?>">TV SHOWS</a></li>
                                     <li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id])?>"><?= $model->release_name_ru ?></a></li>
                                     <li class="active"><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id, 'season' => $season ])?>">Сезон <?= $season ?></a></li>
                                 </ul> </div>
@@ -158,7 +158,7 @@ use kartik\icons\Icon;
                 <div class="row">
                     <?php
                     for ($i=1; $i <= $model->release_totalseasons ; $i++) {
-                        if (Html::img(Yii::$app->urlManager->createUrl(['/images/serials/'.$model->id.'/'.$i.'.jpg'])) !== null):
+                        if (Html::img(Yii::$app->urlManager->createUrl(['/images/series/'.$model->id.'/'.$i.'.jpg'])) !== null):
                             echo '
     										<div class="col-xs-6 col-sm-6 col-md-3 episode" itemprop="containsSeason" itemscope="" itemtype="http://schema.org/TVEpisode">
     								<meta itemprop="containsSeason" content="'.$model->release_totalseasons.'">

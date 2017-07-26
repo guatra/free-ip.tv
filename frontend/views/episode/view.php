@@ -123,7 +123,7 @@ use yii\helpers\FileHelper;
 <div class="breadcrumbs-container">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="<?=Yii::$app->urlManager->createUrl(['/serials/index'])?>">TV SHOWS</a></li>
+            <li><a href="<?=Yii::$app->urlManager->createUrl(['/series/index'])?>">TV SHOWS</a></li>
             <li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id])?>"><?= $model->release_name_ru ?></a></li>
             <li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id, 'season' => $season ])?>">Сезон <?= $season ?></a></li>
             <li class="active">Серия <?= $episode ?></li>

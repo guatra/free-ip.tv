@@ -65,13 +65,13 @@ return [
                     'suffix' => '.html'
                 ],
                 [
-                    'pattern' => 'serials/<id:\d+>',
-                    'route' => 'serials/view',
+                    'pattern' => 'series/<id:\d+>',
+                    'route' => 'series/view',
                     'suffix' => ''
                 ],
                 [
-                    'pattern' => 'serials',
-                    'route' => 'serials/index',
+                    'pattern' => 'series',
+                    'route' => 'series/index',
                     'suffix' => ''
                 ],
                 //

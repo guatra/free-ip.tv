@@ -25,8 +25,9 @@ use yii\helpers\Url;
         <section>
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-2">
-                        <?=Html::img('@web/images/tv/one.jpg', [ 'class' => 'img-responsiv']) ?>
+                    <div class="col-xs-2 col-md-2">
+                        <?=Html::img('@web/images/tv/one.jpg', [ 'class' => 'img-responsive']) ?>
+                        <?=Html::img('@web/images/tv/ntv.jpg', [ 'class' => 'img-responsive']) ?>
                     </div>
 
                     <div class="col-xs-10 col-md-8">
@@ -40,8 +41,29 @@ use yii\helpers\Url;
                             </iframe>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-md-4">
-                        teleprogramm
+                    <div class="clearfix"></div>
+                    <div class="col-xs-12 col-md-12">
+                        <p><h6>В телепрограмме указано московское время.</h6></p>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tr>
+                                    <td class="hidden-xs">111</td>
+                                    <td>112</td>
+                                    <td>113</td>
+                                </tr>
+                                <tr>
+                                    <th class="hidden-xs">121</th>
+                                    <th>122</th>
+                                    <th>123</th>
+                                </tr>
+                                <tr>
+                                    <td class="hidden-xs">111</td>
+                                    <td>112</td>
+                                    <td>113</td>
+                                </tr>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
             </div>

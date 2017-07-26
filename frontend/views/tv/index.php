@@ -21,18 +21,23 @@ use yii\helpers\Url;
                 </li>
             </ul>
         </header>
-
+        <section>
+            <div class="row">
+                <div class="col-xs-12">
+                    <?php debug($data) ?>
+                </div>
+            </div>
+        </section>
         <section>
 
             <div class="row">
-                <header class="major">
+                 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                     <?php for ($i=1; $i <= $data['count']; $i++):?>
 
-                    <?= Html::a(Html::img('@web/images/tv/one.jpg'), '/tv/one', ['class' => 'one']) ?>
-                </header>
-                <header class="major">
+                         <?= Html::a(Html::img('@web/images/tv/'.$data['image'][$i].'.jpg'), Yii::$app->urlManager->createUrl(['/tv/'.$data['menu'][$i]]), ['class' => $data['image']]) ?>
 
-                    <?= Html::a(Html::img('@web/images/tv/ntv.jpg'), '/tv/ntv', ['class' => 'ntv']) ?>
-                </header>
+                     <?php endfor; ?>
+                 </div>
 
             </div>
     </section>

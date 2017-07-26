@@ -45,7 +45,7 @@ EpisodeAppAsset::register($this);
     ]);
     $menuItems = [
         //['label' => 'Home', 'url' => ['/site/index']],
-        //['label' => 'Serials', 'url' => ['/serials/index']],
+        //['label' => 'Serials', 'url' => ['/series/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

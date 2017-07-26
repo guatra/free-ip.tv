@@ -34,7 +34,7 @@ class ReleaseController extends AppController
             'release' => $release,
             'poster' => $this->findPoster($id),
             'model' => $model,
-            'serials' => $this->getSerials(),
+            'series' => $this->getSerials(),
             'recommendations' => $this->getRecommendation(),
         ]);
     }
@@ -81,7 +81,7 @@ class ReleaseController extends AppController
             'poster' => $this->findPoster($id),
             'model' => $model,
             'last_view' => $last_view,
-            'serials' => $this->getSerials(),
+            'series' => $this->getSerials(),
             'recommendations' => $this->getRecommendation(),
         ]);
 
@@ -174,15 +174,15 @@ class ReleaseController extends AppController
 
     protected function findPoster($id)
     {
-        $dir = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/serials/' . $id . '/Posters';
-        $filename = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/serials/' . $id . '/Posters/poster.jpg';
+        $dir = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/series/' . $id . '/Posters';
+        $filename = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/series/' . $id . '/Posters/poster.jpg';
         //$files = FileHelper::findFiles($dir, [
         //   'only' => ['*.jpg', 'sensitive' => false]
         //   ]);
 
         if ( !$filename ) {
 
-            $poster = Url::to('@web/images/serials/' . $id . '/Posters/poster.jpg', true);
+            $poster = Url::to('@web/images/series/' . $id . '/Posters/poster.jpg', true);
             return $poster;
 
         } else {

@@ -11,7 +11,7 @@ use Yii;
 class SerialsController extends AppController
 {
 	// Задаём вывод по умолчанию Навигационной панели
-	public $layout = 'serials';
+	public $layout = 'series';
 
     public function actionIndex()
     {
@@ -20,7 +20,7 @@ class SerialsController extends AppController
         $serials = $query->orderBy(['release_status' => SORT_DESC, 'release_name_ru' => SORT_ASC])->all();
         $this->setMeta(Yii::$app->name . ' | ' .Yii::t('frontend', 'APP_SERIALS'));
         return $this->render('index', [
-            'serials' => $serials,
+            'series' => $serials,
         ]);
     }
 
@@ -62,10 +62,10 @@ class SerialsController extends AppController
 //        $query = FullName::find()
 //        ->select(['id','release_totalseasons', 'release_name_ru'])
 //        ->where(['release_show' => 1]);
-//        $serials = $query->orderBy('id')->all();
+//        $series = $query->orderBy('id')->all();
 //
 //        // Случайный выбор секции рекомендованные сериалов для просмотра по умолчанию 4
-//        foreach ($serials as $serial)
+//        foreach ($series as $serial)
 //            {
 //                $array_recommendations[]= $serial->id;
 //            }
@@ -84,7 +84,7 @@ class SerialsController extends AppController
 //            'poster' => $this->findPoster($id),
 //            'model' => $model,
 //            'last_view' => $last_view,
-//            'serials' => $serials,
+//            'series' => $series,
 //            'recommendations' => $recommendations,
 //        ]);
 //
@@ -109,15 +109,15 @@ class SerialsController extends AppController
 
     protected function findPoster($id)
     {   
-        $dir = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/serials/' .$id. '/Posters';
-        $filename = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/serials/' .$id. '/Posters/poster.jpg';
+        $dir = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/series/' .$id. '/Posters';
+        $filename = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/series/' .$id. '/Posters/poster.jpg';
        //$files = FileHelper::findFiles($dir, [
          //   'only' => ['*.jpg', 'sensitive' => false] 
          //   ]);
 
             if (!$filename) {
 
-                $poster = Url::to('@web/images/serials/' .$id. '/Posters/poster.jpg' , true);
+                $poster = Url::to('@web/images/series/' .$id. '/Posters/poster.jpg' , true);
                 return $poster;
 
             } else {

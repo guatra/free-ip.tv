@@ -60,7 +60,7 @@ $this->title = Yii::$app->name;
                             ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                             fugiat nulla pariatur.</p>
 
-                        <p><?= Html::a(Yii::t('app', 'VIEW'), ['/serials/index'], [
+                        <p><?= Html::a(Yii::t('app', 'VIEW'), ['/series/index'], [
                                 'class' => 'btn btn-danger',
                                 'data' => [
                                     'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),

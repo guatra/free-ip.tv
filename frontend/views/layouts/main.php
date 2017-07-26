@@ -69,7 +69,7 @@ $lang = $session['language'];
         ],
     ]);
     $menuItems = [
-        ['label' => Yii::t('frontend', 'APP_SERIALS'), 'url' => ['/serials/index']],
+        ['label' => Yii::t('frontend', 'APP_SERIALS'), 'url' => ['/series/index']],
         ['label' => Yii::t('frontend', 'APP_MOVIES'), 'url' => ['/site/index']],
     ];
     echo Nav::widget([
@@ -99,7 +99,7 @@ $lang = $session['language'];
     ]);
     $menuItems = [
         //['label' => 'Home', 'url' => ['/site/index']],
-        //['label' => 'Serials', 'url' => ['/serials/index']],
+        //['label' => 'Serials', 'url' => ['/series/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

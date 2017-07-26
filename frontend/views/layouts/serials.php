@@ -60,7 +60,7 @@ $lang = $session['language'];
                         </ul>
                     </li>
                     <li><?= Html::a(Yii::t('frontend', 'APP_MOVIES'), ['/movies/index'], ['class' => 'user-moview']) ?></li>
-                    <li><?= Html::a(Yii::t('frontend', 'APP_SERIALS'), ['/serials/index'], ['class' => 'user-serials']) ?></li>
+                    <li><?= Html::a(Yii::t('frontend', 'APP_SERIALS'), ['/series/index'], ['class' => 'user-series']) ?></li>
 
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_USER_PLAYLIST'), ['class' => 'opener']) ?>
@@ -71,7 +71,7 @@ $lang = $session['language'];
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_CHANNELS'), ['class' => 'opener']) ?>
                         <ul>
-                            <li><?= Html::a(Yii::t('frontend', 'APP_CHANNELS_LOSTFILM-TV'), ['/serials/index'], ['class' => 'user-serials']) ?></li>
+                            <li><?= Html::a(Yii::t('frontend', 'APP_CHANNELS_LOSTFILM-TV'), ['/series/index'], ['class' => 'user-series']) ?></li>
                         </ul>
                     </li>
                 </ul>
@@ -122,7 +122,7 @@ $lang = $session['language'];
 //    ]);
 //    $menuItems = [
 //        //['label' => 'Home', 'url' => ['/site/index']],
-//        //['label' => 'Serials', 'url' => ['/serials/index']],
+//        //['label' => 'Serials', 'url' => ['/series/index']],
 //    ];
 //    if (Yii::$app->user->isGuest) {
 //        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
