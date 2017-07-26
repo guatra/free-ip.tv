@@ -32,9 +32,10 @@ $lang = $session['language'];
     <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
     <link rel="shortcut icon" href="/images/ico/favicon.ico">
-    <link rel="apple-touch-icon" sizes="60x60" href="<?= Url::to('@web/images/touch-icon-ipad-76x76.png', true); ?>">
-    <link rel="apple-touch-icon" sizes="114x114" href="/touch-icons/touch-icon-iphone-retina-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/touch-icons/touch-icon-ipad-retina-152x152.png">
+    <link rel="apple-touch-icon" href="<?= Url::to('@web/touch-icons/apple-touch-icon-iphone-60x60.png', true); ?>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?= Url::to('@web/touch-icons/apple-touch-icon-ipad-retina-152x152.png', true); ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
 </head>
 <body>
 <?php $this->beginBody() ?>
