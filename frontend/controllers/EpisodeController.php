@@ -87,6 +87,8 @@ class EpisodeController extends AppController
             'release_id' => $id,
             'episode_season' => $season,
             'episode_season_number' => $episode,
+            'episode_language' => 'ru-RU',
+
         ]);
         // ОТправляем пользователя в ошибку
 //        if (!$query_episode) {
