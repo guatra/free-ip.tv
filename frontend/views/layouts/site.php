@@ -33,7 +33,7 @@ $lang = $session['language'];
     <link rel="shortcut icon" href="/images/ico/favicon.ico">
 <!--    <link rel="apple-touch-icon" href="/touch-icon-iphone-60x60.png">-->
     <link rel="apple-touch-icon" sizes="60x60" href="<?php Url::to('@web/touch-icons/touch-icon-ipad-76x76.png', true); ?>">
-    <link rel="apple-touch-icon" sizes="114x114" href="touch-icons/touch-icon-iphone-retina-120x120.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/touch-icons/touch-icon-iphone-retina-120x120.png">
     <link rel="apple-touch-icon" sizes="144x144" href="/touch-icons/touch-icon-ipad-retina-152x152.png">
 </head>
 <body>
