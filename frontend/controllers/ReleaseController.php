@@ -138,7 +138,7 @@ class ReleaseController extends AppController
     protected function findModel($id)
     {
         if ( ($model = FullName::findOne($id)) !== null ) {
-            $model->updateCounters(['episode_views' => 1]);
+
             return $model;
         } else {
 
