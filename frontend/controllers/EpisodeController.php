@@ -90,6 +90,7 @@ class EpisodeController extends AppController
             'episode_language' => 'ru-RU',
 
         ]);
+        if ($query_episode) {$query_episode->updateCounters(['episode_views' => 1]);}
         // ОТправляем пользователя в ошибку
 //        if (!$query_episode) {
 //            return $this->render('/release/index', [
