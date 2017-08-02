@@ -7,24 +7,24 @@ use yii\bootstrap\NavBar;
 use kartik\icons\Icon;
 
 ?>
-
+<?= Html::cssFile('@web/css/series.css') ?>
 <section class="nav-top">
 <?php
     NavBar::begin([
         'brandLabel' => $model->release_name_ru,
-        'brandUrl' => Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$model->id]),
+        'brandUrl' => Yii::$app->urlManager->createUrl(['/series/view', 'id' =>$model->id]),
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    for ($i=1; $i <= $model->release_totalseasons ; $i++) {
-    $menuItemsInSide[] = ['label' => 'Сезон '.$i, 'url' => ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => 1]];
+    for ($i=1; $i <= $model->release_totalseasons ; $i++) { 
+    $menuItemsInSide[] = ['label' => 'Сезон '.$i, 'url' => ['/release/view', 'id' => $model->id, 'season' => $i]];
 	}
     $menuItems = [
     		[
             'label' => 'Сезоны',
             'items' => $menuItemsInSide,
-        	],
+        	],   
     	];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
@@ -48,9 +48,7 @@ use kartik\icons\Icon;
                         <?php if(is_array($last_view)):?>
     					<a class="btn btn-default btn-lg" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $model->id, 'season' => '1', 'episode' => '1' ])?>">Начать просмотр</a>
                         <?php else: ?>
-                            <br>
-                            <h4 class="name">Вы остановились на N серии N сезона <?=$last_view?></h4>
-                        <a class="btn btn-default btn-lg" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $model->id, 'season' => '1', 'episode' => '1' ])?>">Продолжить просмотр</a>
+                        <a class="btn btn-default btn-lg" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $model->id, 'season' => '1', 'episode' => '1' ])?>"><?php echo $last_view ?></a>
                         <?php endif; ?>
     				</div>
     			</div>
@@ -89,7 +87,8 @@ use kartik\icons\Icon;
     									<tr>
     										<td>Год выпуска</td>
     										<td>
-                                                <?php echo date('Y', $model->release_released); ?>
+                                                <?php $time = strtotime($model->release_year);
+                                                    echo strftime('%e %h %Y', $time); ?>
                                             </td>
     									</tr>
     									<tr>
@@ -112,15 +111,26 @@ use kartik\icons\Icon;
     								<div class="row">
     									<div class="col-sm-6 rating kp">
     										<div class="pull-left">
-                                                <?= Icon::show('imdb', ['class' => 'fa-3x'], Icon::FA) ?>
-
+    											<img class=" logo" src="img/kp.png" height="18" alt="Кинопоиск">
     										</div>
     										<div class="pull-left">
-    											<div class="value"><?=$model->release_lostfilmrating?></div>
+
+    											<div class="value"><?= Icon::show('leaf', ['class' => 'fa-3x'], Icon::FA) ?>8.101</div>
+    											<div class="stars">
+    												<div class="fill" style="width: 87.909px"></div>
+    											</div>
     										</div>
     									</div>
     									<div class="col-sm-6 rating imdb">
-
+    										<div class="pull-left">
+    											<img class="logo" src="img/imdb.png" height="22" alt="IMdb">
+    										</div>
+    										<div class="pull-left">
+    											<div class="value"><?=$model->release_imdbrating?></div>
+    											<div class="stars">
+    												<div class="fill" style="width: 93.3px"></div>
+    											</div>
+    										</div>
     									</div>
     								</div>
     							</div>
@@ -136,7 +146,7 @@ use kartik\icons\Icon;
     					<div class="container">
     						<div class="row">
     							<div class="col-xs-6">
-    								<h3>Сезоны Сериала</h3>
+    								<h3>Сезоны Сериала</h3><?= Icon::show('user') ?>
     							</div>
     						</div>
     						<div class="row">
@@ -154,7 +164,7 @@ use kartik\icons\Icon;
     											<div class="title"></div>
     											<div class="subtitle" itemprop="name"></div>
     										  </div>
-    												
+    												<div class="duration"></div>
     												<div class="play-button"></div>
     										  </div>
     										</a>
@@ -180,10 +190,10 @@ use kartik\icons\Icon;
         </div>
         <div class="row">
 		<?php foreach ($recommendations as $recommendation):?>    
-			<?php foreach ($series as $serial): ?>
+			<?php foreach ($serials as $serial): ?>
 				<?php if ($serial->id == $recommendation): ?>									        
 			<div class="col-sm-6 col-md-3 episode" itemscope="" itemtype="http://schema.org/TVSeries">
-				<a href="<?=Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$serial->id])?>" title="<?php echo $serial->release_name_ru;?> смотреть онлайн" itemprop="url">
+				<a href="<?=Yii::$app->urlManager->createUrl(['/series/view', 'id' =>$serial->id])?>" title="<?php echo $serial->release_name_ru;?> смотреть онлайн" itemprop="url">
 					<div class="thumbnail">
 					<?=Html::img(Url::to(['@lostfilm/Images/'.$serial->id.'/Posters/shmoster_s'.$serial->release_totalseasons.'.jpg'],'https'), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
 						<div class="content">
@@ -201,4 +211,37 @@ use kartik\icons\Icon;
         </div>
     </div>
 </div>
+</section>
+<section class="nav-bottom">
+<?php
+    NavBar::begin([
+        'brandLabel' => Icon::show('home', ['class'=>'fa-inverse']) . 'free-ip.tv',
+        'brandUrl' => Yii::$app->urlManager->createUrl(['/site/index']),
+        'options' => [
+            'class' => 'navbar-inverse navbar-fixed-bottom',
+        ],
+    ]);
+    $menuItems = [
+        //['label' => 'Home', 'url' => ['/site/index']],
+        //['label' => 'Serials', 'url' => ['/series/index']],
+    ];
+    if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+        $menuItems[] = ['label' =>   'Login', 'url' => ['/site/login']];
+    } else {
+        $menuItems[] = '<li>'
+            . Html::beginForm(['/site/logout'], 'post')
+            . Html::submitButton(
+                'Logout (' . Yii::$app->user->identity->username . ')',
+                ['class' => 'btn btn-link logout']
+            )
+            . Html::endForm()
+            . '</li>';
+    }
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $menuItems,
+    ]);
+    NavBar::end();
+?>
 </section>
