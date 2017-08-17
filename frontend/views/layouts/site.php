@@ -75,6 +75,7 @@ $lang = $session['language'];
                             <li><a href="#">Авторизуйтесь</a></li>
                         </ul>
                     </li>
+                    <li><?= Html::a(Yii::t('frontend', 'APP_RSS'), ['/site/rss'], ['class' => 'user-series']) ?></li>
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_CHANNELS'), ['class' => 'opener']) ?>
                         <ul>

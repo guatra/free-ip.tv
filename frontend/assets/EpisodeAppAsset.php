@@ -12,11 +12,13 @@ class EpisodeAppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/video-js.min.css',
         'css/videojs-sublime-skin.css',
         'css/release.css',
     ];
     public $js = [
-        //'js/resize_player.js',
+        '/js/video.min.js',
+        '/js/videojs_5.vast.vpaid.min.js',
         '/js/google.js',
     ];
     public $jsOptions = [

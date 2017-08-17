@@ -293,7 +293,7 @@ class SiteController extends AppController
                 },
                 'link' => function ($model, $widget, \Zelenin\Feed $feed) {
 //                    return Url::toRoute(['news/view', 'id' => $model->id], true);
-                    return Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $model->series_id, 'season' => $model->season_id, 'episode' => $model->episode_id],true);
+                    return Url::toRoute(['/episode/view', 'id' => $model->series_id, 'season' => $model->season_id, 'episode' => $model->episode_id],true);
                 },
 //                'author' => function ($model, $widget, \Zelenin\Feed $feed) {
 //                    return $model->author . ' (' . $model->author . ')';

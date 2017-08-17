@@ -107,6 +107,11 @@ return [
                     'suffix' => ''
                 ],
                 [
+                    'pattern' => 'tv/<action>',
+                    'route' => 'tv/<action>',
+                    'suffix' => ''
+                ],
+                [
                     'pattern' => 'release',
                     'route' => 'release/index',
                     'suffix' => ''
