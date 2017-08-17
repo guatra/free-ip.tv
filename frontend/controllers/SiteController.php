@@ -295,9 +295,9 @@ class SiteController extends AppController
 //                    return Url::toRoute(['news/view', 'id' => $model->id], true);
                     return Url::toRoute(['/episode/view', 'id' => $model->series_id, 'season' => $model->season_id, 'episode' => $model->episode_id],true);
                 },
-//                'author' => function ($model, $widget, \Zelenin\Feed $feed) {
-//                    return $model->author . ' (' . $model->author . ')';
-//                },
+                'author' => function ($model, $widget, \Zelenin\Feed $feed) {
+                    return $model->author . ' (' . $model->author . ')';
+                },
 //                'author' => function ($model, $widget, \Zelenin\Feed $feed) {
 //                    return $model->user->email . ' (' . $model->user->username . ')';
 //                },
