@@ -302,11 +302,11 @@ class SiteController extends AppController
 //                    return $model->user->email . ' (' . $model->user->username . ')';
 //                },
                 'guid' => function ($model, $widget, \Zelenin\Feed $feed) {
-                    $date = \DateTime::createFromFormat('Y-m-d H:i:s', $model->updated_at);
+                    $date = \DateTime::createFromFormat('Y-m-d H:i:s', $model->create_at);
                     return Url::toRoute(['news/view', 'id' => $model->id], true);
                 },
                 'pubDate' => function ($model, $widget, \Zelenin\Feed $feed) {
-                    $date = date('D, d M Y H:i:s O', $model->updated_at);
+                    $date = date('D, d M Y H:i:s O', $model->create_at);
                     return $date;
                 }
             ]
