@@ -108,9 +108,9 @@ class SiteController extends AppController
     {
         $find_release = Release::find()
             ->select(['id','release_id','episode_title', 'episode_season', 'episode_season_number', 'episode_plot', 'episode_article_key'])
-            ->where(['episode_language' => 'ru-RU'])
+            ->where(['episode_language' => 'ru-RU', 'type' => 'episode'])
             ->limit(6)
-            ->orderBy(['id' => SORT_DESC])->all();
+            ->orderBy(['id' => SORT_DESC, 'episode_released' => SORT_DESC])->all();
         $data = $find_release;
         $this->setMeta(Yii::$app->name);
         return $this->render('index', ['data' => $data]);
