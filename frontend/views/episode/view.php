@@ -42,7 +42,7 @@ use yii\helpers\FileHelper;
 <section class="video-container">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-8">
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-12">
 
                 <?php $image = Url::to(['@lostfilm/Images/'.$model->id.'/Posters/poster.jpg'],'https'); ?>
                 <div class="container" style="background-image: url(<?= $image ?>) center no-reapet">
@@ -84,7 +84,7 @@ use yii\helpers\FileHelper;
 
 
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4">
+            <div class="col-xs-12 col-sm-4 col-md-4 lg-hidden">
 
                 <div class="row">
                     <button>1</button>
