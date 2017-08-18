@@ -84,7 +84,7 @@ use yii\helpers\FileHelper;
 
 
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 lg-hidden">
+            <div class="col-xs-12 col-sm-4 col-md-4 hidden-lg">
 
                 <div class="row">
                     <button>1</button>
