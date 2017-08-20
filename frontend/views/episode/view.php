@@ -50,7 +50,7 @@ use yii\helpers\FileHelper;
                     if ($query_episode->episode_url)
                         $url_episode = ['src' => Url::to($query_episode->episode_url , true), 'type' => 'video/mp4'];
                     else
-                        $url_episode =  ['src' => Url::to($trailer->release_trailer , true), 'type' => 'video/mp4'];
+                        $url_episode =  ['src' => Url::to($release_full->release_trailer , true), 'type' => 'video/mp4'];
                     ?>
                     <?= VideoJsWidget::widget([
                         'options' => [
@@ -86,23 +86,36 @@ use yii\helpers\FileHelper;
     <div class="container">
         <div class="row links">
             <div class="col-xs-6 text-center">
-                <?php if ($episode == 1): ?>
+                <?php if ($episode == 1 AND $season == 1): ?>
+                    <a class="btn disabled" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => 1])?>">
+                        ← Предыдущая серия
+                    </a>
+                <?php elseif ( $episode == 1 AND 1 < $season ): ?>
+                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season - 1, 'episode' => $last_season])?>">
+                        ← Предыдущий сезон
+                    </a>
+                <?php elseif ($episode == 1): ?>
                     <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => 1])?>">
                         ← Предыдущая серия
                     </a>
                 <?php else: ?>
-                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode-1])?>">
+                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode - 1])?>">
                         ← Предыдущая серия
                     </a>
                 <?php endif ?>
             </div>
             <div class="col-xs-6 text-center">
-                <?php if ($episode == $release_count ): ?>
-                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode])?>">
+                <?php if ($episode == $release_count AND $season == $release_full->release_totalseasons): ?>
+                    <a class="btn disabled" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season + 1, 'episode' => $episode])?>">
+                        Следующий сезон →
+                    </a>
+                <?php elseif ($episode == $release_count): ?>
+                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season + 1, 'episode' => 1])?>">
                         Следующий сезон →
                     </a>
                 <?php else: ?>
-                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode+1])?>">Следующая серия →
+                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode + 1])?>">
+                        Следующая серия →
                     </a>
                 <?php endif ?>
             </div>

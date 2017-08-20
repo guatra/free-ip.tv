@@ -114,7 +114,7 @@ class EpisodeController extends AppController
             $model->release_name_ru .', Сезон '.$season .' Серия '.$episode.', '. $query_episode->episode_title,
             $model->release_name_ru .', Сезон '.$season .' Серия '.$episode.', '. $query_episode->episode_title
         );
-        return $this->render('new', [
+        return $this->render('view', [
             'release_full' => $release_full,
             'last_season' => $last_season,
             'model' => $model,
