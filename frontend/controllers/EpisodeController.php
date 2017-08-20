@@ -82,8 +82,7 @@ class EpisodeController extends AppController
         ->select(['episode_title', 'episode_season', 'episode_season_number', 'episode_runtime', 'episode_url'])
         ->where(['release_id' => $id, 'episode_season' => $season, 'episode_language' => 'ru-RU']);
         $release = $query->orderBy(['episode_season_number' => SORT_ASC])->all();
-        $release_trailer = FullName::findOne($id);
-//            ->select(['release_trailer']);
+        $release_full = FullName::findOne($id);
         $query_episode = Release::findOne([
             'release_id' => $id,
             'episode_season' => $season,
@@ -109,7 +108,7 @@ class EpisodeController extends AppController
             $model->release_name_ru .', Сезон '.$season .' Серия '.$episode.', '. $query_episode->episode_title
         );
         return $this->render('new', [
-            'trailer' => $release_trailer,
+            'release_full' => $release_full,
             'model' => $model,
             'params' => $params,
             'id' => $id,
