@@ -74,7 +74,6 @@ class EpisodeController extends AppController
 //            );
         endif;
 
-
         $id = $request->get('id'); 
         $season = $request->get('season'); 
         $episode = $request->get('episode');
@@ -82,6 +81,14 @@ class EpisodeController extends AppController
         ->select(['episode_title', 'episode_season', 'episode_season_number', 'episode_runtime', 'episode_url'])
         ->where(['release_id' => $id, 'episode_season' => $season, 'episode_language' => 'ru-RU']);
         $release = $query->orderBy(['episode_season_number' => SORT_ASC])->all();
+        $last_season = null;
+        if ($season !== 1) {
+            $query_last_season = Release::find()
+                ->select(['episode_title', 'episode_season', 'episode_season_number', 'episode_runtime', 'episode_url'])
+                ->where(['release_id' => $id, 'episode_season' => $season - 1, 'episode_language' => 'ru-RU'])
+                ->orderBy(['episode_season_number' => SORT_ASC])->all();
+            $last_season = count($query_last_season);
+        }
         $release_full = FullName::findOne($id);
         $query_episode = Release::findOne([
             'release_id' => $id,
@@ -109,6 +116,7 @@ class EpisodeController extends AppController
         );
         return $this->render('new', [
             'release_full' => $release_full,
+            'last_season' => $last_season,
             'model' => $model,
             'params' => $params,
             'id' => $id,
