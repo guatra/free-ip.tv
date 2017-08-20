@@ -46,6 +46,8 @@ use yii\helpers\FileHelper;
 
                 <?php $image = Url::to(['@lostfilm/Images/'.$model->id.'/Posters/poster.jpg'],'https'); ?>
                 <div class="container" style="background-image: url(<?= $image ?>) center no-reapet">
+                    <div class="embed-responsive embed-responsive-16by9 video-js-responsive-container vjs-hd">
+                        <div poster=<?= $image ?> preload="none" class="video-js vjs-sublime-skin vjs-paused vjs-controls-enabled vjs-workinghover vjs-user-inactive" id="player" role="region" aria-label="video player" tabindex="-1" style="outline: none;">
                     <?php
                     if ($query_episode->episode_url)
                         $url_episode = ['src' => Url::to($query_episode->episode_url , true), 'type' => 'video/mp4'];
@@ -78,6 +80,8 @@ use yii\helpers\FileHelper;
                             ]
                         ]
                     ]); ?>
+                        </div>
+                    </div>
                 </div>
             </div>
             </div>
