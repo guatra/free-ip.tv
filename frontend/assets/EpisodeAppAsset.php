@@ -17,6 +17,7 @@ class EpisodeAppAsset extends AssetBundle
         'css/release.css',
     ];
     public $js = [
+        '/js/videojs-ie8.min.js',
         '/js/video.min.js',
         '/js/videojs_5.vast.vpaid.min.js',
         '/js/google.js',

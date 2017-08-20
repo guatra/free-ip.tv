@@ -217,7 +217,7 @@ use yii\helpers\FileHelper;
                         Следующий сезон →
                     </a>
                 <?php elseif ($episode == $release_count): ?>
-                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season + 1, 'episode' => $episode])?>">
+                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season + 1, 'episode' => 1])?>">
                         Следующий сезон →
                     </a>
                 <?php else: ?>
