@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Request;
 
+
 class EpisodeController extends AppController
 {
 	// Задаём вывод по умолчанию Навигацонной панели
@@ -90,6 +91,7 @@ class EpisodeController extends AppController
             'episode_language' => 'ru-RU',
 
         ]);
+        $release_count = count($release);
         if ($query_episode) {$query_episode->updateCounters(['episode_views' => 1]);}
         // ОТправляем пользователя в ошибку
 //        if (!$query_episode) {
@@ -106,7 +108,7 @@ class EpisodeController extends AppController
             $model->release_name_ru .', Сезон '.$season .' Серия '.$episode.', '. $query_episode->episode_title,
             $model->release_name_ru .', Сезон '.$season .' Серия '.$episode.', '. $query_episode->episode_title
         );
-        return $this->render('view', [
+        return $this->render('new', [
             'trailer' => $release_trailer,
             'model' => $model,
             'params' => $params,
@@ -114,6 +116,7 @@ class EpisodeController extends AppController
             'season' => $season,
             'episode' => $episode,
             'release' => $release,
+            'release_count' => $release_count,
             'query_episode' => $query_episode,
             'userIP' => $userIP,
         ]);

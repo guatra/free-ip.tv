@@ -42,7 +42,7 @@ use yii\helpers\FileHelper;
 <section class="video-container">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                 <?php $image = Url::to(['@lostfilm/Images/'.$model->id.'/Posters/poster.jpg'],'https'); ?>
                 <div class="container" style="background-image: url(<?= $image ?>) center no-reapet">
@@ -79,18 +79,7 @@ use yii\helpers\FileHelper;
                         ]
                     ]); ?>
                 </div>
-
-
-
-
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 hidden-lg">
-
-                <div class="row">
-                    <button>1</button>
-                    <button>2</button>
-                </div>
-
             </div>
         </div>
     </div>
@@ -108,9 +97,9 @@ use yii\helpers\FileHelper;
                 <?php endif ?>
             </div>
             <div class="col-xs-6 text-center">
-                <?php if ($episode == 10 ): ?>
+                <?php if ($episode == $release_count ): ?>
                     <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode])?>">
-                        Следующая серия →
+                        Следующий сезон →
                     </a>
                 <?php else: ?>
                     <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode+1])?>">Следующая серия →
