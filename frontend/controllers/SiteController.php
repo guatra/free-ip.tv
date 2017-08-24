@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\models\SearchForm;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -17,7 +18,9 @@ use backend\models\Release;
 use backend\models\News;
 use yii\helpers\StringHelper;
 use yii\helpers\Url;
+use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
+use backend\models\FullName;
 
 /**
  * Site controller
@@ -54,6 +57,17 @@ class SiteController extends AppController
                 ],
             ],
         ];
+    }
+
+    public function beforeAction($action)
+    {
+        $model = new SearchForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+            $q = Html::encode($model->q);
+            return $this->redirect(Yii::$app->urlManager->createUrl(['site/search', 'q' => $q]));
+        }
+        return true;
     }
 
     /**
@@ -213,6 +227,7 @@ class SiteController extends AppController
     {
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+//        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
                 Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
 
@@ -250,6 +265,15 @@ class SiteController extends AppController
 
         return $this->render('resetPassword', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionSearch()
+    {
+        $q = Yii::$app->getRequest()->getQueryParam('q');
+        $data = ['q'=> $q];
+        return $this->render('search',[
+            'data' => $data,
         ]);
     }
 
@@ -293,7 +317,7 @@ class SiteController extends AppController
                 },
                 'link' => function ($model, $widget, \Zelenin\Feed $feed) {
 //                    return Url::toRoute(['news/view', 'id' => $model->id], true);
-                    return Url::toRoute(['/episode/view', 'id' => 1],true);
+                    return Url::toRoute(['/search/hash', 'q' => $model->episode_article_key],true);
                 },
                 'author' => function ($model, $widget, \Zelenin\Feed $feed) {
                     return $model->author . ' (' . $model->author . ')';
@@ -303,7 +327,7 @@ class SiteController extends AppController
 //                },
                 'guid' => function ($model, $widget, \Zelenin\Feed $feed) {
                     $date = \DateTime::createFromFormat('Y-m-d H:i:s', $model->created_at);
-                    return Url::toRoute(['news/view', 'id' => $model->id], true);
+                    return Url::toRoute(['news/view', 'hash' => $model->episode_article_key], true);
                 },
                 'pubDate' => function ($model, $widget, \Zelenin\Feed $feed) {
                     $date = date('D, d M Y H:i:s O', $model->created_at);

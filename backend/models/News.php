@@ -20,6 +20,7 @@ use Yii;
  * @property integer $series_id
  * @property integer $season_id
  * @property integer $episode_id
+ * @property string $episode_article_key
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -40,7 +41,7 @@ class News extends \yii\db\ActiveRecord
             [['content'], 'string'],
             [['created_at', 'updated_at'], 'required'],
             [['created_at', 'updated_at', 'series_id', 'season_id', 'episode_id'], 'integer'],
-            [['title', 'author', 'description', 'keywords', 'type'], 'string', 'max' => 255],
+            [['episode_article_key', 'title', 'author', 'description', 'keywords', 'type'], 'string', 'max' => 255],
             [['image'], 'string', 'max' => 1024],
         ];
     }
@@ -64,6 +65,7 @@ class News extends \yii\db\ActiveRecord
             'series_id' => Yii::t('app', 'Series ID'),
             'season_id' => Yii::t('app', 'Season ID'),
             'episode_id' => Yii::t('app', 'Episode ID'),
+            'episode_article_key' => Yii::t('app', 'EPISODE_ARTICLE_KEY'),
         ];
     }
 }

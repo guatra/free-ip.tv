@@ -74,10 +74,10 @@ use yii\helpers\FileHelper;
                                 //            ['src' => 'http://vjs.zencdn.net/v/oceans.mp4', 'type' => 'video/mp4'],
                                 //            ['src' => 'http://vjs.zencdn.net/v/oceans.webm', 'type' => 'video/webm']
                             ],
-                            'track' => [
-                                ['kind' => 'captions', 'src' => 'http://vjs.zencdn.net/vtt/captions.vtt', 'srclang' => 'en', 'label' => 'English'],
-                                ['kind' => 'captions', 'src' => 'http://vjs.zencdn.net/vtt/captions.vtt', 'srclang' => 'ru', 'label' => 'Russian']
-                            ]
+//                            'track' => [
+//                                ['kind' => 'captions', 'src' => 'http://vjs.zencdn.net/vtt/captions.vtt', 'srclang' => 'en', 'label' => 'English'],
+//                                ['kind' => 'captions', 'src' => 'http://vjs.zencdn.net/vtt/captions.vtt', 'srclang' => 'ru', 'label' => 'Russian']
+//                            ]
                         ]
                     ]); ?>
                         </div>

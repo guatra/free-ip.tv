@@ -11,6 +11,8 @@ use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use frontend\assets\SiteAppAsset;
 use yii\helpers\Url;
+use frontend\models\SearchForm;
+use yii\widgets\ActiveForm;
 
 
 SiteAppAsset::register($this);
@@ -18,6 +20,8 @@ SiteAppAsset::register($this);
 $session = Yii::$app->session;
 $session['language'] == '' ? $session['language'] = Yii::$app->language : $lang = $session['language'];
 $lang = $session['language'];
+
+$model = new SearchForm();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -49,9 +53,10 @@ $lang = $session['language'];
 
             <!-- Search -->
             <section id="search" class="alt">
-                <form method="post" action="#">
-                    <input type="text" name="query" id="query" placeholder="Search" />
-                </form>
+
+            <?php $form = ActiveForm::begin(); ?>
+                <?= $form->field($model, 'q')->label('Search')->textInput(['class' => 'input', 'id' => 'query']) ?>
+                <?php ActiveForm::end(); ?>
             </section>
 
             <!-- Menu -->

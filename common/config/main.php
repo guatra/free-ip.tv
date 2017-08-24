@@ -59,11 +59,11 @@ return [
                     'route' => 'main/search',
                     'suffix' => '.html'
                 ],
-                [
-                    'pattern' => 'найти-<search:\w*>',
-                    'route' => 'main/search',
-                    'suffix' => '.html'
-                ],
+//                [
+//                    'pattern' => 'search/<q:\w*>',
+//                    'route' => 'site/search',
+//                    'suffix' => ''
+//                ],
                 [
                     'pattern' => 'series/<id:\d+>',
                     'route' => 'series/view',
