@@ -91,6 +91,7 @@ class MoviesController extends AppController
             ->one();
         // if ($data){$data->updateCounters(['release_totalseasons' => 1]);}
         $trailer = $model_movie['release_trailer'];
+        $img = $model_movie['release_preview_image'];
         if (!$trailer) {
             $trailer = 'http://kp.cdn.yandex.net/840152/kinopoisk.ru-Rogue-One_-A-Star-Wars-Story-315981.mp4';
         }
@@ -99,7 +100,7 @@ class MoviesController extends AppController
             ->one();
         $url = $this->getUrl($movie['episode_url']);
 //        $url = $trailer;
-        $data = ['movie' => $movie, 'url' => $url, 'trailer' => $trailer];
+        $data = ['movie' => $movie, 'url' => $url, 'trailer' => $trailer, 'img' => $img];
         $this->setMeta($movie->episode_title." ".Yii::$app->name, "", "");
         return $this->render('view', ['data' => $data]);
 //        return $this->render('data', ['data' => $data]);

@@ -7,8 +7,10 @@ use yii\helpers\Html;
 use yii\bootstrap\NavBar;
 use yii\bootstrap\Nav;
 use frontend\assets\MoviesAppAsset;
+use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
+//AppAsset::register($this);
 MoviesAppAsset::register($this);
 $session = Yii::$app->session;
 $session['language'] == '' ? $session['language'] = Yii::$app->language : $lang = $session['language'];

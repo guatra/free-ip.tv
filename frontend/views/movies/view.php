@@ -10,6 +10,11 @@ use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use yii\helpers\FileHelper;
 ?>
+<div id="cover-preloader">
+    <div>
+        <h1><?= Yii::t('frontend', 'APP_LOADING').' '.$data["movie"]["episode_title"]; ?></h1>
+    </div>
+</div>
 <section class="nav-top">
         <?php
         NavBar::begin([
@@ -47,7 +52,18 @@ use yii\helpers\FileHelper;
 <section class="video-container">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="hidden-xs col-md-3 col-lg-3">
+                <div class="thumbnail">
+                    <?=Html::img(Url::to($data["img"], true), ['class'=>'' , 'alt' => ''])?>
+                    <div class="content">
+                        <div class="title" itemprop="name"><?= Html::encode($data["movie"]["episode_title"]) ?></div>
+                        <div class="subtitle">
+                            <meta itemprop="numberOfSeasons" content="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-9 col-lg-9">
                 <div class="embed-responsive embed-responsive-16by9">
                     <?php
                     if ($data["url"])

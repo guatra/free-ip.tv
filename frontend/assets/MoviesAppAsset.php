@@ -12,10 +12,12 @@ class MoviesAppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/preloder.css',
         'css/videojs-sublime-skin.css',
         'css/movies.css',
     ];
     public $js = [
+        'js/preloader.js',
         //'js/resize_player.js',
         '/js/google.js',
     ];

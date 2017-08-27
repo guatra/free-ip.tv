@@ -1,0 +1,15 @@
+
+#cover-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fefefe;
+    z-index: 1200;
+}
+#cover-preloader > div {
+    position: relative;
+    left: 60vh;
+    top: 50vh;
+}
