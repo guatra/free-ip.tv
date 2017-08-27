@@ -74,9 +74,10 @@ use yii\helpers\FileHelper;
                     <?= VideoJsWidget::widget([
                         'options' => [
                             'class' => 'embed-responsive-item video-js vjs-fluid vjs-big-play-centered',
-                            'poster' => "http://video-js.zencoder.com/oceans-clip.png",
+                            'poster' => "",
                             'width' => '640',
                             'height' => '264',
+                            'preload' => false,
                             'autoplay' => false,
                             'controls' => true,
                         ],
