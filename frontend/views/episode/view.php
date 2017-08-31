@@ -114,13 +114,13 @@ use yii\helpers\FileHelper;
                         Следующий сезон →
                     </a>
                 <?php elseif ($episode == $release_count): ?>
-                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season + 1, 'episode' => 1])?>">
-                        Следующий сезон →
-                    </a>
+
+                    <?= Html::a(Yii::t('frontend', 'APP_NEXT_SEASON'.' '.Icon::show('long-arrow-right', ['class' => 'icon'], Icon::FA)), Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season + 1, 'episode' => 1]), ['class' => 'btn']) ?>
+
                 <?php else: ?>
-                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode + 1])?>">
-                        Следующая серия →
-                    </a>
+
+                        <?= Html::a(Yii::t('frontend', 'APP_NEXT_SERIES'.' '.Icon::show('long-arrow-right', ['class' => 'icon'], Icon::FA)), Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode + 1]), ['class' => 'btn']) ?>
+
                 <?php endif ?>
             </div>
         </div>
@@ -145,9 +145,9 @@ use yii\helpers\FileHelper;
     <div class="container">
         <ul class="breadcrumb">
             <li class="hidden-xs"><?= Html::a(Yii::t('frontend', 'APP_SERIES'), ['/series/index'], ['class' => 'user-series']) ?></li>
-            <li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id])?>"><?= $model->release_name_ru ?></a></li>
-            <li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id, 'season' => $season ])?>">Сезон <?= $season ?></a></li>
-            <li class="active">Серия <?= $episode ?></li>
+            <li><?= Html::a($model->release_name_ru, Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id]), ['class' => '']) ?></li>
+            <li><?= Html::a(Yii::t('frontend', 'APP_SEASON').' '.$season, Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id, 'season' => $season ]), ['class' => '']) ?></li>
+            <li class="active"><?=Yii::t('frontend', 'APP_SEASON_SERIES').' '.$episode ?></li>
         </ul>
     </div>
 </div>
@@ -171,7 +171,7 @@ use yii\helpers\FileHelper;
                             <div class="subtitle">
                                 <?= $releaseItem->episode_title; ?></div>
                         </div>
-                        <div class="duration"><?= $releaseItem->episode_runtime; ?> <?= Yii::t('frontend', 'APP_мин') ?></div>
+                        <div class="duration"><?= $releaseItem->episode_runtime; ?> <?= Yii::t('frontend', 'APP_MIN') ?></div>
                         <div class="play-button"></div>
                     </div>
                 </a>

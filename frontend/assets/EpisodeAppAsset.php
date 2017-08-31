@@ -15,6 +15,7 @@ class EpisodeAppAsset extends AssetBundle
         'css/video-js.min.css',
         'css/videojs-sublime-skin.css',
         'css/release.css',
+        'css/font-awesome.min.css',
     ];
     public $js = [
         '/js/videojs-ie8.min.js',
