@@ -107,6 +107,11 @@ return [
                     'suffix' => ''
                 ],
                 [
+                    'pattern' => 'tv',
+                    'route' => 'tv/index',
+                    'suffix' => ''
+                ],
+                [
                     'pattern' => 'tv/<action>',
                     'route' => 'tv/<action>',
                     'suffix' => ''
@@ -117,6 +122,11 @@ return [
                     'suffix' => ''
                 ],
                 [
+                    'pattern' => 'source-message',
+                    'route' => 'source-message/index',
+                    'suffix' => '',
+                ],
+                [
                     'pattern' => '<controller>/<action>/<id:\d+>',
                     'route' => '<controller>/<action>',
                     'suffix' => ''
@@ -124,7 +134,7 @@ return [
                 [
                     'pattern' => '<controller>/<action>',
                     'route' => '<controller>/<action>',
-                    'suffix' => '.html'
+                    'suffix' => ''
                 ],
                 [
                     'pattern' => '<module>/<controller>/<action>/<id:\d+>',

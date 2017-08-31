@@ -71,8 +71,9 @@ $model = new SearchForm();
                             <li><?= Html::a(Yii::t('frontend', 'APP_TV'), ['/tv/index'], ['class' => 'tv']) ?></li>
                         </ul>
                     </li>
+                    <li><?= Html::a(Yii::t('frontend', 'APP_TV'), ['/tv/index'], ['class' => 'tv']) ?></li>
                     <li><?= Html::a(Yii::t('frontend', 'APP_MOVIES'), ['/movies/index'], ['class' => 'user-moview']) ?></li>
-                    <li><?= Html::a(Yii::t('frontend', 'APP_SERIALS'), ['/series/index'], ['class' => 'user-series']) ?></li>
+                    <li><?= Html::a(Yii::t('frontend', 'APP_SERIES'), ['/series/index'], ['class' => 'user-series']) ?></li>
 
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_USER_PLAYLIST'), ['class' => 'opener']) ?>

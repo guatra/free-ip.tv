@@ -19,11 +19,11 @@ use yii\helpers\FileHelper;
         'brandLabel' =>  $model->release_name_ru,
         'brandUrl' => Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$model->id]),
         'options' => [
-            'class' => 'navbar navbar-inverse navbar-fixed-top',
+            'class' => 'navbar navbar-inverse navbar-fixed-top clip',
         ],
     ]);
     for ($i=1; $i <= $model->release_totalseasons ; $i++) {
-        $menuItemsInSide[] = ['label' => 'Сезон '.$i, 'url' => ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => 1], 'linkOptions' => []];
+        $menuItemsInSide[] = ['label' => Yii::t('frontend', 'APP_SEASON').' '.$i, 'url' => ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => 1], 'linkOptions' => []];
     }
     $menuItems = [
         [
@@ -144,7 +144,7 @@ use yii\helpers\FileHelper;
 <div class="breadcrumbs-container">
     <div class="container">
         <ul class="breadcrumb">
-            <li><a href="<?=Yii::$app->urlManager->createUrl(['/series/index'])?>">TV SHOWS</a></li>
+            <li class="hidden-xs"><?= Html::a(Yii::t('frontend', 'APP_SERIES'), ['/series/index'], ['class' => 'user-series']) ?></li>
             <li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id])?>"><?= $model->release_name_ru ?></a></li>
             <li><a href="<?=Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id, 'season' => $season ])?>">Сезон <?= $season ?></a></li>
             <li class="active">Серия <?= $episode ?></li>
@@ -166,12 +166,12 @@ use yii\helpers\FileHelper;
                         <img src="https://static.lostfilm.tv/Images/<?php echo $id; ?>/Posters/e_<?php echo $releaseItem->episode_season; ?>_<?php echo $releaseItem->episode_season_number; ?>.jpg" alt="">
                         <div class="content">
                             <div class="title">
-                                Сезон <?php echo $releaseItem->episode_season; ?>,
-                                Серия <?php echo $releaseItem->episode_season_number; ?> </div>
+                                <?= Yii::t('frontend', 'APP_SEASON') ?> <?= $releaseItem->episode_season; ?>,
+                                <?= Yii::t('frontend', 'APP_SEASON_SERIES') ?> <?= $releaseItem->episode_season_number; ?> </div>
                             <div class="subtitle">
-                                <?php echo $releaseItem->episode_title; ?></div>
+                                <?= $releaseItem->episode_title; ?></div>
                         </div>
-                        <div class="duration"><?php echo $releaseItem->episode_runtime; ?> мин</div>
+                        <div class="duration"><?= $releaseItem->episode_runtime; ?> <?= Yii::t('frontend', 'APP_мин') ?></div>
                         <div class="play-button"></div>
                     </div>
                 </a>

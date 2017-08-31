@@ -25,10 +25,13 @@ EpisodeAppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+<div id="cover-preloader">
+    <div>
+        <h1><?php Yii::t('frontend', 'APP_LOADING'); ?></h1>
+    </div>
+</div>
 
 
-
-        
         <?= Alert::widget() ?>
         <?= $content ?>
 
