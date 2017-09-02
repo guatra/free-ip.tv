@@ -580,3 +580,6 @@ a {
 .dropdown-menu {
     background-color: #080808;
 }
+#cover-preloader {
+    margin-top: -30px;
+}

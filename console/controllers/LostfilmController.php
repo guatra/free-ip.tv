@@ -16,6 +16,7 @@ class LostfilmController extends \yii\console\Controller
             ->select(['release_name_ru', 'release_lostfilmid', 'release_lostfilm_alias']) //Запрашиваем lostfilm_id в картотеке
             ->where(['release_show' => 1, 'release_status' => 1]) //где статус снимается и показывать значение true
             ->andWhere(['not', ['release_lostfilmid' => null]])
+            ->orderBy(['id' => SORT_DESC])
 //         lost//
 //            ->where(['release_lostfilmid' => 145])
             ->all(); // массив
@@ -115,6 +116,8 @@ class LostfilmController extends \yii\console\Controller
                     $release_find_ru = Release::find()
                         ->where(['release_id' => $id, 'episode_season' => $season, 'episode_season_number' => $episode_e, 'episode_language' => 'ru-RU'])->one();
                     echo "Проход " . $i . "\n";
+                    $episode_article_key = Yii::$app->security->generateRandomString();
+                    echo $episode_article_key."\n";
                     if ( !$release_find_ru ) {
 
                         if ( $name_ru != '' ) {
@@ -122,7 +125,7 @@ class LostfilmController extends \yii\console\Controller
                             echo "Начинаю запись в базу\n";
                             $episode = new Release();
                             $episode->release_id = $id;
-                            $episode->episode_article_key = Yii::$app->security->generateRandomString();
+                            $episode->episode_article_key = $episode_article_key;
                             $episode->episode_title = $name_ru;
                             $episode->episode_season = $season;
                             $episode->episode_season_number = $episode_e;
@@ -136,7 +139,7 @@ class LostfilmController extends \yii\console\Controller
                                 "Сезон " . $season . " Эпизод " . $episode_e,
                                 "/Images/".$id."/Posters/poster.jpg",
                                 'rss',
-                                'series', $id, $season, $episode_e) : 1;
+                                'series', $id, $season, $episode_e, $episode_article_key) : 1;
                             // $episode->save() ? $this->getSend() : 1;
                             echo "Русский релиз записан: Сериал " . $release_name_ru . " Сезон " . $season . " Эпизод " . $episode_e . " Название: " . $name_ru . "\n";
                         }
@@ -225,7 +228,7 @@ class LostfilmController extends \yii\console\Controller
         return $data_e;
     }
 
-    protected function getNews($title = 'news', $content = null, $description = null, $image = null, $author = null, $type = null, $series = null, $season = null, $episode = null){
+    protected function getNews($title = 'news', $content = null, $description = null, $image = null, $author = null, $type = null, $series = null, $season = null, $episode = null, $episode_article_key = null){
         $news = new News();
         $news->title = $title;
         $news->content = $content;
@@ -238,6 +241,7 @@ class LostfilmController extends \yii\console\Controller
         $news->episode_id = $episode;
         $news->created_at = time();
         $news->updated_at = time();
+        $news->episode_article_key = $episode_article_key;
         $news->save();
     }
 

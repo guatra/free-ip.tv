@@ -19,7 +19,7 @@ use yii\helpers\FileHelper;
         'brandLabel' =>  $model->release_name_ru,
         'brandUrl' => Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$model->id]),
         'options' => [
-            'class' => 'navbar navbar-inverse navbar-fixed-top clip',
+            'class' => 'navbar navbar-inverse navbar-fixed-top',
         ],
     ]);
     for ($i=1; $i <= $model->release_totalseasons ; $i++) {
@@ -61,7 +61,7 @@ use yii\helpers\FileHelper;
                             'width' => 'auto',
                             'height' => 'auto',
                             'autoplay' => false,
-                            'controls' => true,
+                            'controls' => false,
                         ],
                         'jsOptions' => [
                             'preload' => 'auto',
@@ -125,8 +125,8 @@ use yii\helpers\FileHelper;
             </div>
         </div>
         <h1 class="serial-title">
-            <?= $model->release_name_ru ?> <span itemprop="partOfSeason"><?= $season ?></span> сезон
-            <span itemprop="episodeNumber"><?= $episode ?></span> серия
+            <?= $model->release_name_ru ?> <span itemprop="partOfSeason"><?= $season ?></span> <?=Yii::t('frontend', 'APP_SEASON')?>
+            <span itemprop="episodeNumber"><?= $episode ?></span> <?= strtolower(Yii::t('frontend', 'APP_SEASON_SERIES'))?>
         </h1>
         <div class="episode-description" itemprop="description">
             <p>
