@@ -155,7 +155,7 @@ use yii\helpers\FileHelper;
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h3>Все серии <?php echo $season; ?> сезона</h3>
+            <h3><?=Yii::t('frontend', 'APP_ALL_SEASON_SERIES').' '.$season; ?> сезона</h3>
         </div>
     </div>
     <div class="row">
