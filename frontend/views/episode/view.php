@@ -61,7 +61,7 @@ use yii\helpers\FileHelper;
                             'width' => 'auto',
                             'height' => 'auto',
                             'autoplay' => false,
-                            'controls' => false,
+                            'controls' => true,
                         ],
                         'jsOptions' => [
                             'preload' => 'auto',
@@ -119,7 +119,7 @@ use yii\helpers\FileHelper;
 
                 <?php else: ?>
 
-                        <?= Html::a(Yii::t('frontend', 'APP_NEXT_SERIES').' '.Icon::show('long-arrow-right', ['class' => 'icon'], Icon::FA), Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode + 1]), ['class' => 'btn']) ?>
+                    <?= Html::a(Yii::t('frontend', 'APP_NEXT_SERIES').' '.Icon::show('long-arrow-right', ['class' => 'icon'], Icon::FA), Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode + 1]), ['class' => 'btn']) ?>
 
                 <?php endif ?>
             </div>
