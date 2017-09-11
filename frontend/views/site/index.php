@@ -38,7 +38,8 @@ use yii\helpers\Url;
                     <p><?php echo $element->episode_plot ?></p>
                     <ul class="actions">
                         <li>
-                            <a href="<?= Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $element->release_id, 'season' => $element->episode_season, 'episode' => $element->episode_season_number]) ?>" itemprop="url" class="button">Больше</a
+
+                            <a href="<?= Yii::$app->urlManager->createUrl(['/news/view', 'hash' => $element->episode_article_key]) ?>" itemprop="url" class="button">Больше</a>
 
                         </li>
                     </ul>
