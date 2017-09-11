@@ -39,7 +39,7 @@ use yii\helpers\Url;
                     <ul class="actions">
                         <li>
 
-                            <a href="<?= Yii::$app->urlManager->createUrl(['/news/view', 'hash' => $element->episode_article_key]) ?>" itemprop="url" class="button">Больше</a>
+                            <a href="<?= Yii::$app->urlManager->createUrl(['/search/hash', 'q' => $element->episode_article_key]) ?>" itemprop="url" class="button">Больше</a>
 
                         </li>
                     </ul>
