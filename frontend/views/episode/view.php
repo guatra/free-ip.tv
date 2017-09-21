@@ -91,28 +91,29 @@ use yii\helpers\FileHelper;
         <div class="row links">
             <div class="col-xs-6 text-center">
                 <?php if ($episode == 1 AND $season == 1): ?>
-                    <a class="btn disabled" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => 1])?>">
-                        ← Предыдущая серия
-                    </a>
+
+                    <?= Html::a(Icon::show('long-arrow-left', ['class' => 'icon'], Icon::FA).' '.Yii::t('frontend', 'APP_PREVIOUS_SERIES'), Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => 1]), ['class' => 'btn disabled']) ?>
+
+
                 <?php elseif ( $episode == 1 AND 1 < $season ): ?>
-                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season - 1, 'episode' => $last_season])?>">
-                        ← Предыдущий сезон
-                    </a>
+
+                    <?= Html::a(Icon::show('long-arrow-left', ['class' => 'icon'], Icon::FA).' '.Yii::t('frontend', 'APP_PREVIOUS_SEASON'), Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season - 1, 'episode' => $last_season]), ['class' => 'btn']) ?>
+
                 <?php elseif ($episode == 1): ?>
-                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => 1])?>">
-                        ← Предыдущая серия
-                    </a>
+
+                    <?= Html::a(Icon::show('long-arrow-left', ['class' => 'icon'], Icon::FA).' '.Yii::t('frontend', 'APP_PREVIOUS_SERIES'), Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => 1]), ['class' => 'btn']) ?>
+
                 <?php else: ?>
-                    <a class="btn" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode - 1])?>">
-                        ← Предыдущая серия
-                    </a>
+
+                    <?= Html::a(Icon::show('long-arrow-left', ['class' => 'icon'], Icon::FA).' '.Yii::t('frontend', 'APP_PREVIOUS_SERIES'), Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $episode - 1]), ['class' => 'btn']) ?>
+
                 <?php endif ?>
             </div>
             <div class="col-xs-6 text-center">
                 <?php if ($episode == $release_count AND $season == $release_full->release_totalseasons): ?>
-                    <a class="btn disabled" href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season + 1, 'episode' => $episode])?>">
-                        Следующий сезон →
-                    </a>
+
+                    <?= Html::a(Yii::t('frontend', 'APP_NEXT_SEASON_END').' '.Icon::show('long-arrow-right', ['class' => 'icon'], Icon::FA), Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season + 1, 'episode' => $episode]), ['class' => 'btn disabled']) ?>
+
                 <?php elseif ($episode == $release_count): ?>
 
                     <?= Html::a(Yii::t('frontend', 'APP_NEXT_SEASON').' '.Icon::show('long-arrow-right', ['class' => 'icon'], Icon::FA), Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season + 1, 'episode' => 1]), ['class' => 'btn']) ?>
@@ -126,7 +127,8 @@ use yii\helpers\FileHelper;
         </div>
         <h1 class="serial-title">
             <?= $model->release_name_ru ?> <span itemprop="partOfSeason"><?= $season ?></span> <?=Yii::t('frontend', 'APP_SEASON')?>
-            <span itemprop="episodeNumber"><?= $episode ?></span> <?= strtolower(Yii::t('frontend', 'APP_SEASON_SERIES'))?>
+            <span itemprop="episodeNumber"><?= $episode ?></span> <?= Yii::t('frontend', 'APP_SEASON_SERIES')?>
+            <br><?= $query_episode->episode_title?>
         </h1>
         <div class="episode-description" itemprop="description">
             <p>
@@ -148,6 +150,7 @@ use yii\helpers\FileHelper;
             <li><?= Html::a($model->release_name_ru, Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id]), ['class' => '']) ?></li>
             <li><?= Html::a(Yii::t('frontend', 'APP_SEASON').' '.$season, Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id, 'season' => $season ]), ['class' => '']) ?></li>
             <li class="active"><?=Yii::t('frontend', 'APP_SEASON_SERIES').' '.$episode ?></li>
+            <li class="hidden-xs active"><?=$query_episode->episode_title ?></li>
         </ul>
     </div>
 </div>
@@ -162,8 +165,11 @@ use yii\helpers\FileHelper;
         <?php foreach ($release as $releaseItem): ?>
             <div class="col-sm-6 col-md-4 episode <?php if($releaseItem->episode_season == $season AND $releaseItem->episode_season_number == $episode){echo 'active';}?>">
                 <a href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $releaseItem->episode_season_number ])?>">
-                    <div class="thumbnail">
-                        <img src="https://static.lostfilm.tv/Images/<?php echo $id; ?>/Posters/e_<?php echo $releaseItem->episode_season; ?>_<?php echo $releaseItem->episode_season_number; ?>.jpg" alt="">
+                    <div class="thumbnail"><?php if (file_exists("https://static.lostfilm.tv/Images/".$id."/Posters/e_".$releaseItem->episode_season."_".$releaseItem->episode_season_number.".jpg")): ?>
+                            <img src=<?php echo "https://static.lostfilm.tv/Images/".$id."/Posters/e_".$releaseItem->episode_season."_".$releaseItem->episode_season_number.".jpg"; ?> alt="">
+                        <?php else: ?>
+                            echo "Файл  не существует";
+                        <?php endif; ?>
                         <div class="content">
                             <div class="title">
                                 <?= Yii::t('frontend', 'APP_SEASON') ?> <?= $releaseItem->episode_season; ?>,

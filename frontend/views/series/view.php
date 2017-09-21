@@ -103,35 +103,32 @@ use kartik\icons\Icon;
     										<td>Актерский состав</td>
     										<td><?=$model->release_actors?></td>
     									</tr>
-    									<tr>
+    									<tr class="xs-hidden">
     										<td>Описание</td>
     										<td><?=$model->release_plot?></td>
     									</tr>
     								</tbody></table>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            Описание
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <?=$model->release_plot?>
+                                        </div>
+                                    </div>
     								<div class="row">
-    									<div class="col-sm-6 rating kp">
-    										<div class="pull-left">
-    											<img class=" logo" src="img/kp.png" height="18" alt="Кинопоиск">
-    										</div>
-    										<div class="pull-left">
+                                        <div class="col-sm-6 rating">
+                                            <div class="pull-left">
+                                                <?= Icon::show('imdb', ['class' => 'fa-3x'], Icon::FA) ?>
 
-    											<div class="value"><?= Icon::show('leaf', ['class' => 'fa-3x'], Icon::FA) ?>8.101</div>
-    											<div class="stars">
-    												<div class="fill" style="width: 87.909px"></div>
-    											</div>
-    										</div>
-    									</div>
-    									<div class="col-sm-6 rating imdb">
-    										<div class="pull-left">
-    											<img class="logo" src="img/imdb.png" height="22" alt="IMdb">
-    										</div>
-    										<div class="pull-left">
-    											<div class="value"><?=$model->release_imdbrating?></div>
-    											<div class="stars">
-    												<div class="fill" style="width: 93.3px"></div>
-    											</div>
-    										</div>
-    									</div>
+                                            </div>
+                                            <div class="pull-left">
+                                                <div class="value"><?=$model->release_lostfilmrating?></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 rating">
+
+                                        </div>
     								</div>
     							</div>
     						</div>

@@ -197,7 +197,7 @@ use kartik\icons\Icon;
             </div>
             <div class="row">
                 <?php foreach ($recommendations as $recommendation):?>
-                    <?php foreach ($serials as $serial): ?>
+                    <?php foreach ($series as $serial): ?>
                         <?php if ($serial->id == $recommendation): ?>
                             <div class="col-sm-6 col-md-3 episode" itemscope="" itemtype="http://schema.org/TVSeries">
                                 <a href="<?=Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$serial->id])?>" title="<?php echo $serial->release_name_ru;?> смотреть онлайн" itemprop="url">

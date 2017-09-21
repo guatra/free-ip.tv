@@ -65,52 +65,80 @@ use kartik\icons\Icon;
 
     					</div>
     					<div class="col-md-9">
-    						<table class="table table-responsive">
-    							<tbody>
-                                <tr>
-    								<td>Оригинальное название</td>
-    								<td itemprop="name"><?=$model->release_name_en?></td>
-    							</tr>
-    							<tr>
-    								<td>Сезоны</td>
-    								<td itemprop="containsSeason" itemscope="" itemtype="http://schema.org/TVSeason">
-    								<?php 
-    									for ($i=1; $i <= $model->release_totalseasons ; $i++) { 
-    										echo Html::a($i.' сезон', ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => '1' ], ['itemprop' => 'name']);
-    										
-    										if ($i < $model->release_totalseasons) {
-    											echo ', ';
-    										}
-    										
-    									}
-    								?>
-    								</td>
-    									</tr>
-    									<tr>
-    										<td>Год выпуска</td>
-    										<td>
-                                                <?php echo date('Y', $model->release_released); ?>
-                                            </td>
-    									</tr>
-    									<tr>
-    										<td>Жанр</td>
-    										<td itemprop="genre"><?=$model->release_genre?></td>
-    									</tr>
-    									<tr>
-    										<td>Режиссёр</td>
-    										<td itemprop="directors"><?=$model->release_director?></td>
-    									</tr>
-    									<tr>
-    										<td>Актерский состав</td>
-    										<td><?=$model->release_actors?></td>
-    									</tr>
-    									<tr>
-    										<td>Описание</td>
-    										<td><?=$model->release_plot?></td>
-    									</tr>
-    								</tbody></table>
+                            <hr>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <?=Yii::t('frontend', 'APP_ORIGINAL_NAME'); ?>
+                                </div>
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                    <?=$model->release_name_en?>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                    <?=Yii::t('frontend', 'APP_SEASONS'); ?>
+                                </div>
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                            <?php
+                                            for ($i=1; $i <= $model->release_totalseasons ; $i++) {
+                                                echo Html::a($i.' сезон', ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => '1' ], ['itemprop' => 'name']);
+
+                                                if ($i < $model->release_totalseasons) {
+                                                    echo ', ';
+                                                }
+
+                                            }
+                                            ?>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                            <?=Yii::t('frontend', 'APP_YEAR_OF_ISSUE'); ?>
+                                </div>
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                            <?php echo date('Y', $model->release_released); ?>
+                                </div>
+                            </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                            <?=Yii::t('frontend', 'APP_GENRE'); ?>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                            <?=$model->release_genre?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                            <?=Yii::t('frontend', 'APP_DIRECTOR'); ?>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                            <?=$model->release_director?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                            <?=Yii::t('frontend', 'APP_CAST'); ?>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                            <?=$model->release_actors?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                            <?=Yii::t('frontend', 'APP_DESCRIPTION'); ?>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                            <?=$model->release_plot?>
+                                        </div>
+                                    </div>
     								<div class="row">
-    									<div class="col-sm-6 rating kp">
+    									<div class="col-sm-6 rating">
     										<div class="pull-left">
                                                 <?= Icon::show('imdb', ['class' => 'fa-3x'], Icon::FA) ?>
 
@@ -119,7 +147,7 @@ use kartik\icons\Icon;
     											<div class="value"><?=$model->release_lostfilmrating?></div>
     										</div>
     									</div>
-    									<div class="col-sm-6 rating imdb">
+    									<div class="col-sm-6 rating">
 
     									</div>
     								</div>
