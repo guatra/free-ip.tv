@@ -165,11 +165,8 @@ use yii\helpers\FileHelper;
         <?php foreach ($release as $releaseItem): ?>
             <div class="col-sm-6 col-md-4 episode <?php if($releaseItem->episode_season == $season AND $releaseItem->episode_season_number == $episode){echo 'active';}?>">
                 <a href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $releaseItem->episode_season_number ])?>">
-                    <div class="thumbnail"><?php if (file_exists("https://static.lostfilm.tv/Images/".$id."/Posters/e_".$releaseItem->episode_season."_".$releaseItem->episode_season_number.".jpg")): ?>
-                            <img src=<?php echo "https://static.lostfilm.tv/Images/".$id."/Posters/e_".$releaseItem->episode_season."_".$releaseItem->episode_season_number.".jpg"; ?> alt="">
-                        <?php else: ?>
-                            echo "Файл  не существует";
-                        <?php endif; ?>
+                    <div class="thumbnail">
+                        <img src=<?php echo "@web/Images/".$id."/Posters/e_".$releaseItem->episode_season."_".$releaseItem->episode_season_number.".jpg"; ?> alt="">
                         <div class="content">
                             <div class="title">
                                 <?= Yii::t('frontend', 'APP_SEASON') ?> <?= $releaseItem->episode_season; ?>,
