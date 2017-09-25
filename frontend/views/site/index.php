@@ -32,7 +32,7 @@ use yii\helpers\Url;
                 <article>
 
                     <a href="#" class="image">
-                    <?php echo Html::img(Url::to(['@web/uploads/Images/'.$element->release_id.'/Posters/poster.jpg'],'https'), ['alt' => $element->episode_title, 'itemprop' => 'image']); ?>
+                    <?php echo Html::img(Url::to(['@web/uploads/Images/'.$element->release_id.'/Posters/poster.jpg'], true), ['alt' => $element->episode_title, 'itemprop' => 'image']); ?>
                     </a>
                     <h3><?php echo $element->episode_title ?></h3>
                     <p><?php echo $element->episode_plot ?></p>
