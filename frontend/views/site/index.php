@@ -31,8 +31,8 @@ use yii\helpers\Url;
                 <?php foreach ($data as $element): ?>
                 <article>
 
-                    <a href="#" class="image">
-                    <?php echo Html::img(Url::to(['@web/uploads/Images/'.$element->release_id.'/Posters/poster.jpg'], true), ['alt' => $element->episode_title, 'itemprop' => 'image']); ?>
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/search/hash', 'q' => $element->episode_article_key]) ?>" class="image">
+                    <?php echo Html::img(Url::to(['/uploads/Images/'.$element->release_id.'/Posters/poster.jpg'], true), ['alt' => $element->episode_title, 'itemprop' => 'image']); ?>
                     </a>
                     <h3><?php echo $element->episode_title ?></h3>
                     <p><?php echo $element->episode_plot ?></p>
