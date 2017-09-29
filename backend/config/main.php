@@ -53,7 +53,9 @@ return [
             ],
         ],
         */
-       
+       'aliases' => [
+           '@stream' => 'http://stream.free-ip.tv/uploads/'
+       ],
     ],
     'params' => $params,
 ];

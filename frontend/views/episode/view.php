@@ -126,14 +126,15 @@ use yii\helpers\FileHelper;
             </div>
         </div>
         <h1 class="serial-title">
-            <?= $model->release_name_ru ?> <span itemprop="partOfSeason"><?= $season ?></span> <?=Yii::t('frontend', 'APP_SEASON')?>
-            <span itemprop="episodeNumber"><?= $episode ?></span> <?= Yii::t('frontend', 'APP_SEASON_SERIES')?>
-            <br><?= $query_episode->episode_title?>
+            <?= $model->release_name_ru ?> <span itemprop="partOfSeason"><?= $season ?></span>
+            <?=Yii::t('frontend', 'APP_SEASON')?>
+            <span itemprop="episodeNumber"><?= $query_episode->episode_title ?></span> <?= Yii::t('frontend', 'APP_SEASON_SERIES')?>
+            ?>
         </h1>
         <div class="episode-description" itemprop="description">
             <p>
                 <?php if ($query_episode->episode_plot == NULL): ?>
-                    <?php echo Yii::t('app', 'Нет описания серии')?>
+                    <?php echo Yii::t('app', 'APP_NO_DESCRIPTION_OF_THE_SERIES')?>
                 <?php else: ?>
             <div  oncontextmenu="return false;" style="user-select: none;-moz-user-select: none;-webkit-user-select: none">
                 <?= $query_episode->episode_plot ?>
@@ -143,14 +144,22 @@ use yii\helpers\FileHelper;
         </div>
     </div>
 </section>
-<div class="breadcrumbs-container">
+<div class="breadcrumbs-container hidden-xs">
     <div class="container">
         <ul class="breadcrumb">
-            <li class="hidden-xs"><?= Html::a(Yii::t('frontend', 'APP_SERIES'), ['/series/index'], ['class' => 'user-series']) ?></li>
+            <li><?= Html::a(Yii::t('frontend', 'APP_SERIES'), ['/series/index'], ['class' => 'user-series']) ?></li>
             <li><?= Html::a($model->release_name_ru, Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id]), ['class' => '']) ?></li>
             <li><?= Html::a(Yii::t('frontend', 'APP_SEASON').' '.$season, Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id, 'season' => $season ]), ['class' => '']) ?></li>
             <li class="active"><?=Yii::t('frontend', 'APP_SEASON_SERIES').' '.$episode ?></li>
-            <li class="hidden-xs active"><?=$query_episode->episode_title ?></li>
+            <li class="active"><?=$query_episode->episode_title ?></li>
+        </ul>
+    </div>
+</div>
+<div class="breadcrumbs-container hidden-md hidden-sm hidden-lg">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><?= Html::a($model->release_name_ru, Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id]), ['class' => '']) ?></li>
+            <li class="active"><?=$query_episode->episode_title ?></li>
         </ul>
     </div>
 </div>
