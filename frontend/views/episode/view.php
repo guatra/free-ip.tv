@@ -128,8 +128,7 @@ use yii\helpers\FileHelper;
         <h1 class="serial-title">
             <?= $model->release_name_ru ?> <span itemprop="partOfSeason"><?= $season ?></span>
             <?=Yii::t('frontend', 'APP_SEASON')?>
-            <span itemprop="episodeNumber"><?= $query_episode->episode_title ?></span> <?= Yii::t('frontend', 'APP_SEASON_SERIES')?>
-            ?>
+            <span itemprop="episode-title"><?= $query_episode->episode_title ?></span> <?= Yii::t('frontend', 'APP_SEASON_SERIES')?>
         </h1>
         <div class="episode-description" itemprop="description">
             <p>
