@@ -24,6 +24,7 @@ class ReleaseAppAsset extends AssetBundle
 //        '/js/ie/respond.min.js',
 //        '/js/main.js',
         '/js/google.js',
+        '/js/yandex.js',
     ];
     public $jsOptions = ['position' => \yii\web\View::POS_END];
 

@@ -22,6 +22,7 @@ class EpisodeAppAsset extends AssetBundle
         '/js/video.min.js',
         '/js/videojs_5.vast.vpaid.min.js',
         '/js/google.js',
+        '/js/yandex.js',
     ];
     public $jsOptions = [
         'position' => \yii\web\View::POS_END,

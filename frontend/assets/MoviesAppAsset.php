@@ -20,6 +20,7 @@ class MoviesAppAsset extends AssetBundle
         'js/preloader.js',
         //'js/resize_player.js',
         '/js/google.js',
+        '/js/yandex.js',
     ];
     public $jsOptions = [
         'position' => \yii\web\View::POS_END,
