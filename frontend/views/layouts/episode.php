@@ -43,8 +43,14 @@ EpisodeAppAsset::register($this);
         //['label' => 'Serials', 'url' => ['/series/index']],
     ];
     if (Yii::$app->user->isGuest) {
+        $menuItemsInSide[] = ['label' => Yii::t('frontend', 'APP_MOVIES'), 'url' => ['/movies/index']];
+        $menuItemsInSide[] = ['label' => Yii::t('frontend', 'APP_SERIES'), 'url' => ['/series/index'], 'active' => 1];
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => Yii::t('frontend', 'APP_SERIALS'), 'url' => ['/series/index']];
+        $menuItems[] =
+            [
+                    'label' => Yii::t('frontend', 'APP_USER_MENU'),
+                    'items' => $menuItemsInSide,
+            ];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
         $menuItems[] = '<li>'

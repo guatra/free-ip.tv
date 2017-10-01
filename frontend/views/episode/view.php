@@ -23,7 +23,15 @@ use yii\helpers\FileHelper;
         ],
     ]);
     for ($i=1; $i <= $model->release_totalseasons ; $i++) {
-        $menuItemsInSide[] = ['label' => Yii::t('frontend', 'APP_SEASON').' '.$i, 'url' => ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => 1], 'linkOptions' => []];
+        $model->release_totalseasons == $season ? $isItemActive = ['active' => 1] : $isItemActive = [];
+        $menuItemsInSide[] =
+            [
+                'label' => Yii::t('frontend', 'APP_SEASON').' '.$i,
+                'url' => ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => 1],
+                'linkOptions' => [],
+                ['active' => 1],
+                $isItemActive
+            ];
     }
     $menuItems = [
         [
@@ -44,7 +52,7 @@ use yii\helpers\FileHelper;
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                <?php $image = Url::to(['@lostfilm/Images/'.$model->id.'/Posters/poster.jpg'],'https'); ?>
+                <?php $image = Url::to(['@web/uploads/Images/'.$model->id.'/Posters/poster.jpg'],'https'); ?>
                 <div class="container" style="background-image: url(<?= $image ?>) center no-reapet">
                     <div class="embed-responsive embed-responsive-16by9 video-js-responsive-container vjs-hd">
                         <div poster=<?= $image ?> preload="none" class="video-js vjs-sublime-skin vjs-paused vjs-controls-enabled vjs-workinghover vjs-user-inactive" id="player" role="region" aria-label="video player" tabindex="-1" style="outline: none;">
@@ -87,7 +95,7 @@ use yii\helpers\FileHelper;
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container" itemscope itemtype="http://schema.org/TVEpisode">
         <div class="row links">
             <div class="col-xs-6 text-center">
                 <?php if ($episode == 1 AND $season == 1): ?>
@@ -126,12 +134,12 @@ use yii\helpers\FileHelper;
             </div>
         </div>
         <h1 class="serial-title">
-            <span itemprop="episode-title"><?= $query_episode->episode_title ?></span>
+            <span itemprop="name"><?= $query_episode->episode_title ?></span>
         </h1>
         <div class="episode-description" itemprop="description">
             <p>
                 <?php if ($query_episode->episode_plot == NULL): ?>
-                    <?php echo Yii::t('app', 'APP_NO_DESCRIPTION_OF_THE_SERIES')?>
+                    <?php echo Yii::t('frontend', 'APP_NO_DESCRIPTION_OF_THE_SERIES')?>
                 <?php else: ?>
             <div  oncontextmenu="return false;" style="user-select: none;-moz-user-select: none;-webkit-user-select: none">
                 <?= $query_episode->episode_plot ?>
