@@ -37,7 +37,8 @@ $lang = $session['language'];
 
     </div>
 </div>
-<section class="nav-bottom">
+
+<footer class="footer">
     <?php
     NavBar::begin([
         'brandLabel' => 'free-ip.tv',
@@ -51,7 +52,14 @@ $lang = $session['language'];
         //['label' => 'Serials', 'url' => ['/series/index']],
     ];
     if (Yii::$app->user->isGuest) {
+        $menuItemsInSide[] = ['label' => Yii::t('frontend', 'APP_MOVIES'), 'url' => ['/movies/index']];
+        $menuItemsInSide[] = ['label' => Yii::t('frontend', 'APP_SERIES'), 'url' => ['/series/index'], 'active' => 1];
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+        $menuItems[] =
+            [
+                'label' => Yii::t('frontend', 'APP_USER_MENU'),
+                'items' => $menuItemsInSide,
+            ];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
         $menuItems[] = '<li>'
@@ -69,7 +77,8 @@ $lang = $session['language'];
     ]);
     NavBar::end();
     ?>
-</section>
+</footer>
+
 <noscript><div><img src="https://mc.yandex.ru/watch/35854435" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 <?php $this->endBody() ?>

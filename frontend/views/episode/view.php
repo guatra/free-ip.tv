@@ -23,13 +23,12 @@ use yii\helpers\FileHelper;
         ],
     ]);
     for ($i=1; $i <= $model->release_totalseasons ; $i++) {
-        $model->release_totalseasons == $season ? $isItemActive = ['active' => 1] : $isItemActive = [];
+        $i == $season ? $isItemActive = ['active' => 1] : $isItemActive = [];
         $menuItemsInSide[] =
             [
                 'label' => Yii::t('frontend', 'APP_SEASON').' '.$i,
                 'url' => ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => 1],
                 'linkOptions' => [],
-                ['active' => 1],
                 $isItemActive
             ];
     }
@@ -153,7 +152,7 @@ use yii\helpers\FileHelper;
     <div class="container">
         <ul class="breadcrumb">
             <li><?= Html::a(Yii::t('frontend', 'APP_SERIES'), ['/series/index'], ['class' => 'user-series']) ?></li>
-            <li><?= Html::a($model->release_name_ru, Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id]), ['class' => '']) ?></li>
+            <li><?= Html::a($model->release_name_ru, Yii::$app->urlManager->createUrl(['/release/view', 'id' => $id]), ['class' => '']) ?></li>
             <li><?= Html::a(Yii::t('frontend', 'APP_SEASON').' '.$season, Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id, 'season' => $season ]), ['class' => '']) ?></li>
             <li class="active"><?=Yii::t('frontend', 'APP_SEASON_SERIES').' '.$episode ?></li>
             <li class="active"><?=$query_episode->episode_title ?></li>
@@ -163,7 +162,7 @@ use yii\helpers\FileHelper;
 <div class="breadcrumbs-container hidden-md hidden-sm hidden-lg">
     <div class="container">
         <ul class="breadcrumb">
-            <li><?= Html::a($model->release_name_ru, Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id]), ['class' => '']) ?></li>
+            <li><?= Html::a($model->release_name_ru, Yii::$app->urlManager->createUrl(['/release/view', 'id' => $id]), ['class' => '']) ?></li>
             <li class="active"><?=$query_episode->episode_title ?></li>
         </ul>
     </div>

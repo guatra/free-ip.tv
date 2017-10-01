@@ -12,8 +12,6 @@ class ReleaseAppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         '/css/release.css',
-        //'css/main.css',
-        //'css/videojs-sublime-skin.css',
         '/css/font-awesome.min.css',
 
     ];
