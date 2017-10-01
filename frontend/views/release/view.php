@@ -61,7 +61,7 @@ use kartik\icons\Icon;
     			<div class="container">
     				<div class="row">
     					<div class="col-md-3">
-    						<?=Html::img(Url::to(['@web/uploads/Images/'.$model->id.'/Posters/shmoster_s'.$model->release_totalseasons.'.jpg'],'https'), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
+    						<?=Html::img(Url::to(['@web/uploads/Images/'.$model->id.'/Posters/shmoster_s'.$model->release_totalseasons.'.jpg'],true), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
 
     					</div>
     					<div class="col-md-9">
@@ -213,7 +213,7 @@ use kartik\icons\Icon;
 			<div class="col-sm-6 col-md-3 episode" itemscope="" itemtype="http://schema.org/TVSeries">
 				<a href="<?=Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$serial->id])?>" title="<?php echo $serial->release_name_ru;?> смотреть онлайн" itemprop="url">
 					<div class="thumbnail">
-					<?=Html::img(Url::to(['@web/uploads/Images/'.$serial->id.'/Posters/shmoster_s'.$serial->release_totalseasons.'.jpg'],'https'), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
+					<?=Html::img(Url::to(['@web/uploads/Images/'.$serial->id.'/Posters/shmoster_s'.$serial->release_totalseasons.'.jpg'],true), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
 						<div class="content">
 							<div class="title" itemprop="name"><?php echo $serial->release_name_ru;?></div>
 								<div class="subtitle">

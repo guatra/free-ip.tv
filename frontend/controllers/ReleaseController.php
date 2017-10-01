@@ -177,13 +177,14 @@ class ReleaseController extends AppController
     {
         $dir = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/series/' . $id . '/Posters';
         $filename = '/Users/guatra/Projects/siteFree-ip_tv/frontend/web/images/series/' . $id . '/Posters/poster.jpg';
+        $filename = '@web/uploads/images/series/' . $id . '/Posters/poster.jpg';
         //$files = FileHelper::findFiles($dir, [
         //   'only' => ['*.jpg', 'sensitive' => false]
         //   ]);
 
         if ( !$filename ) {
 
-            $poster = Url::to('@web/images/series/' . $id . '/Posters/poster.jpg', true);
+            $poster = Url::to('@web/uploads/images/series/' . $id . '/Posters/poster.jpg', true);
             return $poster;
 
         } else {
