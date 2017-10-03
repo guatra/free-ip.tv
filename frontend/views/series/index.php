@@ -23,7 +23,7 @@ use kartik\icons\Icon;
                 <div class="3u 12u$(medium)">
                     <span class="image fit">
                         <a class="" href="<?=Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$serialsItem->id])?>">
-                            <?php echo Html::img(Url::to(['@web/uploads/Images/'.$serialsItem->id.'/Posters/image.jpg'],'https'), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
+                            <?php echo Html::img(Url::to(['@web/uploads/Images/'.$serialsItem->id.'/Posters/image.jpg'],true), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
                         </a>
                     </span>
                 </div>
