@@ -19,11 +19,11 @@ use kartik\icons\Icon;
     <section>
         <div class="box alt">
             <div class="row">
-                <?php foreach ($series as $serialsItem): ?>
+                <?php foreach ($series as $seriesItem): ?>
                 <div class="3u 12u$(medium)">
                     <span class="image fit">
-                        <a class="" href="<?=Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$serialsItem->id])?>">
-                            <?php echo Html::img(Url::to(['@web/uploads/Images/'.$serialsItem->id.'/Posters/image.jpg'],true), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
+                        <a class="" href="<?=Yii::$app->urlManager->createUrl(['/release/view', 'id' =>$seriesItem->id])?>">
+                            <?php echo Html::img(Url::to(['@web/uploads/Images/'.$seriesItem->id.'/Posters/image.jpg'],true), ['alt' =>$seriesItem->release_name_ru, 'itemprop' => 'image', 'class' => 'img-responsive'])?>
                         </a>
                     </span>
                 </div>

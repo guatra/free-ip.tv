@@ -7,6 +7,7 @@ use kartik\icons\Icon;
 
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\bootstrap\Tabs;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use yii\helpers\FileHelper;
@@ -28,7 +29,7 @@ use yii\helpers\FileHelper;
             [
                 'label' => Yii::t('frontend', 'APP_SEASON').' '.$i,
                 'url' => ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => 1],
-                'linkOptions' => [],
+               //'linkOptions' => [],
                 $isItemActive
             ];
     }
@@ -51,7 +52,7 @@ use yii\helpers\FileHelper;
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                <?php $image = Url::to(['@web/uploads/Images/'.$model->id.'/Posters/poster.jpg'],'https'); ?>
+                <?php $image = Url::to(['@web/uploads/Images/'.$model->id.'/Posters/poster.jpg'],true); ?>
                 <div class="container" style="background-image: url(<?= $image ?>) center no-reapet">
                     <div class="embed-responsive embed-responsive-16by9 video-js-responsive-container vjs-hd">
                         <div poster=<?= $image ?> preload="none" class="video-js vjs-sublime-skin vjs-paused vjs-controls-enabled vjs-workinghover vjs-user-inactive" id="player" role="region" aria-label="video player" tabindex="-1" style="outline: none;">
@@ -167,45 +168,68 @@ use yii\helpers\FileHelper;
         </ul>
     </div>
 </div>
-
+<div class="block-change" style="height: 50px"></div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h3><?=Yii::t('frontend', 'APP_ALL_SEASON_SERIES').' '.$season; ?> сезона</h3>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#home" data-toggle="tab"><?=Yii::t('frontend', 'APP_ALL_SEASON_SERIES').' '.$season; ?> сезона</a></li>
+                <li><a href="#cast" data-toggle="tab"><?=Yii::t('frontend', 'APP_CAST') ?></a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="home">
+                    <div class="row">
+                        <?php foreach ($release as $releaseItem): ?>
+                            <div class="col-sm-6 col-md-4 episode <?php if($releaseItem->episode_season == $season AND $releaseItem->episode_season_number == $episode){echo 'active';}?>">
+                                <a href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $releaseItem->episode_season_number ])?>">
+                                    <div class="thumbnail">
+                                        <img src=<?php echo URL::to(["@web/uploads/Images/".$id."/Posters/e_".$releaseItem->episode_season."_".$releaseItem->episode_season_number.".jpg"],true); ?> alt="">
+                                        <div class="content">
+                                            <div class="title">
+                                                <?= Yii::t('frontend', 'APP_SEASON') ?> <?= $releaseItem->episode_season; ?>,
+                                                <?= Yii::t('frontend', 'APP_SEASON_SERIES') ?> <?= $releaseItem->episode_season_number; ?> </div>
+                                            <div class="subtitle">
+                                                <?= $releaseItem->episode_title; ?></div>
+                                        </div>
+                                        <div class="duration"><?= $releaseItem->episode_runtime; ?> <?= Yii::t('frontend', 'APP_MIN') ?></div>
+                                        <div class="play-button"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="cast">...</div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <?php foreach ($release as $releaseItem): ?>
-            <div class="col-sm-6 col-md-4 episode <?php if($releaseItem->episode_season == $season AND $releaseItem->episode_season_number == $episode){echo 'active';}?>">
-                <a href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $releaseItem->episode_season_number ])?>">
-                    <div class="thumbnail">
-                        <img src=<?php echo URL::to(["@web/uploads/Images/".$id."/Posters/e_".$releaseItem->episode_season."_".$releaseItem->episode_season_number.".jpg"],true); ?> alt="">
-                        <div class="content">
-                            <div class="title">
-                                <?= Yii::t('frontend', 'APP_SEASON') ?> <?= $releaseItem->episode_season; ?>,
-                                <?= Yii::t('frontend', 'APP_SEASON_SERIES') ?> <?= $releaseItem->episode_season_number; ?> </div>
-                            <div class="subtitle">
-                                <?= $releaseItem->episode_title; ?></div>
-                        </div>
-                        <div class="duration"><?= $releaseItem->episode_runtime; ?> <?= Yii::t('frontend', 'APP_MIN') ?></div>
-                        <div class="play-button"></div>
-                    </div>
-                </a>
-            </div>
-        <?php endforeach ?>
-    </div>
 </div>
-</section>
-<?php //foreach ($release as $releaseItem): ?>
-<!--    --><?php //if ( $releaseItem->episode_season_number <=9 )
-//    {
-//        $i = '0'.$releaseItem->episode_season_number;
-//    }else {
-//    $i = $releaseItem->episode_season_number;}
-//    ?>
-<!--    --><?php //echo 'ln -s "/var/www/html/tv_show/'. $model->release_name_ru .'/' . $releaseItem->episode_season . '-' . $i . ' ' . $releaseItem->episode_title . '.mp4" /var/www/html/tv_show_all/' . $releaseItem->episode_url . '.mp4'; ?><!--<br>-->
-<?php //endforeach ?>
-
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-12">-->
+<!--            --><?php
+//            echo Tabs::widget([
+//                'items' => [
+//                    [
+//                    'label' => Yii::t('frontend', 'APP_ALL_SEASON_SERIES').' '.$season.' сезона',
+//                    'content' => 'Anim pariatur cliche...',
+//                    'active' => true
+//                    ],
+//                    [
+//                    'label' => Yii::t('frontend', 'APP_CAST'),
+//                    'content' => 'Anim pariatur clicheghkjgkdfdkkkgkf.',
+//                    'headerOptions' => [],
+//                    'options' => ['id' => 'ca', 'itemprop' => 'name'],
+//                    ],
+//                ],
+//            ]);
+//            ?>
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 
