@@ -181,6 +181,7 @@ use yii\helpers\FileHelper;
             <!-- Tab panes -->
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="home">
+                    <div class="block-change" style="height: 50px"></div>
                     <div class="row">
                         <?php foreach ($release as $releaseItem): ?>
                             <div class="col-sm-6 col-md-4 episode <?php if($releaseItem->episode_season == $season AND $releaseItem->episode_season_number == $episode){echo 'active';}?>">
