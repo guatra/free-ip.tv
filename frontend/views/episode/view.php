@@ -173,9 +173,9 @@ use yii\helpers\FileHelper;
     <div class="row">
         <div class="col-md-12">
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#home" data-toggle="tab"><?=Yii::t('frontend', 'APP_ALL_SEASON_SERIES').' '.$season; ?> сезона</a></li>
-                <li><a href="#cast" data-toggle="tab"><?=Yii::t('frontend', 'APP_CAST') ?></a></li>
+            <ul class="nav nav-pills nav-justified">
+                <li class="active"><a href="#home" data-toggle="pill"><?=Yii::t('frontend', 'APP_ALL_SEASON_SERIES').' '.$season; ?> сезона</a></li>
+                <li><a href="#cast" data-toggle="pill"><?=Yii::t('frontend', 'APP_CAST') ?></a></li>
             </ul>
 
             <!-- Tab panes -->
