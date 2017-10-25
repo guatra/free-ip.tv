@@ -583,3 +583,13 @@ a {
 #cover-preloader {
     margin-top: -30px;
 }
+
+.cast-container > div ul li.active a {
+
+    background: #2d2d2d;
+    color: #777;
+}
+
+.cast-container > div ul li.active:hover a {
+    background: #222;
+}

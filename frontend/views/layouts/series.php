@@ -49,29 +49,26 @@ $lang = $session['language'];
 
             <!-- Menu -->
 
+
             <nav id="menu">
 
                 <?= Html::tag('header', Html::tag('h2' , Yii::t('frontend', 'APP_USER_MENU')), ['class' => 'major']) ?>
                 <ul>
-                    <li>
-                        <?= Html::tag('span', Yii::t('frontend', 'APP_TV_CHANNELS'), ['class' => 'opener']) ?>
-                        <ul>
-                            <li><?= Html::a(Yii::t('frontend', 'APP_TV'), ['/tv/index'], ['class' => 'tv']) ?></li>
-                        </ul>
-                    </li>
+                    <li><?= Html::a(Yii::t('frontend', 'APP_TV_CHANNELS'), ['/tv/index'], ['class' => 'tv']) ?></li>
                     <li><?= Html::a(Yii::t('frontend', 'APP_MOVIES'), ['/movies/index'], ['class' => 'user-moview']) ?></li>
-                    <li><?= Html::a(Yii::t('frontend', 'APP_SERIALS'), ['/series/index'], ['class' => 'user-series']) ?></li>
-
+                    <li><?= Html::a(Yii::t('frontend', 'APP_SERIES'), ['/series/index'], ['class' => 'user-series']) ?></li>
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_USER_PLAYLIST'), ['class' => 'opener']) ?>
                         <ul>
                             <li><a href="#">Авторизуйтесь</a></li>
                         </ul>
                     </li>
+                    <li><?= Html::a(Yii::t('frontend', 'APP_RSS'), ['/site/rss'], ['class' => 'user-series']) ?></li>
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_CHANNELS'), ['class' => 'opener']) ?>
                         <ul>
                             <li><?= Html::a(Yii::t('frontend', 'APP_CHANNELS_LOSTFILM-TV'), ['/series/index'], ['class' => 'user-series']) ?></li>
+                            <li><?= Html::a(Yii::t('frontend', 'APP_RSS'), ['/site/rss'], ['class' => 'user-series']) ?></li>
                         </ul>
                     </li>
                 </ul>
