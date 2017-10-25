@@ -219,11 +219,47 @@ use yii\helpers\FileHelper;
                                 <div class="tab-pane fade in active" id="home">
                                 <div class="row">
                                     <h1>Home</h1>
+                                    <?php foreach ($release as $releaseItem): ?>
+                                        <div class="col-sm-6 col-md-4 episode <?php if($releaseItem->episode_season == $season AND $releaseItem->episode_season_number == $episode){echo 'active';}?>">
+                                            <a href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $releaseItem->episode_season_number ])?>">
+                                                <div class="thumbnail">
+                                                    <img src=<?php echo URL::to(["@web/uploads/Images/".$id."/Posters/e_".$releaseItem->episode_season."_".$releaseItem->episode_season_number.".jpg"],true); ?> alt="">
+                                                    <div class="content">
+                                                        <div class="title">
+                                                            <?= Yii::t('frontend', 'APP_SEASON') ?> <?= $releaseItem->episode_season; ?>,
+                                                            <?= Yii::t('frontend', 'APP_SEASON_SERIES') ?> <?= $releaseItem->episode_season_number; ?> </div>
+                                                        <div class="subtitle">
+                                                            <?= $releaseItem->episode_title; ?></div>
+                                                    </div>
+                                                    <div class="duration"><?= $releaseItem->episode_runtime; ?> <?= Yii::t('frontend', 'APP_MIN') ?></div>
+                                                    <div class="play-button"></div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    <?php endforeach ?>
                                 </div>
                             </div>
                                 <div class="tab-pane fade" id="actors">
                                 <div class="row">
-                                    <h1>Director</h1>
+                                    <h1>Actors</h1>
+                                    <?php foreach ($release as $releaseItem): ?>
+                                        <div class="col-sm-6 col-md-4 episode <?php if($releaseItem->episode_season == $season AND $releaseItem->episode_season_number == $episode){echo 'active';}?>">
+                                            <a href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $releaseItem->episode_season_number ])?>">
+                                                <div class="thumbnail">
+                                                    <img src=<?php echo URL::to(["@web/uploads/Images/".$id."/Posters/e_".$releaseItem->episode_season."_".$releaseItem->episode_season_number.".jpg"],true); ?> alt="">
+                                                    <div class="content">
+                                                        <div class="title">
+                                                            <?= Yii::t('frontend', 'APP_SEASON') ?> <?= $releaseItem->episode_season; ?>,
+                                                            <?= Yii::t('frontend', 'APP_SEASON_SERIES') ?> <?= $releaseItem->episode_season_number; ?> </div>
+                                                        <div class="subtitle">
+                                                            <?= $releaseItem->episode_title; ?></div>
+                                                    </div>
+                                                    <div class="duration"><?= $releaseItem->episode_runtime; ?> <?= Yii::t('frontend', 'APP_MIN') ?></div>
+                                                    <div class="play-button"></div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    <?php endforeach ?>
                                 </div>
                             </div>
                                 <div class="tab-pane fade" id="director">
