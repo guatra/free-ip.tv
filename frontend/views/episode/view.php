@@ -53,6 +53,7 @@ use yii\helpers\FileHelper;
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                 <?php $image = Url::to(['@web/uploads/Images/'.$model->id.'/Posters/poster.jpg'],true); ?>
+                <?php $image = Url::to(["@web/uploads/Images/".$model->id."/Posters/e_".$season."_".$episode.".jpg"],true); ?>
                 <div class="container" style="background-image: url(<?= $image ?>) center no-reapet">
                     <div class="embed-responsive embed-responsive-16by9 video-js-responsive-container vjs-hd">
                         <div poster=<?= $image ?> preload="none" class="video-js vjs-sublime-skin vjs-paused vjs-controls-enabled vjs-workinghover vjs-user-inactive" id="player" role="region" aria-label="video player" tabindex="-1" style="outline: none;">
@@ -163,8 +164,8 @@ use yii\helpers\FileHelper;
 <div class="breadcrumbs-container hidden-md hidden-sm hidden-lg">
     <div class="container">
         <ul class="breadcrumb">
-            <li><?= Html::a($model->release_name_ru, Yii::$app->urlManager->createUrl(['/release/view', 'id' => $id]), ['class' => '']) ?></li>
-            <li class="active"><?=$query_episode->episode_title ?></li>
+            <li><?= Html::a(Yii::t('frontend', 'APP_SEASON').' '.$season, Yii::$app->urlManager->createUrl(['/release/index', 'id' => $id, 'season' => $season ]), ['class' => '']) ?></li>
+            <li class="active"><?=Yii::t('frontend', 'APP_SEASON_SERIES').' '.$episode ?></li>
         </ul>
     </div>
 </div>
