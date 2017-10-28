@@ -244,22 +244,20 @@ use yii\helpers\FileHelper;
                                 <div class="row">
                                     <h1>Actors</h1>
                                     <?php foreach ($release as $releaseItem): ?>
-                                        <div class="col-sm-6 col-md-4 episode <?php if($releaseItem->episode_season == $season AND $releaseItem->episode_season_number == $episode){echo 'active';}?>">
-                                            <a href="<?=Yii::$app->urlManager->createUrl(['/episode/view', 'id' => $id, 'season' => $season, 'episode' => $releaseItem->episode_season_number ])?>">
-                                                <div class="thumbnail">
-                                                    <img src=<?php echo URL::to(["@web/uploads/Images/".$id."/Posters/e_".$releaseItem->episode_season."_".$releaseItem->episode_season_number.".jpg"],true); ?> alt="">
-                                                    <div class="content">
-                                                        <div class="title">
-                                                            <?= Yii::t('frontend', 'APP_SEASON') ?> <?= $releaseItem->episode_season; ?>,
-                                                            <?= Yii::t('frontend', 'APP_SEASON_SERIES') ?> <?= $releaseItem->episode_season_number; ?> </div>
-                                                        <div class="subtitle">
-                                                            <?= $releaseItem->episode_title; ?></div>
-                                                    </div>
-                                                    <div class="duration"><?= $releaseItem->episode_runtime; ?> <?= Yii::t('frontend', 'APP_MIN') ?></div>
-                                                    <div class="play-button"></div>
-                                                </div>
-                                            </a>
-                                        </div>
+                                    <a href="/persons/Dustin_Milligan" class="row">
+                                                                                <img src="//static.lostfilm.tv/Names/1/3/4/t13459.jpg" class="aload thumb">
+                                                                                <div class="body">
+                                                                                    <div class="name-ru">Дастин Миллиган</div>
+                                                                                    <div class="clr"></div>
+                                                                                    <div class="name-en">Dustin Milligan</div>
+                                                                                </div>
+                                                                                <div class="role-pane">
+                                                                                    <div class="role-ru">Сержант Хьюго Фрикин</div>
+                                                                                    <div class="clr"></div>
+                                                                                    <div class="role-en">Sgt. Hugo Friedkin</div>
+                                                                                </div>
+                                                                            </a>
+                                                                            <div class="clr"></div>
                                     <?php endforeach ?>
                                 </div>
                             </div>
