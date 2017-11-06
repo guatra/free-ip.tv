@@ -21,7 +21,7 @@ $lang = $session['language'];
 $three_end_releases = Release::find()
     ->select(['id','release_id','episode_title', 'episode_season', 'episode_season_number', 'episode_plot', 'episode_article_key'])
     ->where(['episode_language' => 'ru-RU', 'type' => 'episode'])
-    ->limit(3)
+    ->limit(5)
     ->orderBy(['episode_released' => SORT_DESC])->all();
 ?>
 <?php $this->beginPage() ?>
@@ -56,8 +56,6 @@ $three_end_releases = Release::find()
             </section>
 
             <!-- Menu -->
-
-
             <nav id="menu">
 
                 <?= Html::tag('header', Html::tag('h2' , Yii::t('frontend', 'APP_USER_MENU')), ['class' => 'major']) ?>
@@ -85,9 +83,7 @@ $three_end_releases = Release::find()
             </nav>
             <!-- Section -->
             <section>
-                <header class="major">
-                    <h2>Новинки</h2>
-                </header>
+                <?= Html::tag('header', Html::tag('h2' , Yii::t('frontend', 'APP_USER_NEW')), ['class' => 'major']) ?>
                 <div class="mini-posts">
                     <?php foreach ($three_end_releases as $element): ?>
                     <article>
@@ -97,18 +93,6 @@ $three_end_releases = Release::find()
                         <h3><?php echo $element->episode_title ?></h3>
                     </article>
                     <?php endforeach; ?>
-                    <article>
-                        <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/143/Posters/poster.jpg" alt="" /></a>
-                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                    </article>
-                    <article>
-                        <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/134/Posters/poster.jpg" alt="" /></a>
-                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-                    </article>
-                </div>
-                <ul class="actions">
-                    <li><a href="#" class="button">More</a></li>
-                </ul>
             </section>
 
             <!-- Footer -->
