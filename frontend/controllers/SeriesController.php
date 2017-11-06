@@ -2,7 +2,8 @@
 
 namespace frontend\controllers;
 
-use backend\models\FullName;
+use frontend\models\FullName;
+use frontend\models\Release;
 use yii\web\NotFoundHttpException;
 use yii\helpers\Url;
 use Yii;
@@ -15,10 +16,10 @@ class SeriesController extends AppController
 
     public function actionIndex()
     {
-        $query = FullName::find()->where(['release_show' => 1, 'release_type' => 'series']);
 
+        $query = FullName::find()->where(['release_show' => 1, 'release_type' => 'series']);
         $series = $query->orderBy(['release_status' => SORT_DESC, 'release_name_ru' => SORT_ASC])->all();
-        $this->setMeta(Yii::$app->name . ' | ' .Yii::t('frontend', 'APP_SERIALS'));
+        $this->setMeta(Yii::$app->name . ' | ' .Yii::t('frontend', 'APP_SERIES'));
         return $this->render('index', [
             'series' => $series,
         ]);

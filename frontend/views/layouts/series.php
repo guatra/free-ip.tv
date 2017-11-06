@@ -4,17 +4,25 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\NavBar;
 use yii\bootstrap\Nav;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\SerialsAppAsset;
 use common\widgets\Alert;
+use frontend\models\Release;
 
 SerialsAppAsset::register($this);
 
 $session = Yii::$app->session;
 $session['language'] == '' ? $session['language'] = Yii::$app->language : $lang = $session['language'];
 $lang = $session['language'];
+
+$three_end_releases = Release::find()
+    ->select(['id','release_id','episode_title', 'episode_season', 'episode_season_number', 'episode_plot', 'episode_article_key'])
+    ->where(['episode_language' => 'ru-RU', 'type' => 'episode'])
+    ->limit(3)
+    ->orderBy(['episode_released' => SORT_DESC])->all();
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -60,7 +68,7 @@ $lang = $session['language'];
                     <li>
                         <?= Html::tag('span', Yii::t('frontend', 'APP_USER_PLAYLIST'), ['class' => 'opener']) ?>
                         <ul>
-                            <li><a href="#">Авторизуйтесь</a></li>
+                            <li><a href="#">Авторизуйтесь1</a></li>
                         </ul>
                     </li>
                     <li><?= Html::a(Yii::t('frontend', 'APP_RSS'), ['/site/rss'], ['class' => 'user-series']) ?></li>
@@ -81,10 +89,14 @@ $lang = $session['language'];
                     <h2>Новинки</h2>
                 </header>
                 <div class="mini-posts">
+                    <?php foreach ($three_end_releases as $element): ?>
                     <article>
-                        <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/174/Posters/poster.jpg" alt="" /></a>
-                        <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/search/hash', 'q' => $element->episode_article_key]) ?>" class="image">
+                            <?php echo Html::img(Url::to(['/uploads/Images/'.$element->release_id.'/Posters/poster.jpg'], true), ['alt' => $element->episode_title, 'itemprop' => 'image']); ?>
+                        </a>
+                        <h3><?php echo $element->episode_title ?></h3>
                     </article>
+                    <?php endforeach; ?>
                     <article>
                         <a href="#" class="image"><img src="https://static.lostfilm.tv/Images/143/Posters/poster.jpg" alt="" /></a>
                         <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
