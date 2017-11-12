@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use kartik\icons\Icon;
 use yii\bootstrap\Carousel;
 use yii\helpers\Url;
-
+use frontend\components\HelloWidget;
 
 ?>
 <!-- Main -->
@@ -14,7 +14,7 @@ use yii\helpers\Url;
 
         <!-- Header -->
         <header id="header">
-            <a href="#" class="logo"><strong>ПРивет</strong> юзер</a>
+            <a href="#" class="logo"><strong><?= HelloWidget::widget() ?></strong></a>
             <ul class="icons">
                 <li>
                     <?= Html::a(Icon::show('vk', ['class' => 'icon'], Icon::FA), 'https://vk.com/freeiptv', ['class' => 'icon fa vk']) ?>

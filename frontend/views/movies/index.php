@@ -56,12 +56,12 @@ NavBar::end();
 </section>
 <section class="movies">
     <div class="container">
-    <div class="jumbotron">
-        <main role="main">
+    <div class="">
+        <div role="main">
             <article>
                 <!-- Header -->
                 <header id="header">
-<!--                    <a href="#" class="logo"><strong>--><?//= HelloWidget::widget() ?><!--</strong>-->
+                    <a href="#" class="logo"><strong><?= HelloWidget::widget() ?></strong>
                     </a>
                     <ul class="icons">
                         <li>
@@ -127,15 +127,13 @@ NavBar::end();
 
                             <?php Pjax::end(); ?>
 
-
-
                         </div>
                     </div>
                 </section>
                 <hr>
 
             </article>
-        </main>
+        </div>
     </div>
 </div>
 </section>

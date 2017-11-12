@@ -7,7 +7,7 @@ use yii\helpers\Url;
 
 
 
-    <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 episode item" data-key="<?=$model->id?>" itemscope="" itemtype="http://schema.org/TVSeries">
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 episode item" data-key="<?=$model->id?>" itemscope="" itemtype="http://schema.org/TVSeries">
         <a href="<?=Yii::$app->urlManager->createUrl(['/movies/view', 'id' =>$model->id])?>" title="<?php echo $model->release_name_ru;?> смотреть онлайн" itemprop="url">
             <div class="thumbnail">
                 <?=Html::img(Url::to($model->release_preview_image, true), ['class'=>'' , 'alt' => $model->release_name_ru])?>
@@ -22,10 +22,10 @@ use yii\helpers\Url;
     </div>
 
 <?php if (($index+1) % 4 == 0) : ?>
-    <div class="clearfix visible-sm-block"></div>
-<?php endif; ?>
-<?php if (($index+1) % 6 == 0) : ?>
     <div class="clearfix visible-md-block visible-lg-block"></div>
+<?php endif; ?>
+<?php if (($index+1) % 3 == 0) : ?>
+    <div class="clearfix visible-sm-block"></div>
 <?php endif; ?>
 
 

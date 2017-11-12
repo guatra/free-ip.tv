@@ -21,13 +21,7 @@ use yii\helpers\Url;
                 </li>
             </ul>
         </header>
-        <section>
-            <div class="row">
-                <div class="col-xs-12">
-                    <?php debug($data) ?>
-                </div>
-            </div>
-        </section>
+
         <section>
 
             <div class="row">
@@ -40,7 +34,7 @@ use yii\helpers\Url;
                  </div>
 
             </div>
-    </section>
+        </section>
 
     </div>
 </div>

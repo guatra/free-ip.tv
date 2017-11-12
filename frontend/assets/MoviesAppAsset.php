@@ -14,6 +14,7 @@ class MoviesAppAsset extends AssetBundle
     public $css = [
         'css/preloder.css',
         'css/videojs-sublime-skin.css',
+        'css/font-awesome.min.css',
         'css/movies.css',
     ];
     public $js = [

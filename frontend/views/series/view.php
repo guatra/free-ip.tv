@@ -104,7 +104,7 @@ use kartik\icons\Icon;
     										<td><?=$model->release_actors?></td>
     									</tr>
     									<tr class="xs-hidden">
-    										<td>Описание</td>
+    										<td>Описаниеview</td>
     										<td><?=$model->release_plot?></td>
     									</tr>
     								</tbody></table>

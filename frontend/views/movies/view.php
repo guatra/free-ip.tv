@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use yii\helpers\FileHelper;
+use frontend\components\HelloWidget;
 ?>
 <div id="cover-preloader">
     <div>
@@ -24,13 +25,6 @@ use yii\helpers\FileHelper;
                 'class' => 'navbar navbar-inverse navbar-fixed-top',
             ],
         ]);
-        $menuItemsInSide[] = ['label' => Yii::t('frontend', 'APP_MOVIES'), 'url' => ['/movies/index']];
-        $menuItems = [
-            [
-                'label' => 'Сезоны',
-                'items' => $menuItemsInSide,
-            ],
-        ];
 
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
@@ -41,7 +35,7 @@ use yii\helpers\FileHelper;
                         '<li class="dropdown-header"></li>',
                         ['label' => Yii::t('frontend', 'APP_MOVIES'), 'url' => ['/movies/index']],
                         '<li class="divider"></li>',
-                        ['label' => Yii::t('frontend', 'APP_SERIALS'), 'url' => ['/series/index']],
+                        ['label' => Yii::t('frontend', 'APP_SERIES'), 'url' => ['/series/index']],
                     ],
                 ],
             ],
@@ -125,4 +119,4 @@ use yii\helpers\FileHelper;
         </ul>
     </div>
 </div>
-<a href="<?= $data["url"]?>"><?= $data["url"]?></a>
+<!--<a href="--><?//= $data["url"]?><!--">--><?//= $data["url"]?><!--</a>-->

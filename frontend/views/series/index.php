@@ -3,13 +3,14 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use kartik\icons\Icon;
+use frontend\components\HelloWidget;
 
 ?>
 
 
 <div class="inner">
     <header id="header">
-        <a href="#" class="logo"><strong>ПРивет</strong> юзер series</a>
+        <a href="#" class="logo"><strong><?= HelloWidget::widget() ?></strong></a>
         <ul class="icons">
             <li>
                 <?= Html::a(Icon::show('vk', ['class' => 'icon'], Icon::FA), 'https://vk.com/freeiptv', ['class' => 'icon fa vk']) ?>

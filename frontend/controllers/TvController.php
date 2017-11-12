@@ -30,11 +30,15 @@ class TvController extends AppController
         $url = 'http://www.ntv.ru/air/';
         return $this->render('ntv');
     }
+    public function actionOtr(){
+        $this->setMeta('Прямой эфир. ОТР канал. '.Yii::$app->name, Yii::$app->name."Прямой эфир.ОТР канал", "");
+        return $this->render('otr');
+    }
     protected function menuChanneles($count = null, $list = null, $favicon = null){
         // Return array
         $count = 2;
         //
-        $data = ['count' => $count ,'menu' => [1 => 'one', 2 => 'ntv'], 'image' => [1 => 'one', 2 => 'ntv'], 'favicon' => [1 => 'one', 2 => 'ntv']];
+        $data = ['count' => $count ,'menu' => [1 => 'one', 2 => 'otr'], 'image' => [1 => 'one', 2 => 'otr'], 'favicon' => [1 => 'one', 2 => 'otr']];
         // Return array
         return $data;
     }
