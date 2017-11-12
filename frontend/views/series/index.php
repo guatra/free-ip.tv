@@ -9,6 +9,7 @@ use frontend\components\HelloWidget;
 
 
 <div class="inner">
+
     <header id="header">
         <a href="#" class="logo"><strong><?= HelloWidget::widget() ?></strong></a>
         <ul class="icons">

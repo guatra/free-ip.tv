@@ -94,7 +94,7 @@ use kartik\icons\Icon;
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                                             <?=Yii::t('frontend', 'APP_YEAR_OF_ISSUE'); ?>
                                 </div>
                                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">

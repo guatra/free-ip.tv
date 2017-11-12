@@ -30,7 +30,14 @@ EpisodeAppAsset::register($this);
         <?= $content ?>
 
 <footer class="footer">
-<?php
+    <!-- VK Widget -->
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?146"></script>
+    <div id="vk_community_messages"></div>
+    <script type="text/javascript">
+        VK.Widgets.CommunityMessages("vk_community_messages", 69978139, {tooltipButtonText: "Есть вопрос?"});
+    </script>
+
+    <?php
     NavBar::begin([
         'brandLabel' => 'free-ip.tv',
         'brandUrl' => Yii::$app->urlManager->createUrl(['/site/index']),

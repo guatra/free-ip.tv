@@ -79,6 +79,13 @@ $lang = $session['language'];
     ?>
 </footer>
 
+<!-- VK Widget -->
+<script type="text/javascript" src="//vk.com/js/api/openapi.js?146"></script>
+<div id="vk_community_messages"></div>
+<script type="text/javascript">
+    VK.Widgets.CommunityMessages("vk_community_messages", 69978139, {tooltipButtonText: "Есть вопрос?"});
+</script>
+
 <noscript><div><img src="https://mc.yandex.ru/watch/35854435" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 <?php $this->endBody() ?>

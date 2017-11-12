@@ -15,7 +15,7 @@ return [
     'language' => 'ru-RU',
     'sourceLanguage' => 'en-US',
     'timeZone' => 'UTC',
-    'version' => '7.0.76',
+    'version' => '7.0.77',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
