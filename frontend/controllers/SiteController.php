@@ -5,7 +5,7 @@ use frontend\models\SearchForm;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
-use frontend\controllers\AppController;
+use yii\helpers\Json;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
@@ -20,7 +20,8 @@ use yii\helpers\StringHelper;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\data\ActiveDataProvider;
-use backend\models\FullName;
+use frontend\models\FullName;
+use yii\db\Query;
 
 /**
  * Site controller
@@ -335,5 +336,24 @@ class SiteController extends AppController
                 }
             ]
         ]);
+    }
+
+    /**
+     *
+     */
+    public function actionFullnameList($q = null) {
+        $query = new Query;
+
+        $query->select('release_name_ru')
+            ->from('full_name')
+            ->where('release_name_ru LIKE "%' . $q .'%"')
+            ->orderBy('release_name_ru');
+        $command = $query->createCommand();
+        $data = $command->queryAll();
+        $out = [];
+        foreach ($data as $d) {
+            $out[] = ['value' => $d['name']];
+        }
+        echo Json::encode($out);
     }
 }

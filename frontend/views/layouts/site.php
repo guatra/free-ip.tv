@@ -12,7 +12,7 @@ use common\widgets\Alert;
 use frontend\assets\SiteAppAsset;
 use yii\helpers\Url;
 use frontend\models\SearchForm;
-use yii\widgets\ActiveForm;
+use kartik\typeahead\Typeahead;
 
 
 SiteAppAsset::register($this);
@@ -53,10 +53,9 @@ $model = new SearchForm();
 
             <!-- Search -->
             <section id="search" class="alt">
-
-            <?php $form = ActiveForm::begin(); ?>
-                <?= $form->field($model, 'q')->label('Search')->textInput(['class' => 'input', 'id' => 'query']) ?>
-                <?php ActiveForm::end(); ?>
+            <?= Html::beginForm(['site/search'], 'get', ['enctype' => 'multipart/form-data']) ?>
+            <?= Html::input('text', 'q','',['placeholder' => 'Search']) ?>
+            <?= Html::endForm() ?>
             </section>
 
             <!-- Menu -->

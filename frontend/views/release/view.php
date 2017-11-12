@@ -62,15 +62,14 @@ use kartik\icons\Icon;
     				<div class="row">
     					<div class="col-md-3 hidden-xs">
     						<?=Html::img(Url::to(['@web/uploads/Images/'.$model->id.'/Posters/shmoster_s'.$model->release_totalseasons.'.jpg'],true), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
-a
     					</div>
     					<div class="col-md-9">
                             <hr>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                                     <?=Yii::t('frontend', 'APP_ORIGINAL_NAME'); ?>
                                 </div>
-                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-center">
                                     <?=$model->release_name_en?>
                                 </div>
                             </div>
@@ -87,14 +86,13 @@ a
                                                 if ($i < $model->release_totalseasons) {
                                                     echo ', ';
                                                 }
-
                                             }
                                             ?>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                             <?=Yii::t('frontend', 'APP_YEAR_OF_ISSUE'); ?>
                                 </div>
                                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">

@@ -50,10 +50,11 @@ $three_end_releases = Release::find()
 
             <!-- Search -->
             <section id="search" class="alt">
-                <form method="post" action="#">
-                    <input type="text" name="query" id="query" placeholder="Search" />
-                </form>
+                <?= Html::beginForm(['site/search'], 'get', ['enctype' => 'multipart/form-data']) ?>
+                <?= Html::input('text', 'q','',['placeholder' => 'Search']) ?>
+                <?= Html::endForm() ?>
             </section>
+
 
             <!-- Menu -->
             <nav id="menu">
