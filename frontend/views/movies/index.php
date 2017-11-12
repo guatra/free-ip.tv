@@ -45,7 +45,7 @@ echo Nav::widget([
                 '<li class="dropdown-header"></li>',
                 ['label' => Yii::t('frontend', 'APP_MOVIES'), 'url' => ['/movies/index']],
                 '<li class="divider"></li>',
-                ['label' => Yii::t('frontend', 'APP_SERIALS'), 'url' => ['/series/index']],
+                ['label' => Yii::t('frontend', 'APP_SERIES'), 'url' => ['/series/index']],
             ],
         ],
     ],
