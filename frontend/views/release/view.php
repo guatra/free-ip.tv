@@ -60,7 +60,7 @@ use kartik\icons\Icon;
 
     			<div class="container">
     				<div class="row">
-    					<div class="col-md-3">
+    					<div class="col-md-3 hidden-xs">
     						<?=Html::img(Url::to(['@web/uploads/Images/'.$model->id.'/Posters/shmoster_s'.$model->release_totalseasons.'.jpg'],true), ['alt' =>'Обложка', 'itemprop' => 'image', 'class' => 'img-responsive'])?>
 
     					</div>
