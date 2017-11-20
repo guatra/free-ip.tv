@@ -207,44 +207,53 @@ use yii\helpers\FileHelper;
                 </div>
                 <div class="tab-pane fade" id="cast">
                     <div class="row">
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
                             <ul class="nav nav-pills nav-stacked ">
-                                <div class="block-change" style="height: 50px"></div>
-                                <li class="active"><a href="#home" data-toggle="pill"><?=Yii::t('frontend', 'APP_ALL_ROLE') ?></a></li>
-                                <li><a href="#actors" data-toggle="pill"><?=Yii::t('frontend', 'APP_ACTORS') ?></a></li>
-                                <li><a href="#director" data-toggle="pill"><?=Yii::t('frontend', 'APP_DIRECTOR') ?></a></li>
-                                <li><a href="#writers" data-toggle="pill"><?=Yii::t('frontend', 'APP_WRITERS') ?></a></li>
+                                <div class="block-change" style="height: 20px"></div>
+                                <h5><?=Yii::t('frontend', 'APP_PERSONS_ВЫБРАТЬ ПРОФЕССИЮ') ?>:</h5>
+                                <li class="active"><a href="#home" data-toggle="pill"><?=Yii::t('frontend', 'APP_PERSONS_ALL_PROFESSIONS') ?></a></li>
+                                <li><a href="#actors" data-toggle="pill"><?=Yii::t('frontend', 'APP_PERSONS_ACTORS') ?></a></li>
+                                <li><a href="#directors" data-toggle="pill"><?=Yii::t('frontend', 'APP_PERSONS_DIRECTORS') ?></a></li>
+                                <li><a href="#producers" data-toggle="pill"><?=Yii::t('frontend', 'APP_PERSONS_PRODUCERS') ?></a></li>
+                                <li><a href="#writers" data-toggle="pill"><?=Yii::t('frontend', 'APP_PERSONS_WRITERS') ?></a></li>
                             </ul>
                         </div>
-                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <div class="col-xs-6 col-sm-8 col-md-8 col-lg-8">
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="home">
                                 <div class="row">
-                                    <h1><?=Yii::t('frontend', 'APP_ALL_PERSONS') ?></h1>
+                                    <h1><?=Yii::t('frontend', 'APP_PERSONS_ACTORS') ?></h1>
                                     <?php foreach ($release as $releaseItem): ?>
                                         <a href="/persons/Dustin_Milligan">
                                         <div class="row">
                                             <div class="col-xs-2"><img src="//static.lostfilm.tv/Names/1/3/4/t13459.jpg" class="img-rounded"></div>
-                                            <div class="col-xs-5">
+                                            <div class="col-xs-4">
                                                 <div class="body">
                                                     <div class="name-ru">Дастин Миллиган</div>
                                                     <div class="clr"></div>
                                                     <div class="name-en">Dustin Milligan</div>
-                                                </div></div>
-                                            <div class="col-xs-5">
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4">
                                                 <div class="role-pane">
                                                     <div class="role-ru">Сержант Хьюго Фрикин</div>
                                                     <div class="clr"></div>
                                                     <div class="role-en">Sgt. Hugo Friedkin</div>
-                                                </div></div>
+                                                </div>
+                                            </div>
                                         </div>
                                         </a>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="clr" style="height: 10px"></div>
+                                            </div>
+                                        </div>
                                     <?php endforeach ?>
                                 </div>
                             </div>
                                 <div class="tab-pane fade" id="actors">
                                 <div class="row">
-                                    <h1><?=Yii::t('frontend', 'APP_ACTORS') ?></h1>
+                                    <h1><?=Yii::t('frontend', 'APP_PERSONS_ACTORS') ?></h1>
                                     <?php foreach ($release as $releaseItem): ?>
                                         <a href="/persons/Dustin_Milligan" class="r
                                         <img src="//static.lostfilm.tv/Names/1/3/4/t13459.jpg" class="aload thumb">
@@ -262,25 +271,45 @@ use yii\helpers\FileHelper;
                                     <?php endforeach ?>
                                 </div>
                             </div>
-                                <div class="tab-pane fade" id="director">
-                                <div class="row">
-                                    <h1><?=Yii::t('frontend', 'APP_DIRECTOR') ?></h1>
-                                    <?php foreach ($release as $releaseItem): ?>
-                                        <a href="/persons/Dustin_Milligan" class="r
+                                <div class="tab-pane fade" id="directors">
+                                    <div class="row">
+                                        <h1><?=Yii::t('frontend', 'APP_PERSONS_DIRECTORS') ?></h1>
+                                        <?php foreach ($release as $releaseItem): ?>
+                                            <a href="/persons/Dustin_Milligan" class="r
                                         <img src="//static.lostfilm.tv/Names/1/3/4/t13459.jpg" class="aload thumb">
-                                        <div class="body">
-                                            <div class="name-ru">Дастин Миллиган</div>
-                                            <div class="clr"></div>
-                                            <div class="name-en">Dustin Milligan</div>
-                                        </div>
-                                        <div class="role-pane">
-                                            <div class="role-ru">Сержант Хьюго Фрикин</div>
-                                            <div class="clr"></div>
-                                            <div class="role-en">Sgt. Hugo Friedkin</div>
-                                        </div>
-                                        </a>
-                                    <?php endforeach ?>
+                                            <div class="body">
+                                                <div class="name-ru">Дастин Миллиган</div>
+                                                <div class="clr"></div>
+                                                <div class="name-en">Dustin Milligan</div>
+                                            </div>
+                                            <div class="role-pane">
+                                                <div class="role-ru">Сержант Хьюго Фрикин</div>
+                                                <div class="clr"></div>
+                                                <div class="role-en">Sgt. Hugo Friedkin</div>
+                                            </div>
+                                            </a>
+                                        <?php endforeach ?>
+                                    </div>
                                 </div>
+                                <div class="tab-pane fade" id="producers">
+                                    <div class="row">
+                                        <h1><?=Yii::t('frontend', 'APP_PERSONS_PRODUCERS') ?></h1>
+                                        <?php foreach ($release as $releaseItem): ?>
+                                            <a href="/persons/Dustin_Milligan" class="r
+                                        <img src="//static.lostfilm.tv/Names/1/3/4/t13459.jpg" class="aload thumb">
+                                            <div class="body">
+                                                <div class="name-ru">Дастин Миллиган</div>
+                                                <div class="clr"></div>
+                                                <div class="name-en">Dustin Milligan</div>
+                                            </div>
+                                            <div class="role-pane">
+                                                <div class="role-ru">Сержант Хьюго Фрикин</div>
+                                                <div class="clr"></div>
+                                                <div class="role-en">Sgt. Hugo Friedkin</div>
+                                            </div>
+                                            </a>
+                                        <?php endforeach ?>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="writers">
                                     <div class="row">
