@@ -34,8 +34,18 @@ $three_end_releases = Release::find()
     <title><?= Html::encode($this->title) ?></title>
     <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
     <?php $this->head() ?>
-    <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
-    <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+    <link rel="shortcut icon" href="/images/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="<?= Url::to('@web/touch-icons/apple-touch-icon-iphone-60x60.png', true); ?>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<?= Url::to('@web/touch-icons/apple-touch-icon-ipad-retina-152x152.png', true); ?>">
+    <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="touch-icon-ipad-retina.png">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-7942507468904926",
+            enable_page_level_ads: true
+        });
+    </script>
 </head>
 <body class="lstfml">
 <?php $this->beginBody() ?>
