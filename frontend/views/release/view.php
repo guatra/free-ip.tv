@@ -75,10 +75,10 @@ use kartik\icons\Icon;
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                                     <?=Yii::t('frontend', 'APP_SEASONS'); ?>
                                 </div>
-                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-center">
                                             <?php
                                             for ($i=1; $i <= $model->release_totalseasons ; $i++) {
                                                 echo Html::a($i.' сезон', ['/episode/view', 'id' => $model->id, 'season' => $i, 'episode' => '1' ], ['itemprop' => 'name']);
@@ -92,43 +92,43 @@ use kartik\icons\Icon;
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                                             <?=Yii::t('frontend', 'APP_YEAR_OF_ISSUE'); ?>
                                 </div>
-                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-center">
                                             <?php echo date('Y', $model->release_released); ?>
                                 </div>
                             </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                                             <?=Yii::t('frontend', 'APP_GENRE'); ?>
                                         </div>
-                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-center">
                                             <?=$model->release_genre?>
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                                             <?=Yii::t('frontend', 'APP_DIRECTOR'); ?>
                                         </div>
-                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-center">
                                             <?=$model->release_director?>
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                                             <?=Yii::t('frontend', 'APP_CAST'); ?>
                                         </div>
-                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 text-center">
                                             <?=$model->release_actors?>
                                         </div>
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
                                             <?=Yii::t('frontend', 'APP_DESCRIPTION'); ?>
                                         </div>
                                         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
@@ -141,7 +141,7 @@ use kartik\icons\Icon;
                                                 <?= Icon::show('imdb', ['class' => 'fa-3x'], Icon::FA) ?>
 
     										</div>
-    										<div class="pull-left">
+    										<div class="pull-left text-center">
     											<div class="value"><?=$model->release_lostfilmrating?></div>
     										</div>
     									</div>
